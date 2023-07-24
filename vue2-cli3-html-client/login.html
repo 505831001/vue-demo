@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>大事件-登录/注册</title>
+    <!-- 导入 LayUI 的样式 -->
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css"/>
+    <!-- 导入自己的样式表 -->
+    <!-- <link rel="stylesheet" href="./assets/css/login.css" /> -->
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background: url('./assets/images/login_bg.jpg') no-repeat center;
+            background-size: cover;
+        }
+
+        .loginAndRegBox {
+            width: 400px;
+            height: 310px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .title-box {
+            height: 60px;
+            background: url('./assets/images/login_title.png') no-repeat center;
+        }
+
+        .reg-box {
+            display: none;
+        }
+
+        .layui-form {
+            padding: 0 30px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .links a {
+            font-size: 12px;
+        }
+
+        .layui-form-item {
+            position: relative;
+        }
+
+        .layui-icon {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .layui-input {
+            padding-left: 32px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 头部的 Logo 区域 -->
+<div class="layui-main">
+    <img src="./assets/images/logo.png" alt=""/>
+</div>
+<!-- 登录注册区域 -->
+<div class="loginAndRegBox">
+    <div class="title-box"></div>
+    <!-- 登录的div -->
+    <div class="login-box">
+        <!-- 登录的表单 -->
+        <form class="layui-form" id="form_login">
+            <!-- 用户名 -->
+            <div class="layui-form-item">
+                <i class="layui-icon layui-icon-username"></i>
+                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
+                       autocomplete="off"
+                       class="layui-input"/>
+            </div>
+            <!-- 密码 -->
+            <div class="layui-form-item">
+                <i class="layui-icon layui-icon-password"></i>
+                <input type="password" name="password" required lay-verify="required|pwd" placeholder="请输入密码"
+                       autocomplete="off" class="layui-input"/>
+            </div>
+            <!-- 登录按钮 -->
+            <div class="layui-form-item">
+                <!-- 注意：表单提交按钮和普通按钮的区别，就是 lay-submit 属性 -->
+                <button class="layui-btn layui-btn-fluid layui-btn-normal" lay-submit>登录</button>
+            </div>
+            <div class="layui-form-item links">
+                <a href="javascript:;" id="link_reg">去注册账号</a>
+            </div>
+        </form>
+    </div>
+    <!-- 注册的div -->
+    <div class="reg-box">
+        <!-- 注册的表单 -->
+        <form class="layui-form" id="form_reg">
+            <!-- 用户名 -->
+            <div class="layui-form-item">
+                <i class="layui-icon layui-icon-username"></i>
+                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
+                       autocomplete="off"
+                       class="layui-input"/>
+            </div>
+            <!-- 密码 -->
+            <div class="layui-form-item">
+                <i class="layui-icon layui-icon-password"></i>
+                <input type="password" name="password" required lay-verify="required|pwd" placeholder="请输入密码"
+                       autocomplete="off" class="layui-input"/>
+            </div>
+            <!-- 密码确认框 -->
+            <div class="layui-form-item">
+                <i class="layui-icon layui-icon-password"></i>
+                <input type="password" name="repassword" required lay-verify="required|pwd|repwd"
+                       placeholder="再次确认密码"
+                       autocomplete="off" class="layui-input"/>
+            </div>
+            <!-- 注册按钮 -->
+            <div class="layui-form-item">
+                <!-- 注意：表单提交按钮和普通按钮的区别，就是 lay-submit 属性 -->
+                <button class="layui-btn layui-btn-fluid layui-btn-normal" lay-submit>注册</button>
+            </div>
+            <div class="layui-form-item links">
+                <a href="javascript:;" id="link_login">去登录</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 导入 Layui 的JS文件 -->
+<script src="./assets/lib/layui/layui.all.js"></script>
+<!-- 导入 JQuery -->
+<script src="./assets/lib/jquery.js"></script>
+<!-- 导入自己封装的 baseAPI.js -->
+<script src="./assets/js/baseAPI.js"></script>
+<!-- 导入自己的 JavaScript 脚本 -->
+<!-- <script src="./assets/js/login.js"></script> -->
+<script>
+    $(function () {
+        // 点击“去注册账号”的链接
+        $('#link_reg').on('click', function () {
+            $('.login-box').hide()
+            $('.reg-box').show()
+        })
+
+        // 点击“去登录”的链接
+        $('#link_login').on('click', function () {
+            $('.login-box').show()
+            $('.reg-box').hide()
+        })
+
+        // 从 layui 中获取 form 对象
+        var form = layui.form
+        var layer = layui.layer
+        // 通过 form.verify() 函数自定义校验规则
+        form.verify({
+            // 自定义了一个叫做 pwd 校验规则
+            pwd: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
+            // 校验两次密码是否一致的规则
+            repwd: function (value) {
+                // 通过形参拿到的是确认密码框中的内容
+                // 还需要拿到密码框中的内容
+                // 然后进行一次等于的判断
+                // 如果判断失败,则return一个提示消息即可
+                var pwd = $('.reg-box [name=password]').val()
+                if (pwd !== value) {
+                    return '两次密码不一致！'
+                }
+            }
+        })
+
+        // 监听注册表单的提交事件
+        $('#form_reg').on('submit', function (e) {
+            // 1. 阻止默认的提交行为
+            e.preventDefault()
+            // 2. 发起Ajax的POST请求
+            var data = {
+                username: $('#form_reg [name=username]').val(),
+                password: $('#form_reg [name=password]').val()
+            }
+            $.post('/api/reguser', data, function (res) {
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                layer.msg('注册成功，请登录！')
+                // 模拟人的点击行为
+                $('#link_login').click()
+            })
+        })
+
+        // 监听登录表单的提交事件
+        $('#form_login').submit(function (e) {
+            // 阻止默认提交行为
+            e.preventDefault()
+            $.ajax({
+                url: '/api/login',
+                method: 'POST',
+                // 快速获取表单中的数据
+                data: $(this).serialize(),
+                success: function (res) {
+                    if (res.status !== 0) {
+                        return layer.msg('登录失败！')
+                    }
+                    layer.msg('登录成功！')
+                    // 将登录成功得到的 token 字符串，保存到 localStorage 中
+                    localStorage.setItem('token', res.token);
+                    // 跳转到后台主页
+                    location.href = './index.html';
+                }
+            })
+        })
+    })
+</script>
+</body>
+
+</html>
