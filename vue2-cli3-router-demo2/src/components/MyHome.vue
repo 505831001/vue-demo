@@ -7,6 +7,7 @@
       <MyAside></MyAside>
       <!-- 右侧边栏： -->
       <div class="home-main-body">
+        <!-- 第07步：定义路由的占位符 -->
         <router-view></router-view>
       </div>
     </div>
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+// @ is an alias to /src
 // 头部区域组件
 import MyHeader from './subcomponents/MyHeader.vue';
 // 左侧边栏组件
