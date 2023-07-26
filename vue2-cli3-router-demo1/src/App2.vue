@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <h1>App2 组件</h1>
-    <!-- 第七步：定义路由的【链接】router-link -->
+    <!-- 第07步：定义路由的【链接】router-link -->
     <router-link to="/home">公司首页</router-link>
     <!--
       注意1：在 hash 地址中，/ 后面的参数项，叫做【路径参数】。
@@ -15,7 +15,7 @@
     <router-link to="/movie/3">欧美专区</router-link>
     <router-link to="/about">关于我们</router-link>
     <hr/>
-    <!-- 第七步：定义路由的【占位符】router-view -->
+    <!-- 第07步：定义路由的【占位符】router-view -->
     <router-view></router-view>
   </div>
 </template>
