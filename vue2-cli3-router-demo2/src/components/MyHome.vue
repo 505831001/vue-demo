@@ -1,7 +1,20 @@
 <template>
   <div class="home-container">
     <!-- MyHeader.vue 头部区域： -->
-    <MyHeader></MyHeader>
+    <MyHeader>
+      <!-- slot 具名插槽的简写形式 -->
+      <template #three>
+        <span>设置中心</span>
+      </template>
+      <!-- slot 具名插槽 -->
+      <template v-slot:one>
+        <span>关于我们</span>
+      </template>
+      <!-- slot 具名插槽 -->
+      <template v-slot:two>
+        <span>退出登录</span>
+      </template>
+    </MyHeader>
     <div class="home-main-box">
       <!-- MyAside.vue 左侧边栏： -->
       <MyAside></MyAside>
