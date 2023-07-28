@@ -10,6 +10,7 @@
 
     <!-- 右侧按钮区域 -->
     <div class="layout-header-right">
+      <button type="button" class="btn btn-light" v-on:click="aboutInfo()">关于我们</button>
       <button type="button" class="btn btn-light" v-on:click="logout()">退出登录</button>
     </div>
   </div>
@@ -22,8 +23,10 @@ export default {
     return {}
   },
   methods: {
+    aboutInfo() {
+      this.$router.push('/about');
+    },
     logout() {
-      console.log(`logout()...`);
       // 1.清空token
       localStorage.removeItem('token');
       // 2.跳转到登录页面

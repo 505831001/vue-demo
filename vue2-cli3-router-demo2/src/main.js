@@ -1,7 +1,8 @@
 import Vue from 'vue';
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
+// # npm install element-ui -S
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 import App from '@/App.vue';
 
@@ -14,7 +15,7 @@ import '@/index.css';
 
 Vue.config.productionTip = false;
 
-// Vue.use(ElementUI);
+Vue.use(ElementUI);
 
 // 第06步：挂载路由模块实例对象
 new Vue({
