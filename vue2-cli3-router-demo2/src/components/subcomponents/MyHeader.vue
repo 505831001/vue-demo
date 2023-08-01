@@ -9,7 +9,8 @@
     </div>
     <!-- 右侧按钮区域 -->
     <div class="layout-header-right">
-      <a href="#"><slot name="three"></slot></a>
+      <button type="button" class="btn btn-light" v-color="color">自定义指令</button>
+      <button type="button" class="btn btn-light"><slot name="three"></slot></button>
       <button type="button" class="btn btn-light" v-on:click="aboutInfo()"><slot name="one"></slot></button>
       <button type="button" class="btn btn-light" v-on:click="logout()"><slot name="two"></slot></button>
     </div>
@@ -21,7 +22,7 @@ export default {
   name: 'MyHeader',
   data() {
     return {
-
+      color: 'red'
     }
   },
   methods: {
@@ -33,6 +34,26 @@ export default {
       localStorage.removeItem('token');
       // 2.跳转到登录页面
       this.$router.push('/login');
+    }
+  },
+  directives: {
+    color: {
+      bind(el) {
+        el.style.color = this.color;
+      }
+    },
+    styleColor: {
+      // 当指令第一次被绑定到DOM元素时被调用
+      bind(el, binding) {
+        el.style.color = binding.value;
+      },
+      // 每次DOM元素更新时被调用
+      update(el, binding) {
+        el.style.color = binding.value;
+      }
+    },
+    finalColor(el, binding) {
+      el.style.color = binding.value;
     }
   }
 }
