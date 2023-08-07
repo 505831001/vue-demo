@@ -17,6 +17,8 @@
     <hr/>
     <!-- 第07步：定义路由的【占位符】router-view -->
     <router-view></router-view>
+    <hr/>
+    <h2>App2 组件底部</h2>
   </div>
 </template>
 
