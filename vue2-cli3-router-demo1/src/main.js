@@ -1165,15 +1165,142 @@
  * 路由重定向指的是：用户在访问地址 A 的时候，强制用户跳转到地址 C ，从而展示特定的组件页面。
  * 通过路由规则的 redirect 属性，指定一个新的路由地址，可以很方便地设置路由的重定向：
  *     const router = new VueRouter({
+ *         // 08.在routes数组中，声明路由的匹配规则
  *         routes: [
+ *             // 08.01.路由重定向，当访问 / 的时候，通过 redirect 属性跳转到 /home 对应的路由规则
  *             {path: '/', redirect: '/home'},
  *             {path: '/home', component: HomeView}
+ *             {path: '/movie', component: MovieView},
+ *             {path: '/about', component: AboutView}
  *         ]
  *     });
+ *     <!-- 第07步：定义路由的【链接】router-link -->
+ *     <router-link to="/home">公司首页</router-link>
+ *     <router-link to="/movie">电影专区</router-link>
+ *     <router-link to="/about">关于我们</router-link>
+ *     <!-- 第07步：定义路由的【占位符】router-view -->
+ *     <router-view></router-view>
  * 2).嵌套路由：
  * 通过路由实现组件的嵌套展示，叫做嵌套路由。
  * 点击父级路由链接显示模板内容：模板内容中又有子级路由链接，点击子级路由链接显示子级模板内容。
- *
+ *     const router = new VueRouter({
+ *         // 08.在routes数组中，声明路由的匹配规则
+ *         routes: [
+ *             // 08.01.路由重定向，当访问 / 的时候，通过 redirect 属性跳转到 /home 对应的路由规则
+ *             {path: '/', redirect: '/home'},
+ *             {path: '/home', component: HomeView}
+ *             {path: '/movie', component: MovieView},
+ *             // 08.02.嵌套路由，通过 children 属性，嵌套声明子级路由规则
+ *             {path: '/about', component: AboutView, children: [
+ *                 {path: 'tab1', component: TabOne},
+ *                 {path: 'tab2', component: TabTwo}
+ *             ]}
+ *         ]
+ *     });
+ *     <!-- 第七步：定义路由的【链接】router-link -->
+ *     <router-link to="/about/tab1">Table-1</router-link>
+ *     <router-link to="/about/tab2">Table-2</router-link>
+ *     <!-- 第七步：定义路由的【占位符】router-view -->
+ *     <router-view></router-view>
+ * 3).动态路由
+ * 动态路由指的是：把 Hash 地址中可变的部分定义为参数项，从而提高路由规则的复用性。
+ * 在 vue-router 中使用英文的冒号（:）来定义路由的参数项。
+ * 示例代码如下：
+ *     const router = new VueRouter({
+ *         // 08.在routes数组中，声明路由的匹配规则
+ *         routes: [
+ *             // 08.01.路由重定向，当访问 / 的时候，通过 redirect 属性跳转到 /home 对应的路由规则
+ *             {path: '/', redirect: '/home'},
+ *             {path: '/home', component: HomeView}
+ *             // 08.03.动态路由，路由中的动态参数以冒号 : 进行声明，冒号后面的是动态参数的名称，以及使用 props 属性接收
+ *             {path: '/movie/:id', component: MovieView, props: true},
+ *             // 08.02.嵌套路由，通过 children 属性，嵌套声明子级路由规则
+ *             {path: '/about', component: AboutView, children: [
+ *                 {path: 'tab1', component: TabOne},
+ *                 {path: 'tab2', component: TabTwo}
+ *             ]}
+ *         ]
+ *     });
+ *     <!-- 第07步：定义路由的【链接】router-link -->
+ *     <router-link to="/home">公司首页</router-link>
+ *     <router-link to="/movie/1001">国产专区</router-link>
+ *     <router-link to="/movie/1002">日韩专区</router-link>
+ *     <router-link to="/movie/1003">欧美专区</router-link>
+ *     <router-link to="/about">关于我们</router-link>
+ *     <!-- 第07步：定义路由的【占位符】router-view -->
+ *     <router-view></router-view>
+ * 4).使用$route对象.params参数接收
+ * 在动态路由渲染出来的组件中，可以使用 this.$route.params 对象访问到动态匹配的参数值。
+ * 示例代码如下：
+ *     // 08.03.动态路由，路由中的动态参数以冒号 : 进行声明，冒号后面的是动态参数的名称
+ *     // {path: '/movie/:id', component: MovieView},
+ *     <span>使用 $route.params 对象.参数属性接收：{{ this.$route.params.id }}</span>
+ * 5).使用props自定义属性接收
+ * 为了简化路由参数的获取形式，vue-router 允许在路由规则中开启 props 传参。
+ * 示例代码如下：
+ *     // 08.03.动态路由，路由中的动态参数以冒号 : 进行声明，冒号后面的是动态参数的名称，以及使用 props 属性接收
+ *     {path: '/movie/:id', component: MovieView, props: true},
+ *     <span>使用 props 自定义属性接收：{{ id }}</span>
+ *     export default {
+ *         props: [
+ *             'id'
+ *         ]
+ *     }
+ * 声明式导航与编程式导航的区别？
+ * 1).在浏览器中，点击链接实现导航的方式，叫做声明式导航。
+ * 例如：普通网页中点击【<a>链接】、或者 VUE 项目中点击【<router-link>】都属于声明式导航。
+ * 2).在浏览器中，调用 API 方法实现导航的方式，叫做编程式导航。
+ * 例如：普通网页中调用【location.href】跳转到新页面的方式，属于编程式导航。
+ * 编程式导航中的常见API方法？
+ * vue-router 提供了许多编程式导航的 API，其中最常用的导航 API 分别是：
+ * 1).this.$router.push('hash address')    跳转到指定 hash 地址，并增加一条历史记录。
+ * 2).this.$router.replace('hash address') 跳转到指定的 hash 地址，并替换掉当前的历史记录。
+ * 3).this.$router.go(Number n)            实现导航历史前进、历史后退。
+ * 4).this.$router.back()                  在历史记录中，后退到上一个页面。
+ * 5).this.$router.forward()               在历史记录中，前进到下一个页面。
+ * vue-router 路由之导航守卫？
+ * 导航守卫可以控制路由的访问权限。示意图如下：
+ * 1).未登录的情况下，访问后台主页。
+ * <router-link to="/main">主页</router-link>
+ * 无法控制访问权限，用户可以直接访问后台主页。
+ * 2).未登录的情况下，访问后台主页。
+ * <router-link to="/main">主页</router-link>
+ * 检测到未登录，强制跳转到登录页面。
+ * 配置 vue-router 全局前置守卫：
+ * 步骤二：创建路由模板：在 src 源代码目录下，新建 router/index.js 路由模块，并且初始化如下的代码：
+ *     // 01.导入 Vue 和 VueRouter 依赖包
+ *     import Vue from 'vue';
+ *     import VueRouter from 'vue-router';
+ *     // 02.调用 Vue.use() 函数，把 VueRouter 安装为 Vue 的插件
+ *     Vue.use(VueRouter);
+ *     // 03.创建路由的实例对象
+ *     const router = new VueRouter();
+ *     // 03.创建路由的实例对象的全局前置守卫（全局前置监听器）
+ *     router.beforeEach(function (to, from, next) {
+ *         if (to.path === '/main') {
+ *             const token = localStorage.getItem('token');
+ *             console.log(token);
+ *             if (token) {
+ *                 next();
+ *             } else {
+ *                 next('/login');
+ *             }
+ *         } else {
+ *             next();
+ *         }
+ *     });
+ *     // 04.向外共享路由的实例对象
+ *     export default router;
+ * 调用路由实例对象的 beforeEach(func()) 方法，即可声明【全局前置守卫】。
+ * 每次发生路由导航跳转的时候，都会自动触发 func() 这个【回调函数】。
+ * 路由全局前置守卫的三个形式参数解析：
+ * // 1).to     参数是将要访问的路由的信息对象。
+ * // 2).from   参数是将要离开的路由的信息对象。
+ * // 3).next() 函数表示放行，允许这次路由导航。
+ * next() 函数的三种调用方式？
+ * // 当前用户拥有后台主页的访问权限，直接放行：next()
+ * // 当前用户没有后台主页的访问权限，强制其跳转到登录页面：next('/login')
+ * // 当前用户没有后台主页的访问权限，不允许跳转到后台主页：next(false)
  *
  */
 import Vue from 'vue';
