@@ -1303,9 +1303,18 @@
  * // 当前用户没有后台主页的访问权限，不允许跳转到后台主页：next(false)
  *
  */
+
+// 01.指定饿了么UI版本下载依赖包
+// # npm install element-ui@2.15.9 -S
+
 import Vue from 'vue';
+// 02.导入第三方饿了么UI依赖包
+import ElementUI from 'element-ui';
 
 import App from '@/App2.vue';
+
+// 03.导入第三方饿了么样式文件
+import 'element-ui/lib/theme-chalk/index.css';
 
 // 第05步：导入路由模块
 import router from "@/router/index.js";
@@ -1316,6 +1325,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/assets/global.css';
 
 Vue.config.productionTip = false;
+
+// 04.实例对象使用饿了么UI插件
+Vue.use(ElementUI);
 
 // 第06步：挂载router路由模块
 new Vue({

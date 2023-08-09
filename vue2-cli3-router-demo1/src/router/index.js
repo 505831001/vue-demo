@@ -14,6 +14,7 @@ import Tab1 from "@/components/tabs/Tab1.vue";
 import Tab2 from "@/components/tabs/Tab2.vue";
 import Main from "@/components/Main.vue";
 import Login from "@/components/Login.vue";
+import ContainerView from "@/components/ContainerView.vue";
 
 // 第02步：调用Vue.use()函数，把VueRouter安装为Vue插件
 Vue.use(VueRouter);
@@ -36,7 +37,8 @@ const router = new VueRouter({
             ]
         },
         {path: '/main', component: Main},
-        {path: '/login', component: Login}
+        {path: '/login', component: Login},
+        {path: '/contain', component: ContainerView}
     ]
 });
 
