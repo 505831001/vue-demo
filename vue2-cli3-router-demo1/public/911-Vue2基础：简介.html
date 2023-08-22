@@ -5592,6 +5592,7 @@
     <!-- 常用指令 -->
 
     <!-- 自定义指令 -->
+    <!-- 
     需求1：定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10倍。
     需求2：定义一个v-fbind指令，和v-bind功能类似，但可以让其所绑定的input元素默认获取焦点。
     自定义指令总结：
@@ -5635,9 +5636,11 @@
     三、备注：
         (1).指令定义时不加v-，但使用时要加v-；
         (2).指令名如果是多个单词，要使用kebab-case命名方式，不要用camelCase命名。
+    -->
 
     <!-- 生命周期 -->
-    <!-- // 此阶段：挂载阶段 -->
+    <!-- 
+    // 此阶段：挂载阶段
     (01).Init Events & Lifecycle                初始化：生命周期、事件、但数据代理还未开始。
     (02).beforeCreate()                         此时：无法通过vm访问到data中的数据、methods中的方法。
     (03).Init Injections & Reactivity           初始化：数据检测、数据代理。
@@ -5652,21 +5655,23 @@
     (06).beforeMount()                          此时：页面呈现的未经vue编译的DOM结构。所有对DOM的操作，最终都不奏效。
     (07).Create vm.$el and replace "el" with it 将内存中的虚拟DOM转为真实DOM插入页面。
     (08).mounted()                              此时：页面中呈现的是经过vue编译的DOM。对DOM的操作均有效（尽可能避免）。至此初始化过程结束，一般在此进行：开启定时器、发送网络请求、订阅消息、绑定自定义事件、等等初始化操作。
-    <!-- // 此阶段：更新阶段 -->
+    // 此阶段：更新阶段
     (09).Mounted                                .
     (09).when data changes                      .
     (09).beforeUpdate()                         此时：数据是新的，但页面是旧的，即：页面尚未和数据保持同步。
     (09).Virtual DOM re-render and patch        根据新数据，生成新的虚拟DOM，随后与旧的虚拟DOM进行比较，最终完成页面更新，即：完成Model->View更新。
     (09).updated()                              此时：数据是新的，页面也是新的，即：页面和数据保持同步。
     (10).when vm.$destroy() is called           .
-    <!-- // 此阶段：销毁阶段 -->
+    // 此阶段：销毁阶段
     (11).beforeDestroy()                        此时：vm中所有的：data、methods、指令等等，都处于可用状态，马上就要执行销毁过程，一般在此阶段：关闭定时器、取消订阅消息、解绑自定义事件等等收尾操作。
     (12).Teardown watchers,                     .
     (12).child components and event listeners   .
     (13).Destroyed                              .
     (14).destroyed()                            .
+    -->
 
     <!-- 组件 -->
+    <!-- 
     Vue中使用组件的三大步骤：
         (1).定义组件（创建组件）。
         (2).注册组件。
@@ -5682,7 +5687,9 @@
         (2).全局注册：创建Vue.component('组件名', 组件)全局组件。
     编写组件标签：
         <SchoolView></SchoolView>
+    -->
 
+    <!-- 
     几个注意点：
     (1).关于组件名:
         一个单词组成：
@@ -5700,7 +5707,9 @@
         备注：不用使用脚手架时，<school/>会导致后续组件不能渲染。
     (3).一个简写方式：
         const school = Vue.extend(options) 可简写为：const school = options
+    -->
 
+    <!-- 
     关于VueComponent：
     (1).school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。
     (2).我们只需要写<school/>或<school></school>，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：new VueComponent(options)。
@@ -5725,17 +5734,21 @@
             }
         });
     总结：【VueComponent】vc和【Vue】vm还是有区别的哈！！！
+    -->
 
+    <!-- 
     分析Vue的实例对象vm与VueComponent的实例对象vc的关系：
     (1).一个重要的内置关系：
         VueComponent.prototype.__proto__ === Vue.prototype
     (2).为什么要有这个关系：
         让组件实例对象（vc）可以访问到 Vue 原型上的属性、方法。
+    -->
     
     <!-- vue-cli脚手架 -->
-    vue-cli -> Vue - Command Line Interface
+    <!-- vue-cli -> Vue - Command Line Interface -->
 
     <!-- ref属性与props属性 -->
+    <!-- 
     ref="myH3"
     ref="myBtn"
     ref="myIpt"
@@ -5758,8 +5771,10 @@
             required: true
         }
     }
+    -->
 
     <!-- mixin混入 -->
+    <!-- 
     import {hunhe1,hunhe2} from '@/mixin.js';
     // 全局混合
     Vue.mixin(hunhe1);
@@ -5783,8 +5798,10 @@
             }
         },
     }
+    -->
 
     <!-- 插件 -->
+    <!-- 
     import plugins from '@/plugins.js';
     // 配置文件使用插件plugins.js
     Vue.use(plugins);
@@ -5815,8 +5832,10 @@
             });
         }
     }
+    -->
 
     <!-- 组件案例： -->
+    <!-- 
     添加：
     (01).先从App.vue组件传递给MyHeader.vue组件通过绑定属性v-bind。
     <MyList v-bind:list="array"></MyList>
@@ -5902,8 +5921,10 @@
 			  },
 		  },
     }
+    -->
 
     <!-- 本地存储：SessionStorage与LocalStorage -->
+    <!-- 
     sessionStorage.setItem('token', JSON.stringify(token));
     const result = sessionStorage.getItem('token');
     console.log(JSON.parse(result));
@@ -5915,8 +5936,10 @@
     console.log(JSON.parse(result));
     localStorage.removeItem('token');
     localStorage.clear();
+    -->
 
     <!-- 组件自定义事件 -->
+    <!-- 
     // 子级组件
     this.$emit('share', value);
     // 父级组件
@@ -5931,8 +5954,10 @@
     }
     注意：解绑自定义事件。
     this.$off();
+    -->
 
     <!-- 全局事件总线 -->
+    <!-- 
     // 全局事件总线，任意组件间通信
     (1).一种组件间通信的方式，适用于任意组件间通信。
     (2).安装全局事件总结；
@@ -5946,8 +5971,10 @@
         (1).接收数据，A组件想接收数据，则在A组件中给$bus绑定自定义事件，事件的回调留在A组件自身。
         (2).提供数据：this.$bus.$emit('share', data)。
     (4).最好在beforeDestroy()钩子中，使用$off去解绑当前组件中所用到的事件。
+    -->
 
     <!-- $nextTick -->
+    <!-- 
     (1).语法：this.$nextTick(callback)
     (2).作用：在下一次DOM更新结束后，执行其指定的回调函数。
     (3).场景：当改变数据后，要基于更新后的新DOM进行某些操作时，要在$nextTick()所指定的回调函数中执行。
@@ -5961,8 +5988,10 @@
             this.$refs.inputTitle.focus();
         });
     }
+    -->
 
     <!-- 动画 -->
+    <!-- 
     Vue封装的过渡与动画。
     (1).作用：在插入、更新或者移除DOM元素时，在合适的时候给元素添加样式类名。
     (2).图示：
@@ -5984,8 +6013,10 @@
             transform: translateX(0px);
           }
         }
+    -->
 
     <!-- 过渡 -->
+    <!-- 
     Vue封装的过渡与动画。
     (1).作用：在插入、更新或者移除DOM元素时，在合适的时候给元素添加样式类名。
     (2).图示：
@@ -6003,8 +6034,10 @@
     <transition-group name="todo" appear>
         <MyItem v-for="todoObj in todos" :key="todoObj.id" :todo="todoObj" />
     </transition-group>
+    -->
 
     <!-- 配置代理 -->
+    <!-- 
     (1).xhr           new XMLHttpRequest();
     (2).jQuery        $.ajax();
     (3).axios         .get();
@@ -6047,8 +6080,10 @@
             }
         }
     }
+    -->
 
-    <!-- vue-resource  插件库 -->
+    <!-- vue-resource 插件库 -->
+    <!-- 
     (0).安装第三方模块
     # npm install vue-resource
     (1).引入插件
@@ -6056,51 +6091,54 @@
     (2).使用插件
     Vue.use(vueResource);
     export default {
-		name:'SearchView',
-		data() {
-			return {
-				keyWord: ''
-			}
-		},
-		methods: {
-			search() {
-				this.$http.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
-					response => {
-						console.log(response.data);
-						this.$bus.$emit('share', response.data);
-					},
-					error => {
-						this.$bus.$emit('share', 500);
-					}
-				)
-			}
-		},
-	}
+      name:'SearchView',
+      data() {
+        return {
+          keyWord: ''
+        }
+      },
+      methods: {
+        search() {
+          this.$http.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
+            response => {
+              console.log(response.data);
+              this.$bus.$emit('share', response.data);
+            },
+            error => {
+              this.$bus.$emit('share', 500);
+            }
+          )
+        }
+      },
+	  }
+    -->
 
     <!-- 插槽Slot -->
+    <!-- 
     <Category title="游戏">
-        <template scope="list">
-            <ul>
-                <li v-for="(g, index) in list.games" :key="index">{{g}}</li>
-            </ul>
-        </template>
+      <template scope="list">
+        <ul>
+          <li v-for="(g, index) in list.games" :key="index">{{g}}</li>
+        </ul>
+      </template>
     </Category>
     <Category title="游戏">
-        <template scope="{games}">
-            <ol>
-                <li style="color:red" v-for="(g, index) in games" :key="index">{{g}}</li>
-            </ol>
-        </template>
+      <template scope="{games}">
+        <ol>
+          <li style="color:red" v-for="(g, index) in games" :key="index">{{g}}</li>
+        </ol>
+      </template>
     </Category>
     <Category title="游戏">
-        <template slot-scope="{games}">
-            <h4 v-for="(g,index) in games" :key="index">{{g}}</h4>
-        </template>
+      <template slot-scope="{games}">
+        <h4 v-for="(g,index) in games" :key="index">{{g}}</h4>
+      </template>
     </Category>
     <div class="category">
-		<h3>{{title}}分类</h3>
-		<slot :games="games" msg="hello">我是默认的一些内容</slot>
-	</div>
+      <h3>{{title}}分类</h3>
+      <slot :games="games" msg="hello">我是默认的一些内容</slot>
+    </div>
+    -->
 
     <!-- Vuex -->
     
