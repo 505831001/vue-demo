@@ -1,0 +1,3210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM基础：简介.html</title>
+</head>
+
+<body>
+    <!-- JS 部分 -->
+
+    <!-- JS 作用 -->
+    <!-- 网页特效(监听用户的一些行为让网页作出对应的反馈) -->
+    <!-- 表单验证(针对表单数据的合法性进行判断) -->
+    <!-- 数据交互(获取后台的数据渲染到前端) -->
+    <!-- 服务端编程(node.js) -->
+    <!-- JS 组成 -->
+    <!-- ECMAScript: 规定了js基础语法核心知识。比如：变量、分支语句、循环语句、对象等等。 -->
+    <!-- Web APIs DOM: 操作文档。比如对页面元素进行移动、大小、添加删除等操作。 -->
+    <!-- Web APIs BOM: 操作浏览器。比如页面弹窗，检测窗口宽度、存储数据到浏览器等等。 -->
+    <!-- JS 用法 -->
+    <!-- 使用 内联的 JavaScript 函数。 -->
+    <!-- 使用 <head>或者<body>中的 JavaScript 函数。 -->
+    <!-- 使用 外部的 JavaScript 函数。 -->
+    <!-- JS 注释 -->
+    <!-- 使用 //    开头的单行注释。快捷键：Ctrl + /。 -->
+    <!-- 使用 /* */ 包裹的多行注释。快捷键：Shift + Ctrl + A。 -->
+    <!-- JS 结束符 -->
+    <!-- 使用 分号（;）为结束符。换行为默认结束符。 -->
+    <!-- JS 字面量 -->
+    <!-- 使用 3.14 为数字字面量。 -->
+    <!-- 使用 双引号"白马王子" 单引号'黑马攻城狮' 为字符串字面量。 -->
+    <!-- 使用 大括号对象 {} 中括号数组 [] 尖括号标签<> 等等字面量。 -->
+    <!-- JS 输入/输出 -->
+    <!-- 使用 window.prompt()   方法显示可提示用户输入的对话框。 -->
+    <!-- 使用 element.innerHTML 属性写入到 HTML 元素。 -->
+    <!-- 使用 window.alert()    方法弹出警告框。 -->
+    <!-- 使用 document.write()  方法将内容写到 HTML 文档中。 -->
+    <!-- 使用 console.log()     方法写入到浏览器的控制台。 -->
+    <!-- JS 变量 -->
+    <!-- 使用 var   关键字声明的变量。在函数外声明作用域是全局变量，在函数内声明作用域是局部变量。变量必须以字母开头，变量也能以（$）和（_）符号开头，变量名称对大小写敏感。 -->
+    <!-- 使用 let   关键字定义的限定范围内作用域的变量。只在 let 命令所在的代码块内有效。 -->
+    <!-- 使用 const 关键字来定义一个常量。一旦声明，常量的值就不能改变。 -->
+    <!-- JS 数据类型 -->
+    <!-- 使用 number    基础数据类型赋值的是数字类型。JS 中的正数、负数、小数等等统一称为数字类型。 -->
+    <!-- 使用 string    基础数据类型赋值的是字符串类型。通过单引号（''）、双引号（""）或反引号（``）包裹的数据都叫字符串类型。 -->
+    <!-- 使用 boolean   基础数据类型赋值的是布尔类型。布尔（逻辑）类型只能有两个值真（true）或假（false）。 -->
+    <!-- 使用 undefined 基础数据类型返回值的是未定义类型。只声明变量，不赋值的情况下，变量的默认值为 undefined 这个值表示变量不含有值。 -->
+    <!-- 使用 null      基础数据类型返回值的是空值类型。可以通过将变量的值设置为 null 来清空变量。 -->
+    <!-- 使用 object    引用数据类型返回的值是对象。对象由花括号（{}）分隔，对象属性以名称和值对的形式（Key:Value）来定义，属性之间由逗号（,）分隔。 -->
+    <!-- 使用 array     引用数据类型返回的值是数组。数组由中括号（[]）分隔，每个值之间由逗号（,）分隔。返回也是对象：object。 -->
+    <!-- 使用 function  引用数据类型返回的值是函数。函数就是包裹在花括号中的代码块，前面使用了关键词 function。 -->
+    <!-- JS 运算符 -->
+    <!-- 使用 + - * / %            符号来表示数学运算符（算术运算符），主要包括加、减、乘、除、取余（求模）。 -->
+    <!-- 使用 = += -= *= /= %=     符号来表示赋值运算符，对变量进行赋值的运算符。 -->
+    <!-- 使用 > < >= <= == === !== 符号来表示比较运算符，比较两个数据大小、是否相等。 -->
+    <!-- 使用 i++ ++i i-- --i      符号来表示一元运算符，能够使用一元运算符做自增（自减）运算。 -->
+    <!-- 使用 && ||                符号来表示逻辑运算符，逻辑运算符用来解决多重条件判断。 -->
+    <!-- JS 分支/循环 -->
+    <!-- 使用 if (condition) { }                                   语句只有当指定条件为 true 时，使用该语句来执行代码。 -->
+    <!-- 使用 if (condition) { } else { }                          语句当条件为 true 时执行代码，当条件为 false 时执行其他代码。 -->
+    <!-- 使用 if (condition) { } else if (condition) else {}       语句使用该语句来选择多个代码块之一来执行。 -->
+    <!-- 使用 switch (key) {case value: break; default: break;}    语句用于基于不同的条件来执行不同的动作。 -->
+    <!-- 使用 while (condition) { }                                语句只要指定条件为 true，循环就可以一直执行代码块。 -->
+    <!-- 使用 do { } while (condition);                            语句循环会在检查条件是否为真之前执行一次代码块，然后如果条件为真的话，就会重复这个循环。 -->
+    <!-- 使用 for (let i = 0; i < array.length; i++) { array[i]; } 语句循环代码块一定的次数。 -->
+    <!-- 使用 array.forEach(element => { });                       语句循环代码块一定的次数。 -->
+    <!-- 使用 for (const key in object) { object[key]; }           语句循环遍历对象的属性。 -->
+    <!-- 使用 for (const iterator of object) { }                   语句循环遍历对象的属性。 -->
+    <!-- JS 数组 -->
+    <!-- 使用 array = new Array();                                 语句创建数组，基于 new 关键字。数组是一种可以按顺序保存数据的数据类型。 -->
+    <!-- 使用 array = [];                                          语句创建数组，基于中括号 []。数组是一种可以按顺序保存数据的数据类型。 -->
+    <!-- JS 操作符 -->
+    <!-- 使用 typeof                                               操作符来检测变量的数据类型。 -->
+    <!-- 使用 typeof                                               操作符来检测 null 是一个只有一个值的特殊类型。表示一个空对象引用。会返回 object。 -->
+    <!-- 使用 typeof                                               操作检测一个没有设置值的变量。会返回 undefined。 -->
+    <!-- JS 类型转换 -->
+    <!-- 隐式转换：某些运算符被执行时，系统内部自动将数据类型进行转换，这种转换称为隐式转换。 -->
+    <!-- 显式转换：为了避免因隐式转换带来的问题，通常根逻辑需要对数据进行显示转换。 -->
+    <!-- 使用 Number(x)                                            方法将字符串转换成数字类型。 -->
+    <!-- 使用 parseInt(x)                                          方法将字符串转换成数字类型。 -->
+    <!-- 使用 parseFloat(x)                                        方法将字符串转换成数字类型。 -->
+    <!-- 使用 String(x)                                            方法将其他类型转换成字符串类型。 -->
+    <!-- 使用 x.toString()                                         方法将其他类型转换成字符串类型。 -->
+    <!-- JS 正则表达式 -->
+    <!-- 语法 /正则表达式主体/修饰符(可选)                           正则表达式（Regular Expression）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。 -->
+    <!-- 使用 s.search(/RegExp/i)                                  正则表达式搜索 RegExp 字符串，且不区分大小写。 -->
+    <!-- 使用 s.replace(/RegExp/i, "RegularExpression")            正则表达式且不区分大小写将字符串中的 RegExp 替换为 RegularExpression。 -->
+    <!-- 使用 i                                                    修饰符执行对大小写不敏感的匹配。 -->
+    <!-- 使用 g                                                    修饰符执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。 -->
+    <!-- 使用 m                                                    修饰符执行多行匹配。 -->
+    <!-- 使用 [abc]                                                表达式查找方括号之间的任何字符。 -->
+    <!-- 使用 [0-9]                                                表达式查找任何从 0 至 9 的数字。 -->
+    <!-- 使用 (x|y)                                                表达式查找任何以 | 分隔的选项。 -->
+    <!-- 使用 \d                                                   元字符查找数字。 -->
+    <!-- 使用 \s                                                   元字符查找空白字符。 -->
+    <!-- 使用 \b                                                   元字符匹配单词边界。 -->
+    <!-- 使用 \uxxxx                                               元字符查找以十六进制数 xxxx 规定的 Unicode 字符。 -->
+    <!-- 使用 n+                                                   量词匹配任何包含至少一个 n 的字符串。 -->
+    <!-- 使用 n*                                                   量词匹配任何包含零个或多个 n 的字符串。 -->
+    <!-- 使用 n?                                                   量词匹配任何包含零个或一个 n 的字符串。 -->
+    <!-- 使用 RegExp                                               对象是一个预定义了属性和方法的正则表达式对象。 -->
+    <!-- 使用 test()                                               方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。 -->
+    <!-- 使用 exec()                                               方法用于检索字符串中的正则表达式的匹配。该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。 -->
+    <!-- JS 异常 -->
+    <!-- 使用 try                                                  语句允许我们定义在执行时进行错误测试的代码块。 -->
+    <!-- 使用 catch                                                语句允许我们定义当 try 代码块发生错误时，所执行的代码块。 -->
+    <!-- 使用 finally                                              语句在 try 和 catch 语句之后，无论是否有触发异常，该语句都会执行。 -->
+    <!-- 使用 throw                                                语句创建自定义错误。或者叫做创建或者抛出异常（Exception）。 -->
+    <!-- JS 关键字 -->
+    <!-- 使用 break                                                关键字 -->
+    <!-- 使用 continue                                             关键字 -->
+    <!-- 使用 return                                               关键字 -->
+    <!-- 使用 typeof                                               关键字 -->
+    <!-- 使用 this                                                 关键字 -->
+    <!-- 使用 var                                                  关键字 -->
+    <!-- 使用 let                                                  关键字 -->
+    <!-- 使用 const                                                关键字 -->
+    <!-- 使用 void                                                 关键字 -->
+    <!-- JS 异步编程 -->
+    <!-- 同步 sync                                                 相对的概念。 -->
+    <!-- 异步 async                                                相对的概念。 -->
+    <!-- 使用 Promise                                              对象是一个 ECMAScript 6 提供的类，目的是更加优雅地书写复杂的异步任务。 -->
+    <!-- 使用 new Promise(function(resolve, reject){setTimeout(function(){}, 1000);})     异步函数是 ECMAScript 2017 (ECMA-262) 标准的规范，几乎被所有浏览器所支持，除了 Internet Explorer。 -->
+    <!-- JS 函数 -->
+    <!-- 使用 function functionname(parameters) { return parameters; }                    声明函数。函数声明后不会立即执行，会在我们需要的时候调用到。 -->
+    <!-- 使用 x = function (a, b) { return a * b; };                                      匿名函数（函数表达式）。函数存储在变量中，不需要函数名称，通常通过变量名来调用。 -->
+    <!-- 使用 new Function("a", "b", "return a * b");                                     构造函数。函数同样可以通过内置的 JavaScript 函数构造器 Function() 定义。 -->
+    <!-- 使用 (function () { var x = "callback"; })();                                    自调用函数（立即执行函数）。函数表达式可以"自调用"，自调用表达式会自动调用。如果表达式后面紧跟 () 则会自动调用。不能自调用声明的函数。 -->
+    <!-- 使用 (function () { var x = "callback"; }());                                    自调用函数（立即执行函数）。函数实际上是一个匿名自我调用的函数（没有函数名）。 -->
+    <!-- 使用 (parameters) => { return x * y; }                                           箭头函数。ES6 新增了箭头函数。箭头函数表达式的语法比普通函数表达式更简洁。 -->
+    <!-- 使用 function callback() { return a * b; } window.setInterval(callback(), 1000); 回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- 使用 window.addEventListener('click', function () { return a * b; });            回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- JS 闭包 -->
+    <!-- 使用 x = (function () {var i = 0; return function () {return i += 1;}})();       闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。 -->
+    <!-- 使用 x = (function () {var i = 0; return function () {return i += 1;}})();       x 变量可以作为一个函数使用。它 function () {return i += 1;} 可以访问函数上一层作用域的计数器。这个叫作 JavaScript 闭包。它使得函数拥有私有变量变成可能。 -->
+    <!-- JS 类 -->
+    <!-- 使用 class Parent { property: "value", method: function () { } }                 使用 class 关键字来创建一个类，类是用于创建对象的模板。类体在一对大括号 {} 中，在大括号 {} 中定义类成员的位置，如方法或构造函数。每个类中包含了一个特殊的方法 constructor()，它是类的构造函数。这种方法用于创建和初始化一个由 class 创建的对象。 -->
+    <!-- 使用 new Parent()                                                                使用 new 关键字来创建对象。创建对象时会自动调用构造函数方法 constructor()。 -->
+    <!-- 使用 class Children extends Parent { }                                           使用 extends 关键字继承类。这个已有的类称为基类（父类），新建的类称为派生类（子类）。 -->
+    <!-- 使用 static method() { }                                                         使用 static 关键字修改的方法是静态方法，又叫类方法，属于类的，但不属于对象。通过（类名.方法名）调用静态方法。静态方法不能在对象上调用，只能在类中调用。 -->
+    <!-- JS 对象 -->
+    <!-- 使用 Array.map()           方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。 -->
+    <!-- 使用 Array.join()          方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串，用逗号或指定的分隔符字符串分隔。如果数组只有一个元素，那么将返回该元素而不使用分隔符。 -->
+    <!-- 使用 JSON.parse()          解析 JSON 字符串并返回对应的值，可以额外传入一个转换函数，用来将生成的值和其属性，在返回之前进行某些修改。 -->
+    <!-- 使用 JSON.stringify()      返回与指定值对应的 JSON 字符串，可以通过额外的参数，控制仅包含某些属性，或者以自定义方法来替换某些 key 对应的属性值。 -->
+    <!-- 使用 Console.log()         方法向 Web 控制台输出一条信息。这条信息可能是单个字符串（包括可选的替代字符串），也可能是一个或多个对象。 -->
+    <!-- 使用 Location.href         属性是一个字符串化转换器 (stringifier), 返回一个包含了完整 URL 的 USVString 值，且允许 href 的更新。 -->
+    <!-- 使用 Storage.setItem()     方法接受一个键名和值作为参数，将会把键名添加到给定的 Storage 对象中，如果键名已存在，则更新其对应的值。 -->
+    <!-- 使用 Storage.getItem()     方法作为 Storage 接口的方法，接受一个键名（key name）作为参数，并返回对应键名的值（key's value）。 -->
+    <!-- 使用 Window.localStorage   属性允许你访问一个Document 源（origin）的对象 Storage；存储的数据将保存在浏览器会话中。 -->
+    <!-- 使用 Window.sessionStorage 属性允许你访问一个，对应当前源的 session Storage 对象。 -->
+
+
+
+
+    <!-- ---------------------------------------- 华丽的分割线 ---------------------------------------- -->
+
+
+
+
+    <!-- DOM 部分 -->
+
+    <!-- DOM 获取元素 -->
+    <!-- 通过 document.getElementById()         方法通过 ID 找到 HTML 元素。 -->
+    <!-- 通过 document.getElementsByTagName()   方法通过 标签名 找到 HTML 元素。 -->
+    <!-- 通过 document.getElementsByClassName() 方法通过 类名 找到 HTML 元素。 -->
+    <!-- 通过 document.querySelector()          方法返回文档中与指定的选择器匹配的第一个元素 Element 节点。 -->
+    <!-- 通过 document.querySelectorAll()       方法返回包含文档中与指定的选择器匹配的所有元素 NodeList 节点的列表。 -->
+    <!-- DOM 修改元素内容 -->
+    <!-- 通过 document.write()                  方法可向文档写入文本内容，可以是 HTML 代码。 -->
+    <!-- 通过 element.innerText                 属性设置或者返回元素的内容。 -->
+    <!-- 通过 element.innerHTML                 属性设置或获取 HTML 语法表示的元素的后代。 -->
+    <!-- DOM 修改元素属性 -->
+    <!-- 通过 element.href                      属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.title                     属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.src                       属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.className                 属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.disabled                  属性规定应该启用或者禁用的 input 元素。 -->
+    <!-- 通过 element.checked                   属性规定在页面加载时应该被预先选定的 input 元素。只针对 type="checkbox" 或者 type="radio"。 -->
+    <!-- 通过 element.selected                  属性规定选项（在首次显示在列表中时）表现为选中状态。 -->
+    <!-- DOM 修改元素样式 -->
+    <!-- 通过 element.style.styleProperties     属性设置或者返回元素的样式属性。 -->
+    <!-- DOM 定时器 -->
+    <!-- 通过 window.setInterval(function, timeout)        方法按照指定的周期（毫秒）来无限循环调用，调用函数或计算表达式。 -->
+    <!-- 通过 window.clearInterval(timer)                  方法取消由定时器设置的定时任务。 -->
+    <!-- 通过 window.setTimeout(function, timeout)         方法在指定的毫秒数后仅此调用一次，调用函数或计算表达式。 -->
+    <!-- 通过 window.clearTimeout(timer)                   方法取消由定时器设置的定时任务。 -->
+    <!-- DOM 事件 -->
+    <!-- 使用 window.onclick = function() { }                                      传统on注册事件（L0）。同一个对象，后面注册的事件会覆盖前面注册（同一个事件）。 -->
+    <!-- 使用 window.addEventListener('event',  function () {})                    事件监听注册事件（L2）。后面注册的事件不会覆盖前面注册的事件（同一个事件）。 -->
+    <!-- 使用 window.addEventListener('load',   function () {})                    事件监听注册事件（L2）。加载事件。加载外部资源（如图片、CSS和JavaScript等）加载完毕时触发的事件。 -->
+    <!-- 使用 window.addEventListener('scroll', function () {})                    事件监听注册事件（L2）。滚动事件。页面进行滚动的时候触发的事件。监听某个元素的内部滚动直接给某个元素加即可。 -->
+    <!-- DOM 事件流 -->
+    <!-- 使用 window.addEventListener('event', function() {}, function callback()) 此方法若传入 false 代表冒泡阶段触发，默认就是 false。第三个参数传入 true 代表是捕获阶段触发（很少使用）。 -->
+    <!-- 使用 window.stopPropagation()                                             此方法可以阻断事件流动传播，不光在冒泡阶段有效，捕获阶段也有。当触发事件时，会经历两个阶段，分别是捕获阶段、冒泡阶段。 -->
+    <!-- DOM 事件委托 -->
+    <!-- 使用 window.target(Event.target)                                          此方法可以获得真正触发事件的元素。事件委托其实是利用事件冒泡的特点，给父元素添加事件，子元素（target）可以触发。 -->
+    <!-- DOM 函数 -->
+    <!-- 使用 function functionname(parameters) { return parameters; }             声明函数。 -->
+    <!-- 使用 function (a, b) {return a * b};                                      匿名函数。 -->
+    <!-- 使用 new Function("a", "b", "return a * b");                              构造函数。 -->
+    <!-- 使用 (function () { var x = "callback"; })();                             自调用函数（立即执行函数）。 -->
+    <!-- 使用 (function () { var x = "callback"; }());                             自调用函数（立即执行函数）。 -->
+    <!-- 使用 (parameters) => { return x * y; }                                    箭头函数。 -->
+    <!-- 使用 function callback() { return '回调函数'; } window.setInterval(callback(), 1000) 回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- 使用 window.addEventListener('click', function () { return '回调函数'; })            回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- DOM 节点操作 -->
+    <!-- 使用 element.parentNode                    属性父节点查找。返回最近一级的父节点找不到返回为 null。 -->
+    <!-- 使用 element.childNodes                    属性获得所有子节点，包括文本节点（空格、换行）注释节点等。 -->
+    <!-- 使用 element.children                      属性仅获得所有元素节点。返回的还是一个伪数组。 -->
+    <!-- 使用 element.nextElementSibling            属性查找下一个兄弟节点。 -->
+    <!-- 使用 element.previousElementSibling        属性查找上一个兄弟节点。 -->
+    <!-- 使用 document.createElement('elementName') 属性新建一个新的网页元素，再添加到网页内，一般先创建节点，然后插入节点。 -->
+    <!-- 使用 element.appendChild('elementName')    属性要想在界面看到，还得插入到某个父元素中。插入到父元素的最后一个子元素。 -->
+    <!-- 使用 element.cloneNode(boolean)            属性会克隆出一个跟原标签一样的元素，括号内传入布尔值。若为true，则代表克隆时会包含后代节点一起克隆，若为false，则代表克隆时不包含后代节点，默认false。 -->
+    <!-- 使用 element.removeChild('elementName')    属性如不存在父子关系则删除不成功。 -->
+    <!-- DOM 节点滚动 -->
+    <!-- 使用 Element.scrollWidth                   返回类型为：Number，表示元素的滚动视图宽度。 -->
+    <!-- 使用 Element.scrollHeight                  返回类型为：Number，表示元素的滚动视图高度。 -->
+    <!-- 使用 Element.scrollLeft                    检测元素的内容左右和上下滚动的距离（被卷去的左侧scrollLeft），返回值不带单位。 -->
+    <!-- 使用 Element.scrollTop                     检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop），返回值不带单位。 -->
+    <!-- DOM 节点位置 -->
+    <!-- 使用 element.offsetWidth                   返回元素的宽度，包括边框（border）和内边距（padding），但不包含外边距（margin）。 -->
+    <!-- 使用 element.offsetHeight                  返回任何一个元素的高度包括边框（border）和内边距（padding），但不包含外边距（margin）。 -->
+    <!-- 使用 element.offsetLeft                    检测元素相对于父级元素的左右偏移量位置，返回值不带单位。 -->
+    <!-- 使用 element.offsetTop                     检测元素相对于父级元素的上下偏移量位置，返回值不带单位。 -->
+    <!-- DOM 节点大小 -->
+    <!-- 使用 Element.clientWidth                   检测元素的内容宽度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 使用 Element.clientHeight                  检测元素的内容高度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 使用 Element.clientLeft                    只读，返回 Number 表示该元素距离它左边界的宽度。 -->
+    <!-- 使用 Element.clientTop                     只读，返回 Number 表示该元素距离它上边界的高度。 -->
+    <!-- DOM 事件对象 -->
+    <!-- 使用 o.addEventListener('event', function () {}) 事件监听对象。 -->
+    <!-- 使用 MouseEvent.clientX                    鼠标指针在点击元素（DOM）中的 X 坐标。 -->
+    <!-- 使用 MouseEvent.clientY                    鼠标指针在点击元素（DOM）中的 Y 坐标。 -->
+    <!-- 使用 MouseEvent.offsetX                    鼠标指针相对于目标节点内边位置的 X 坐标。 -->
+    <!-- 使用 MouseEvent.offsetY                    鼠标指针相对于目标节点内边位置的 Y 坐标。 -->
+    <!-- 使用 MouseEvent.pageX                      鼠标指针相对于整个文档的 X 坐标。 -->
+    <!-- 使用 MouseEvent.pageY                      鼠标指针相对于整个文档的 Y 坐标。 -->
+    <!-- 使用 MouseEvent.screenX                    鼠标指针相对于全局（屏幕）的 X 坐标。 -->
+    <!-- 使用 MouseEvent.screenY                    鼠标指针相对于全局（屏幕）的 Y 坐标。 -->
+
+    <!-- 查询官网<MDN>：https://developer.mozilla.org/zh-CN/docs/Web/API/ -->
+
+
+
+
+    <!-- 一、DOM -->
+    <!-- 1.1 什么是 DOM -->
+    <!-- 作用和分类： -->
+    <!-- DOM 分类：DOM（文档对象模型）、BOM（浏览器对象模型）。 -->
+    <!-- DOM 概述：DOM（Document Object Model - 文档对象模型）是用来呈现以及与任意 HTML 或 XML 文档交互的 API。 -->
+    <!-- DOM 作用: 就是使用 JS 去操作 html 和浏览器。 -->
+    <!-- DOM 作用：开发网页内容特效和实现用户交互。 -->
+    <!-- DOM 是 W3C（万维网联盟）的标准。 -->
+    <!-- W3C DOM 标准被分为 3 个不同的部分： -->
+    <!-- (1).核心 DOM - 针对任何结构化文档的标准模型。 -->
+    <!-- (2).XML DOM - 针对 XML 文档的标准模型。 -->
+    <!-- (3).HTML DOM - 针对 HTML 文档的标准模型。 -->
+    <!-- 1.2 什么是 XML DOM -->
+    <!-- XML DOM 定义了所有 XML 元素的对象和属性，以及访问它们的方法。 -->
+    <!-- 1.3 什么上 HTML DOM -->
+    <!-- HTML DOM 是： -->
+    <!-- (1).HTML 的标准对象模型。 -->
+    <!-- (2).HTML 的标准编程接口。 -->
+    <!-- (3).W3C 标准。 -->
+    <!-- HTML DOM 定义了所有 HTML 元素的对象和属性，以及访问它们的方法。 -->
+    <!-- 换言之，HTML DOM 是关于如何获取、修改、添加或删除 HTML 元素的标准。 -->
+
+    <!-- 一、HTML DOM -->
+    <!-- 1.1 HTML DOM 简介 -->
+    <!-- HTML DOM（Document Object Model）译为文档对象模型，是 HTML 和 XML 文档的编程接口。 -->
+    <!-- HTML DOM 定义了访问和操作 HTML 文档的标准方法。 -->
+    <!-- HTML DOM 定义了访问和操作 HTML 文档的标准。 -->
+    <!-- HTML DOM 以树结构表达 HTML 文档。 -->
+    <!-- HTML DOM 是 W3C（万维网联盟）的标准。 -->
+    <!-- HTML DOM 定义了访问 HTML 和 XML 文档的标准： -->
+    <!-- 通过 HTML DOM 可访问 JavaScript HTML 文档的所有元素。 -->
+    <!-- DOM 分类：DOM（文档对象模型）、BOM（浏览器对象模型）。 -->
+    <!-- DOM 概述：DOM（Document Object Model - 文档对象模型）是用来呈现以及与任意 HTML 或 XML 文档交互的 API。 -->
+    <!-- DOM 作用: 就是使用 JS 去操作 html 和浏览器。 -->
+    <!-- DOM 作用：开发网页内容特效和实现用户交互。 -->
+    <!-- DOM 是 W3C（万维网联盟）的标准。 -->
+    <!-- 在您继续学习之前，您需要对以下内容拥有基本的了解： -->
+    <!-- (1).HTML -->
+    <!-- (2).CSS -->
+    <!-- (3).JavaScript -->
+    <!-- 学习 100 个实例！使用我们的编辑器，你可以编辑 HTML 文档，然后单击 "尝试一下" 按钮来查看结果。 -->
+    <!-- <img id="auto-switch" onclick="changeImage()" src="./images/pic_bulboff.gif" width="100" height="180">
+    <script>
+        function changeImage() {
+            var element = document.getElementById('auto-switch');
+            if (element.src.match("bulbon")) {
+                element.src = "./images/pic_bulboff.gif";
+            } else {
+                element.src = "./images/pic_bulbon.gif";
+            }
+        }
+        var img = document.querySelector('img');
+        console.dir(img);
+    </script> -->
+    <!-- 1.1 HTML DOM 简介 -->
+    <!-- 当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。 -->
+    <!-- HTML DOM 模型被构造为对象的树： -->
+    <!-- 通过可编程的对象模型，JavaScript 获得了足够的能力来创建动态的 HTML。 -->
+    <!-- (1).JavaScript 能够改变页面中的所有 HTML 元素。 -->
+    <!-- (2).JavaScript 能够改变页面中的所有 HTML 属性。 -->
+    <!-- (3).JavaScript 能够改变页面中的所有 CSS  样式。 -->
+    <!-- (4).JavaScript 能够对页面中的所有事件做出反应。 -->
+    <!-- 1.2 查找 HTML 元素 -->
+    <!-- 通常，通过 JavaScript，您需要操作 HTML 元素。 -->
+    <!-- 为了做到这件事情，您必须首先找到该元素。有三种方法来做这件事： -->
+    <!-- (1).通过 id 找到 HTML 元素。 -->
+    <!-- (2).通过标签名找到 HTML 元素。 -->
+    <!-- (3).通过类名找到 HTML 元素。 -->
+    <!-- 1.3 通过 id 查找 HTML 元素 -->
+    <!-- 在 HTML DOM 中查找 HTML 元素的最简单的方法，是通过使用元素的 id。 -->
+    <!-- 本例查找 id="intro" 元素： -->
+    <!-- 如果找到该元素，则该方法将以对象（在 x 中）的形式返回该元素。 -->
+    <!-- 如果未找到该元素，则 x 将包含 null。 -->
+    <!-- <p id="intro">被拼接内容</p>
+    <script>
+        var x = document.getElementById("intro");
+        // JS 输入与输出（使用 window.alert() 弹出警告框。使用 document.write() 方法将内容写到 HTML 文档中。使用 innerHTML 写入到 HTML 元素。使用 console.log() 写入到浏览器的控制台。）
+        document.write("<p>通过 JS 输出来自于类名为 intro 的文本内容：" + x.innerHTML + "</p>");
+    </script>     -->
+    <!-- 1.4 通过标签名查找 HTML 元素 -->
+    <!-- 本例查找 id="other" 的元素，然后查找 id="other" 元素中的所有 <p> 元素： -->
+    <!-- <div id="main">
+        <p>A</p>
+        <p>B</p>
+    </div>
+    <div id="other">
+        <p>X</p>
+        <p>Y</p>
+    </div>
+    <script>
+        var reader = document.getElementById("other");
+        var writer = reader.getElementsByTagName("p");
+        // JS 输入与输出（使用 window.alert() 弹出警告框。使用 document.write() 方法将内容写到 HTML 文档中。使用 innerHTML 写入到 HTML 元素。使用 console.log() 写入到浏览器的控制台。）
+        document.write('首先获取类名为 other 的块级元素 P 标签下第一个的内容：' + writer[0].innerHTML);
+    </script> -->
+    <!-- 1.5 通过类名找到 HTML 元素 -->
+    <!-- 本例通过 getElementsByClassName 函数来查找 class="intro" 的元素： -->
+    <!-- <p class="intro">被拼接内容</p>
+    <script>
+        var x = document.getElementsByClassName("intro");
+        // JS 输入与输出（使用 window.alert() 弹出警告框。使用 document.write() 方法将内容写到 HTML 文档中。使用 innerHTML 写入到 HTML 元素。使用 console.log() 写入到浏览器的控制台。）
+        document.write("<p>来自于 DOM 操作添加内容与前面 P 标签（元素）拼接：" + x[0].innerHTML + "</p>");
+    </script> -->
+    <!-- 1.6 HTML DOM 教程 -->
+    <!-- 在本教程接下来的篇幅中，您将学到： -->
+    <!-- (1).如何改变 HTML 元素的内容（innerHTML）。 -->
+    <!-- (2).如何改变 HTML 元素的样式（CSS）。 -->
+    <!-- (3).如何对 HTML DOM 事件做出反应。 -->
+    <!-- (4).如何添加或删除 HTML 元素。 -->
+
+    <!-- 一、DOM 获取节点 -->
+    <!-- 1.1 DOM 获取元素 -->
+    <!-- 通过 document.getElementById()         方法通过 ID 找到 HTML 元素。 -->
+    <!-- 通过 document.getElementsByTagName()   方法通过 标签名 找到 HTML 元素。 -->
+    <!-- 通过 document.getElementsByClassName() 方法通过 类名 找到 HTML 元素。 -->
+    <!-- 通过 document.querySelector()          方法返回文档中与指定的选择器匹配的第一个元素 Element 节点。 -->
+    <!-- 通过 document.querySelectorAll()       方法返回包含文档中与指定的选择器匹配的所有元素 NodeList 节点的列表。 -->
+    <!-- 一  种：选择匹配的第一个元素 -->
+    <!-- 语  法：document.querySelector('CSS选择器'); -->
+    <!-- 参  数：包含一个或者多个有效的CSS选择器字符串。 -->
+    <!-- 返回值：CSS选择器匹配的第一个元素，一个 HTMLElement 对象。如果没有匹配到，则返回 null。 -->
+    <!-- 二  种：选择匹配的多个的元素 -->
+    <!-- 语  法：document.querySelectorAll('CSS选择器'); -->
+    <!-- 参  数：包含一个或者多个有效的CSS选择器字符串。 -->
+    <!-- 返回值：CSS选择器匹配的 NodeList 对象集合。 -->
+    <!-- <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('li');
+        var li = document.querySelectorAll('li');
+        console.log(ul.value);
+        ul.innerHTML = 'XYZ';
+        console.log(ul);
+        console.log(li);
+    </script> -->
+    <!-- 1.2 DOM 获取元素与修改内容 -->
+    <!-- 通过 element.innerText                 属性设置或者返回元素的内容。 -->
+    <!-- 通过 element.innerHTML                 属性设置或获取 HTML 语法表示的元素的后代。 -->
+    <!-- DOM 对象都是根据标签生成的，所以操作标签，本质上就是操作 DOM 对象。 -->
+    <!-- 就是操作对象使用的点语法。 -->
+    <!-- 如果想要修改标签元素的里面的内容，则可以使用如下几种方式： -->
+    <!-- (1).document.write()  方法。 -->
+    <!-- (2).element.innerText 属性。 -->
+    <!-- (3).element.innerHTML 属性。 -->
+    <!-- 一  种：向文档写HTML表达式或者JS代码 -->
+    <!-- 语  法：document.write(); -->
+    <!-- 返回值：方法可向文档写入文本内容，可以是HTML代码。 -->
+    <!-- 二  种：设置或者返回元素的内容 -->
+    <!-- 语  法：element.innerText; -->
+    <!-- 返回值：方法可向文档写入文本内容。 -->
+    <!-- 三  种：设置或者返回元素的内容 -->
+    <!-- 语  法：element.innerHTML; -->
+    <!-- 返回值：方法可向文档写入文本内容，可以是HTML代码。 -->
+    <!-- <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+    <button class="first">切换内容</button>
+    <button class="third">切换内容</button>
+    <script>
+        var ul = document.querySelector('ul');
+        console.log(ul);
+        var li = document.querySelectorAll('li');
+        for (let index = 0; index < li.length; index++) {
+            const element = li[index];
+            console.log(element);
+        }
+        var btnA = document.querySelector('.first');
+        btnA.addEventListener('click', function func(event) {
+            li[0].innerText = 'U';
+            li[1].innerText = 'V';
+            li[2].innerText = 'W';
+            console.log(li);
+        });
+        var btnB = document.querySelector('.third');
+        btnB.addEventListener('click', function func(event) {
+            li[0].innerHTML = 'X';
+            li[1].innerHTML = 'Y';
+            li[2].innerHTML = 'Z';
+            console.log(li);
+        });
+    </script> -->
+    <!-- 1.3 DOM 获取元素与修改属性 -->
+    <!-- 一  种：设置或者返回元素的新的属性-->
+    <!-- 语  法：element.href -->
+    <!-- 语  法：element.title -->
+    <!-- 语  法：element.src -->
+    <!-- 语  法：element.className -->
+    <!-- 返回值：设置或者返回元素的新的属性。 -->
+    <!-- 1.3 DOM 获取元素与修改样式 -->
+    <!-- 一  种：设置或者返回元素的样式属性-->
+    <!-- 语  法：element.style.styleProperties -->
+    <!-- 返回值：设置或者返回元素的样式属性。 -->
+    <!-- 1.4 DOM 定时器（间歇函数） -->
+    <!-- 定时器函数可以开启和关闭定时器。 -->
+    <!-- 一  种：开启定时器（无限循环） -->
+    <!-- 语  法：window.setInterval(函数, 间隔时间) -->
+    <!-- 返回值：每隔一段时间调用这个函数。间隔时间单位是毫秒。 -->
+    <!-- 一  种：关闭定时器（无限循环） -->
+    <!-- 语  法：window.clearInterval(定时器) -->
+    <!-- 返回值：一般不会刚创建就停止，而是满足一定条件再停止。 -->
+    <!-- 一  种：开启定时器（单次调用） -->
+    <!-- 语  法：window.setTimeout(函数, 间隔时间) -->
+    <!-- 返回值：每隔一段时间调用这个函数。间隔时间单位是毫秒。 -->
+    <!-- 一  种：关闭定时器（单次调用） -->
+    <!-- 语  法：window.clearTimeout(定时器) -->
+    <!-- 返回值：一般不会刚创建就停止，而是满足一定条件再停止。 -->
+    <!-- 经典案例：倒计时 -->
+    <!-- <textarea name="" id="" cols="30" rows="10">
+        用户注册协议
+        欢迎注册成为京东用户！在您注册过程中，您需要完成我们的注册流程并通过点击同意的形式在线签署以下协议，请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体或下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）。
+        如果您不同意以下协议全部或任何条款约定，请您停止注册。您停止注册后将仅可以浏览我们的商品信息但无法享受我们的产品或服务。如您按照注册流程提示填写信息，阅读并点击同意上述协议且完成全部注册流程后，即表示您已充分阅读、理解并接受协议的全部内容，并表明您同意我们可以依据协议内容来处理您的个人信息，并同意我们将您的订单信息共享给为完成此订单所必须的第三方合作方（详情查看）。
+    </textarea>
+    <br>
+    <button class="btn" disabled>我已经阅读用户协议(10)</button>
+    <script>
+        let btn = document.querySelector('.btn');
+        let i = 10;
+        let timer = window.setInterval(function () {
+            i--;
+            btn.innerHTML = `我已经阅读用户协议(${i})`;
+            if (i === 0) {
+                window.clearInterval(timer);
+                btn.disabled = false;
+                btn.innerHTML = `同意该协议`;
+            }
+        }, 1000);
+    </script> -->
+    <!-- 经典案例：轮播图 -->
+    <!-- <style>
+        .img-box {
+            width: 700px;
+            height: 320px;
+            margin: 50px auto 0;
+            background: #000;
+            position: relative;
+        }
+        .img-box .tip {
+            width: 700px;
+            height: 53px;
+            line-height: 53px;
+            position: absolute;
+            bottom: 0px;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+        .img-box .tip h3 {
+            width: 82%;
+            margin: 0;
+            margin-right: 20px;
+            padding-left: 20px;
+            color: #98E404;
+            font-size: 28px;
+            float: left;
+            font-weight: 500;
+            font-family: "Microsoft Yahei", Tahoma, Geneva;
+        }
+        .img-box .tip a {
+            width: 30px;
+            height: 29px;
+            display: block;
+            float: left;
+            margin-top: 12px;
+            margin-right: 3px;
+        }
+        .img-box ul {
+            position: absolute;
+            bottom: 0;
+            right: 30px;
+            list-style: none;
+            z-index: 99;
+        }
+    </style>
+    <div class="img-box">
+        <img class="pic" src="./images/b01.jpg" alt="第1张图的描述信息">
+        <div class="tip">
+            <h3 class="text">第一张图片</h3>
+        </div>
+    </div>
+    <script>
+        let data = [
+            {
+                imgSrc: './images/b01.jpg',
+                title: '第一张图片'
+            },
+            {
+                imgSrc: './images/b02.jpg',
+                title: '第二张图片'
+            },
+            {
+                imgSrc: './images/b03.jpg',
+                title: '第三张图片'
+            },
+            {
+                imgSrc: './images/b04.jpg',
+                title: '第四张图片'
+            },
+            {
+                imgSrc: './images/b05.jpg',
+                title: '第五张图片'
+            },
+            {
+                imgSrc: './images/b06.jpg',
+                title: '第六张图片'
+            },
+            {
+                imgSrc: './images/b07.jpg',
+                title: '第七张图片'
+            },
+            {
+                imgSrc: './images/b08.jpg',
+                title: '第八张图片'
+            },
+            {
+                imgSrc: './images/b09.jpg',
+                title: '第九张图片'
+            },
+        ];
+        let pic = document.querySelector('.pic');
+        let text = document.querySelector('.text');
+        let i = 0;
+        window.setInterval(function () {
+            i++;
+            pic.src = data[i].imgSrc;
+            text.innerHTML = data[i].title;
+            if (i === data.length - 1) {
+                i = -1;
+            }
+        }, 1000);
+    </script> -->
+
+    <!-- 二、DOM 事件基础 -->
+    <!-- 使用 element.addEventListener('event', function); 事件监听。 -->
+    <!-- 2.1 DOM 事件 -->
+    <!-- 事件（Event）是由 DOM 元素产生的资源，它可以由 JavaScript 代码操作。 -->
+    <!-- 事件是在编程时系统内发生的动作或者发生的事情。 -->
+    <!-- 比如用户在网页上单击一个按钮。 -->
+    <!-- 2.2 DOM 事件监听 -->
+    <!-- 就是让程序检测是否有事件产生，一旦有事件触发，就立即调用一个函数做出响应，也称为注册事件。 -->
+    <!-- 语法： -->
+    <!-- element.addEventListener('event', function); -->
+    <!-- 事件监听要素： -->
+    <!-- (1).事件源：那个 dom 元素被事件触发了，要获取 dom 元素。 -->
+    <!-- (2).事件：用什么方式触发，比如鼠标单击 click，鼠标经过 mouseover 等等。 -->
+    <!-- (3).事件调用的函数：要做什么事。 -->
+    <!-- 注意：事件类型要加单引号，函数是点击之后再去执行，每次点击都会执行一次。 -->
+    <!-- 事件监听版本： -->
+    <!-- DOM L0  -->
+    <!-- 事件源.on事件 = function() { } -->
+    <!-- DOM L2  -->
+    <!-- 事件源.addEventListener('事件', 事件处理函数) -->
+    <!-- 发展史： -->
+    <!-- DOM L0：是 DOM 的发展的第一个版本。L->level -->
+    <!-- DOM L1：DOM 级别 1 于1998年10月1日成为 W3C 推荐标准。 -->
+    <!-- DOM L2：使用 addEventListener 注册事件。 -->
+    <!-- DOM L3：DOM3 级事件模块在DOM2级事件的基础上重新定义了这些事件，也添加了一些新事件类型。 -->
+    <!-- 2.3 DOM 事件类型 -->
+    <!-- (1).鼠标事件 -->
+    <!-- onclick 当用户点击某个对象时调用的事件句柄。 -->
+    <!-- oncontextmenu 在用户点击鼠标右键打开上下文菜单时触发。 -->
+    <!-- ondblclick 当用户双击某个对象时调用的事件句柄。 -->
+    <!-- onmousedown 鼠标按钮被按下。 -->
+    <!-- onmouseenter 当鼠标指针移动到元素上时触发。 -->
+    <!-- onmouseleave 当鼠标指针移出元素时触发。 -->
+    <!-- onmousemove 鼠标被移动。 -->
+    <!-- onmouseover 鼠标移到某元素之上。 -->
+    <!-- onmouseout 鼠标从某元素移开。 -->
+    <!-- onmouseup 鼠标按键被松开。 -->
+    <!-- (2).焦点事件（表单事件的一部分） -->
+    <!-- focus 获得焦点。 -->
+    <!-- blur 失去焦点。 -->
+    <!-- (3).键盘事件 -->
+    <!-- onkeydown 某个键盘按键被按下。 -->
+    <!-- onkeypress 某个键盘按键被按下并松开。 -->
+    <!-- onkeyup 某个键盘按键被松开。 -->
+    <!-- (4).文本事件（表单事件的一部分） -->
+    <!-- input 用户输入事件。 -->
+    <!-- (5).框架/对象事件 -->
+    <!-- onabort 图像的加载被中断。 -->
+    <!-- onbeforeunload 该事件在即将离开页面（刷新或关闭）时触发。 -->
+    <!-- onerror 在加载文档或图像时发生错误。 -->
+    <!-- onhashchange 该事件在当前 URL 的锚部分发生修改时触发。 -->
+    <!-- onload 一张页面或一幅图像完成加载。 -->
+    <!-- onpageshow 该事件在用户访问页面时触发。 -->
+    <!-- onpagehide 该事件在用户离开当前网页跳转到另外一个页面时触发。 -->
+    <!-- onresize 窗口或框架被重新调整大小。 -->
+    <!-- onscroll 当文档被滚动时发生的事件。 -->
+    <!-- onunload 用户退出页面。 -->
+    <!-- (6).表单事件 -->
+    <!-- onblur 元素失去焦点时触发。 -->
+    <!-- onchange 该事件在表单元素的内容改变时触发。 -->
+    <!-- onfocus 元素获取焦点时触发。 -->
+    <!-- onfocusin 元素即将获取焦点时触发。 -->
+    <!-- onfocusout 元素即将失去焦点时触发。 -->
+    <!-- oninput 元素获取用户输入时触发。 -->
+    <!-- onreset 表单重置时触发。 -->
+    <!-- onsearch 用户向搜索域输入文本时触发。 -->
+    <!-- onselect 用户选取文本时触发。 -->
+    <!-- onsubmit 表单提交时触发。 -->
+    <!-- (7).剪切板事件 -->
+    <!-- oncopy 该事件在用户拷贝元素内容时触发。 -->
+    <!-- oncut 该事件在用户剪切元素内容时触发。 -->
+    <!-- onpaste 该事件在用户粘贴元素内容时触发。 -->
+    <!-- (8).打印事件 -->
+    <!-- onafterprint 该事件在页面已经开始打印，或者打印窗口已经关闭时触发。 -->
+    <!-- onbeforeprint 该事件在页面即将开始打印时触发。 -->
+    <!-- (9).拖动事件 -->
+    <!-- ondrag 该事件在元素正在拖动时触发。 -->
+    <!-- ondragend 该事件在用户完成元素的拖动时触发。 -->
+    <!-- ondragenter 该事件在拖动的元素进入放置目标时触发。 -->
+    <!-- ondragleave 该事件在拖动元素离开放置目标时触发。 -->
+    <!-- ondragover 该事件在拖动元素在放置目标上时触发。 -->
+    <!-- ondragstart 该事件在用户开始拖动元素时触发。 -->
+    <!-- ondrop 该事件在拖动元素放置在目标区域时触发。 -->
+    <!-- (10).多媒体事件 -->
+    <!-- (11).动画事件 -->
+    <!-- (12).过渡事件 -->
+    <!-- (13).其他事件 -->
+    <!-- 常见的HTML事件： -->
+    <!-- 下面是一些常见的HTML事件的列表： -->
+    <!-- onchange HTML 元素改变。 -->
+    <!-- onclick 用户点击 HTML 元素。 -->
+    <!-- onmouseover 鼠标指针移动到指定的元素上时发生。 -->
+    <!-- onmouseout 用户从一个 HTML 元素上移开鼠标时发生。 -->
+    <!-- onkeydown 用户按下键盘按键。 -->
+    <!-- onload 浏览器已完成页面的加载。 -->
+    <!-- 经典案例：事件监听器 -->
+    <!-- <button>点击事件</button>
+    <script>
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            alert('点击事件弹窗效果');
+        });
+    </script> -->
+    <!-- 经典案例：关闭二维码 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .erweima {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+        .erweima i {
+            position: absolute;
+            left: -13px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            line-height: 10px;
+            color: #ccc;
+            font-style: normal;
+            cursor: pointer;
+        }
+    </style>
+    <div class="erweima">
+        <img src="./images/code.png" alt="">
+        <i class="close_btn">x</i>
+    </div>
+    <script>
+        let close_btn = document.querySelector('.close_btn');
+        let erweima = document.querySelector('.erweima');
+        close_btn.addEventListener('click', function () {
+            erweima.style.display = 'none';
+        });
+    </script> -->
+    <!-- 经典案例：随机点名 -->
+    <!-- <style>
+        div {
+            width: 200px;
+            height: 40px;
+            border: 1px solid pink;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+    <div>开始抽奖吧</div>
+    <button>点击点名</button>
+    <script>
+        let box = document.querySelector('div');
+        let btn = document.querySelector('button');
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;        
+        }
+        let array = ['北京市', '上海市', '广州市', '深圳市', '杭州市', '武汉市', '南京市', '成都市', '重庆市'];
+        btn.addEventListener('click', function () {
+            let random = getRandom(0, array.length -1);
+            box.innerHTML = array[random];
+            console.log('抽中一个则删除这个：' + array);
+            array.splice(random, 1);
+            if (array.length === 0) {
+                btn.disabled = true;
+                btn.innerHTML = '已经抽完';
+            }
+        });
+    </script> -->
+    <!-- 经典案例：随机点名 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+        }
+        .box {
+            width: 600px;
+            margin: 50px auto;
+            display: flex;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .other {
+
+            width: 450px;
+            height: 40px;
+            color: red;
+
+        }
+        .btns {
+            text-align: center;
+        }
+        .btns button {
+            width: 120px;
+            height: 35px;
+            margin: 0 50px;
+        }
+    </style>
+    <h2>随机点名</h2>
+    <div class="box">
+        <span>名字：</span>
+        <div class="other">中奖者是谁呢？</div>
+    </div>
+    <div class="btns">
+        <button class="start">开始</button>
+        <button class="toEnd">结束</button>
+    </div>
+    <script>
+        let array = ['北京市', '上海市', '广州市', '深圳市', '杭州市', '武汉市', '南京市', '成都市', '重庆市'];
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        let start = document.querySelector('.start');
+        let toEnd = document.querySelector('.toEnd');
+        let other = document.querySelector('.other');
+        let timer = 0;
+        let random = 0;
+        start.addEventListener('click', function () {
+            timer = window.setInterval(function () {
+                random = getRandom(0, array.length - 1);
+                other.innerHTML = array[random];
+            }, 3);
+            if (array.length === 1) {
+                start.disabled = end.disabled = true;
+            }
+        });
+        toEnd.addEventListener('click', function () {
+            window.clearInterval(timer);
+            array.splice(random, 1);
+        });
+    </script> -->
+    <!-- 经典案例：小米搜索框 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul {
+
+            list-style: none;
+        }
+        .mi {
+            position: relative;
+            width: 223px;
+            margin: 100px auto;
+        }
+        .mi input {
+            width: 223px;
+            height: 48px;
+            padding: 0 10px;
+            font-size: 14px;
+            line-height: 48px;
+            border: 1px solid #e0e0e0;
+            outline: none;
+            transition: all .3s;
+        }
+        .mi .search {
+            border: 1px solid #ff6700;
+        }
+        .result-list {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 48px;
+            width: 223px;
+            border: 1px solid #ff6700;
+            border-top: 0;
+            background: #fff;
+        }
+        .result-list a {
+            display: block;
+            padding: 6px 15px;
+            font-size: 12px;
+            color: #424242;
+            text-decoration: none;
+        }
+        .result-list a:hover {
+            background-color: #eee;
+        }
+    </style>
+    <div class="mi">
+        <input type="search" placeholder="小米笔记本">
+        <ul class="result-list">
+            <li><a href="#">全部商品</a></li>
+            <li><a href="#">小米11</a></li>
+            <li><a href="#">小米10S</a></li>
+            <li><a href="#">小米笔记本</a></li>
+            <li><a href="#">小米手机</a></li>
+            <li><a href="#">黑鲨4</a></li>
+            <li><a href="#">空调</a></li>
+        </ul>
+    </div>
+    <script>
+        // 1.获取元素
+        let search = document.querySelector('input');
+        let list = document.querySelector('.result-list');
+        // 2.注册事件（Element.focus 当元素获得焦点时激发。）
+        search.addEventListener('focus', function () {
+            list.style.display = 'block';
+            this.classList.add('search');
+        });
+        // 2.注册事件（Element.blur 元素失去焦点时激发。）
+        search.addEventListener('blur', function () {
+            list.style.display = 'none';
+            this.classList.remove('search');
+        });
+    </script> -->
+    <!-- 经典案例：全选与全不选 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+            height: 24px;
+        }
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        .allCheck {
+            width: 80px;
+        }
+    </style>
+    <table>
+        <tr>
+            <th class="allCheck">
+                <input type="checkbox" name="" id="checkAll"> <span class="all">全选</span>
+            </th>
+            <th>商品</th>
+            <th>商家</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="item">
+            </td>
+            <td>小米手机</td>
+            <td>小米</td>
+            <td>￥1999</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="item">
+            </td>
+            <td>小米净水器</td>
+            <td>小米</td>
+            <td>￥4999</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="item">
+            </td>
+            <td>小米电视</td>
+            <td>小米</td>
+            <td>￥5999</td>
+        </tr>
+    </table>
+    <script>
+        // 1.获取元素
+        let toAll = document.querySelector('#checkAll');
+        let items = document.querySelectorAll('.item');
+        let span = document.querySelector('span');
+        // 2.事件监听（点击事件） 
+        toAll.addEventListener('click', function () {
+            for (let i = 0; i < items.length; i++) {
+                items[i].checked = toAll.checked;
+            }
+            if (toAll.checked) {
+                span.innerHTML = '取消'
+            } else {
+                span.innerHTML = '全选'
+            }
+        });
+        for (let i = 0; i < items.length; i++) {
+            items[i].addEventListener('click', function () {
+                for (let j = 0; j < items.length; j++) {
+                    if (items[j].checked === false) {
+                        toAll.checked = false;
+                        span.innerHTML = '全选';
+                        return;
+                    }
+                }
+                toAll.checked = true;
+                span.innerHTML = '取消';
+            });
+        }
+    </script> -->
+    <!-- 经典案例：购物车加减操作 -->
+    <!-- <style>
+        div {
+            width: 80px;
+        }
+        input[type=text] {
+            width: 50px;
+            height: 44px;
+            outline: none;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-right: 0;
+        }
+        input[type=button] {
+            height: 24px;
+            width: 22px;
+            cursor: pointer;
+        }
+        input {
+            float: left;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <input type="text"   value="1" id="sum" readonly>
+    <input type="button" value="+" id="add">
+    <input type="button" value="-" id="sub" disabled>
+    <script>
+        let sum = document.querySelector('#sum');
+        let add = document.querySelector('#add');
+        let sub = document.querySelector('#sub');
+        add.addEventListener('click', function () {
+            sum.value++;
+            sub.disabled = false;
+            // 限购 10 件
+            if (sum.value >= 10) {
+                add.disabled = true;
+            }
+        });
+        sub.addEventListener('click', function () {
+            sum.value--;
+            if (sum.value <= 1) {
+                sub.disabled = true;
+            }
+        });
+    </script> -->
+
+    <!-- 2.4 DOM 高阶函数 -->
+    <!-- 使用 function functionname(parameters) { return parameters; } 声明函数。 -->
+    <!-- 使用 function (a, b) {return a * b};                          匿名函数。 -->
+    <!-- 使用 new Function("a", "b", "return a * b");                  构造函数。 -->
+    <!-- 使用 (function () { var x = "Hello World"; })();              自调用函数（立即执行函数）。 -->
+    <!-- 使用 (parameters) => { return x * y; }                        箭头函数。 -->
+    <!-- 使用 function callback() { return '回调函数'; } window.setInterval(callback(), 1000); 回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- 使用 window.addEventListener('click', function () { return '回调函数'; });            回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- 函数定义： -->
+    <!-- JS 使用关键字 function 定义函数。函数可以通过声明定义，也可以是一个表达式。 -->
+    <!-- 【重点】函数声明： -->
+    <!-- function functionName(parameters) { return parameters; } -->
+    <!-- 【重点】调用函数： -->
+    <!-- functionName(40); -->
+    <!-- 函数声明后不会立即执行，会在我们需要的时候调用到。 -->
+    <!-- 普通函数的声明与调用无顺序限制，推荐做法先声明再调用。 -->
+    <!-- 函数表达式必须要先声明再调用。 -->
+    <!-- 【重点】函数表达式： -->
+    <!-- 【高阶函数】可以被简单理解为函数的高级应用，JavaScript 中函数可以被当成【值】来对待，基于这个特性实现函数的高级应用。 -->
+    <!-- 【值】就是 JavaScript 中的数据，如数值、字符串、布尔、对象等等。 -->
+    <!-- var func = function (a, b) {return a * b}; -->
+    <!-- var x = func(4, 3); -->
+    <!-- 以上函数实际上是一个匿名函数（函数没有名称）。 -->
+    <!-- 函数存储在变量中，不需要函数名称，通常通过变量名来调用。 -->
+    <!-- 【重点】回调函数 -->
+    <!-- 如果将函数 A 做为参数传递给函数 B 时，我们称函数 A 为回调函数。 -->
+    <!-- 简单理解：当一个函数当做参数来传递给另外一个函数的时候，这个函数就是回调函数。 -->
+    <!-- function func() { return '被调用的函数既是回调函数'; } -->
+    <!-- window.addEventListener('click', function () { return '被调用的函数既是回调函数'; }); -->
+    <!-- 回调函数： -->
+    <!-- (1).把函数当做另外一个函数的参数传递，这个函数就叫回调函数。 -->
+    <!-- (2).回调函数本质还是函数，只不过把它当成参数使用。 -->
+    <!-- (3).使用匿名函数做为回调函数比较常见。 -->
+    <!-- 构造函数： -->
+    <!-- 在以上实例中，我们了解到函数通过关键字 function 定义。 -->
+    <!-- 函数同样可以通过内置的 JavaScript 函数构造器（Function()）定义。 -->
+    <!-- var func = new Function("a", "b", "return a * b"); -->
+    <!-- var x = func(4, 3); -->
+    <!-- 实际上，你不必使用构造函数。在 JS 中，很多时候，你需要避免使用 new 关键字。上面实例可以写成： -->
+    <!-- var func = function (a, b) {return a * b}; -->
+    <!-- var x = func(4, 3); -->
+    <!-- 注意：在 JavaScript 中，很多时候，你需要避免使用 new 关键字。 -->
+    <!-- 【重点】自调用函数（立即执行函数） -->
+    <!-- 函数表达式可以"自调用"。自调用表达式会自动调用。如果表达式后面紧跟括号()，则会自动调用。不能自调用声明的函数。 -->
+    <!-- 通过添加括号，来说明它是一个函数表达式： -->
+    <!-- (function () { var x = "Hello World"; })(); -->
+    <!-- 以上函数实际上是一个匿名自我调用的函数（没有函数名）。 -->
+    <!-- 【重点】箭头函数： -->
+    <!-- ES6 新增了箭头函数。箭头函数表达式的语法比普通函数表达式更简洁。 -->
+    <!-- (parameters) => { return x * y; } -->
+    <!-- ES5 -->
+    <!-- let x = function(x, y) { return x * y; } -->
+    <!-- ES6 -->
+    <!-- let x = (x, y) => x * y; -->
+    <!-- 有的箭头函数都没有自己的 this。不适合定义一个对象的方法。 -->
+    <!-- 当我们使用箭头函数的时候，箭头函数会默认帮我们绑定外层 this 的值，所以在箭头函数中 this 的值和外层的 this 是一样的。 -->
+    <!-- 箭头函数是不能提升的，所以需要在使用之前定义。 -->
+    <!-- 使用 const 比使用 var 更安全，因为函数表达式始终是一个常量。 -->
+    <!-- 注意：IE-11 及更早 IE 版本不支持箭头函数。 -->
+    <!-- 函数参数： -->
+    <!-- 函数调用： -->
+    <!-- 函数闭包： -->
+
+    <!-- 2.5 DOM 环境对象 -->
+    <!-- 环境对象指的是函数内部特殊的变量 this ，它代表着当前函数运行时所处的环境。 -->
+    <!-- 作用： -->
+    <!-- (1).弄清楚 this 的指向，可以让我们代码更简洁。 -->
+    <!-- (2).函数的调用方式不同，this 指代的对象也不同。 -->
+    <!-- (3).谁调用 this 就是谁是判断 this 指向的粗略规则。 -->
+    <!-- (4).直接调用函数，其实相当于是 window.函数，所以 this 指代 window。 -->
+    <!-- 经典案例：动态显示时间 -->
+    <!-- <style>
+        div {
+            width: 400px;
+            height: 50px;
+            background-color: rgba(150, 150, 150, 0.4);
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+    <div></div>
+    <script>
+        let weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        let div = document.querySelector('div');
+        function getTime() {
+            let date  = new Date();
+            let year  = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day   = date.getDate();
+            let hour  = date.getHours();
+            let min   = date.getMinutes();
+            let sec   = date.getSeconds();
+            let week  = date.getDay();
+            div.innerHTML = `今天是： ${year}年${month}月${day}日 ${hour}:${min}:${sec} ${weeks[week]}`;
+        }
+        window.setInterval(getTime(), 1000);
+    </script> -->
+    <!-- 经典案例：秒杀倒计时 -->
+    <!-- <style>
+        .countdown {
+            width: 240px;
+            height: 305px;
+            text-align: center;
+            line-height: 1;
+            color: #fff;
+            background-color: brown;
+            overflow: hidden;
+        }
+        .countdown .next {
+            font-size: 16px;
+            margin: 25px 0 14px;
+        }
+        .countdown .title {
+            font-size: 33px;
+        }
+        .countdown .tips {
+            margin-top: 80px;
+            font-size: 23px;
+        }
+        .countdown small {
+            font-size: 17px;
+        }
+        .countdown .clock {
+            width: 142px;
+            margin: 18px auto 0;
+            overflow: hidden;
+        }
+        .countdown .clock span,
+        .countdown .clock i {
+            display: block;
+            text-align: center;
+            line-height: 34px;
+            font-size: 23px;
+            float: left;
+        }
+        .countdown .clock span {
+            width: 34px;
+            height: 34px;
+            border-radius: 2px;
+            background-color: #303430;
+        }
+        .countdown .clock i {
+            width: 20px;
+            font-style: normal;
+        }
+    </style>
+    <div class="countdown">
+        <p class="next" id="other"></p>
+        <p class="title">秒杀倒计时</p>
+        <p class="clock">
+            <span id="hour">00</span>
+            <i>:</i>
+            <span id="minutes">25</span>
+            <i>:</i>
+            <span id="scond">20</span>
+        </p>
+    </div>
+    <script>
+        let weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        let other = document.querySelector('#other');
+        function getTime() {
+            let date  = new Date();
+            let year  = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day   = date.getDate();
+            let hour  = date.getHours();
+            hour = hour < 10 ? '0' + hour : hour;
+            let min   = date.getMinutes();
+            min = min < 10 ? '0' + min : min;
+            let sec   = date.getSeconds();
+            sec = sec < 10 ? '0' + sec : sec;
+            let week  = date.getDay();
+            other.innerHTML = `${year}年${month}月${day}日 ${hour}:${min}:${sec} ${weeks[week]}`;
+        }
+        window.setInterval(getTime(), 1000);
+        let hour = document.querySelector('#hour');
+        let minute = document.querySelector('#minutes');
+        let Second = document.querySelector('#scond');
+        function timer() {
+            let last = +new Date('2023-04-24 18:00:00');
+            let now = +new Date();
+            let count = (last - now) / 1000;
+            let h = parseInt(count / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            let m = parseInt(count / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            let s = parseInt(count % 60);
+            s = s < 10 ? '0' + s : s;
+            hour.innerHTML = h;
+            minutes.innerHTML = m;
+            scond.innerHTML = s;
+        }
+        window.setInterval(timer(), 1000);
+    </script> -->
+
+    <!-- 三、DOM 节点操作 -->
+    <!-- 节点概述：DOM 树里每一个内容元素都称之为节点。 -->
+    <!-- 节点类型： -->
+    <!-- 元素节点：所有的标签，比如：html、body、div等等。html是根节点。 -->
+    <!-- 节点属性：所有的属性，比如：href。 -->
+    <!-- 文本节点：所有的文本。 -->
+    <!-- 3.1 查找节点 -->
+    <!-- 父节点查找： -->
+    <!-- element.parentNode             属性。返回最近一级的父节点找不到返回为 null。 -->
+    <!-- 子节点查找： -->
+    <!-- element.childNodes             属性。获得所有子节点，包括文本节点（空格、换行）注释节点等。 -->
+    <!-- element.children               属性。仅获得所有元素节点。返回的还是一个伪数组。 -->
+    <!-- element.nextElementSibling     属性。查找下一个兄弟节点。 -->
+    <!-- element.previousElementSibling 属性。查找上一个兄弟节点。 -->
+    <!-- 3.2 创建节点 -->
+    <!-- 即创造出一个新的网页元素，再添加到网页内，一般先创建节点，然后插入节点。 -->
+    <!-- 创建元素节点方法： -->
+    <!-- document.createElement('elementName') 属性。新建一个新的网页元素，再添加到网页内，一般先创建节点，然后插入节点。 -->
+    <!-- 追加节点： -->
+    <!-- element.appendChild('elementName')    属性。要想在界面看到，还得插入到某个父元素中。插入到父元素的最后一个子元素。 -->
+    <!-- 克隆节点： -->
+    <!-- 特殊情况下，我们新增节点，按照如下操作：复制一个原有的节点，把复制的节点放入到指定的元素内部。 -->
+    <!-- element.cloneNode(boolean);           属性。会克隆出一个跟原标签一样的元素，括号内传入布尔值。若为true，则代表克隆时会包含后代节点一起克隆，若为false，则代表克隆时不包含后代节点，默认false。 -->
+    <!-- 3.3 删除节点 -->
+    <!-- 若一个节点在页面中已不需要时，可以删除它。 -->
+    <!-- 在 JavaScript 原生 DOM 操作中，要删除元素必须通过父元素删除。 -->
+    <!-- element.removeChild('elementName')    属性。如不存在父子关系则删除不成功。 -->
+    <!-- 注意： -->
+    <!-- (1).如不存在父子关系则删除不成功。 -->
+    <!-- (2).删除节点和隐藏节点（display:none） 有区别的： 隐藏节点还是存在的，但是删除，则从html中删除节点。 -->
+    <!-- 经典案例：鼠标跟随的天使 -->
+    <!-- <style>
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <img src="./images/tianshi.gif" alt="">
+    <script>
+        // 1.获取元素
+        let img = document.querySelector('img');
+        // 2.注册事件（Element.mousemove 在元素上方移动定点设备（通常是鼠标）时激发。）
+        window.document.addEventListener('mousemove', function (MouseEvent) {
+            // Touch.pageX      触点相对于 HTML 文档左边缘的 X 坐标。
+            // MouseEvent.pageX 鼠标指针相对于整个文档的 X 坐标。
+            img.style.left = MouseEvent.pageX - 50 + 'px';
+            // Touch.pageY      触点相对于 HTML 文档上边缘的 Y 坐标。
+            // MouseEvent.pageY 鼠标指针相对于整个文档的 Y 坐标。
+            img.style.top  = MouseEvent.pageY - 40 + 'px';
+        });
+    </script> -->
+    <!-- 经典案例：动态创建表格 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #721c24;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+        table {
+            margin: 0 auto;
+            width: 800px;
+            border-collapse: collapse;
+            color: #004085;
+        }
+        th {
+            padding: 10px;
+            background: #cfe5ff;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        td,
+        th {
+            border: 1px solid #b8daff;
+        }
+        td {
+            padding: 10px;
+            color: #666;
+            text-align: center;
+            font-size: 16px;
+        }
+        tbody tr {
+            background: #fff;
+        }
+        tbody tr:hover {
+            background: #e1ecf8;
+        }
+        .info {
+            width: 900px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .info input {
+            width: 80px;
+            height: 25px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #b8daff;
+            padding-left: 5px;
+        }
+        .info button {
+            width: 60px;
+            height: 25px;
+            background-color: #004085;
+            outline: none;
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .info .age {
+            width: 50px;
+        }
+    </style>
+    <h1>新增职员</h1>
+    <div class="info">
+        姓名：
+        <input type="text" class="uname">
+        年龄：
+        <input type="text" class="age">
+        性别：
+        <select name="gender" id="" class="gender">
+            <option value="男">男士</option>
+            <option value="女">女士</option>
+        </select>
+        薪资：
+        <input type="text" class="salary">
+        就业城市：
+        <select name="city" id="" class="city">
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+            <option value="曹县">曹县</option>
+        </select>
+        <button class="add">新增</button>
+    </div>
+    <h1>职员信息表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>工号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>薪资</th>
+                <th>工作城市</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        let array = [
+            { stuId: 1001, uname: '欧阳霸天', age: 19, gender: '男', salary: '20000', city: '上海' },
+            { stuId: 1002, uname: '令狐霸天', age: 29, gender: '男', salary: '30000', city: '北京' },
+            { stuId: 1003, uname: '诸葛霸天', age: 39, gender: '男', salary: '25000', city: '深圳' },
+        ];
+        let tbody = document.querySelector('tbody');
+        let add = document.querySelector('.add');
+        let uname = document.querySelector('.uname');
+        let age = document.querySelector('.age');
+        let gender = document.querySelector('.gender');
+        let salary = document.querySelector('.salary');
+        let city = document.querySelector('.city');
+        function render() {
+            tbody.innerHTML = '';
+            for (let i = 0; i < array.length; i++) {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${array[i].stuId}</td>
+                    <td>${array[i].uname}</td>
+                    <td>${array[i].age}</td>
+                    <td>${array[i].gender}</td>
+                    <td>${array[i].salary}</td>
+                    <td>${array[i].city}</td>
+                    <td><a href="javascript:" id="${i}">删除</a></td>
+                `;
+                tbody.appendChild(tr);
+            }
+        }
+        render();
+        add.addEventListener('click', function () {
+            array.push({
+                 stuId: array[array.length - 1].stuId + 1,
+                 uname: uname.value,
+                   age: age.value,
+                gender: gender.value,
+                salary: salary.value,
+                  city: city.value
+            });
+            render();
+            uname.value = age.value = salary.value = '';
+            gender.value = '男';
+            city.value = '北京';
+        });
+        tbody.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                array.splice(e.target.id, 1);
+                render();
+            }
+        });
+    </script> -->
+    <!-- 经典案例：微博留言 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .w {
+            width: 900px;
+            margin: 0 auto;
+        }
+        .controls textarea {
+            width: 878px;
+            height: 100px;
+            resize: none;
+            border-radius: 10px;
+            outline: none;
+            padding-left: 20px;
+            padding-top: 10px;
+            font-size: 18px;
+        }
+        .controls {
+            overflow: hidden;
+        }
+        .controls div {
+            float: right;
+        }
+        .controls div span {
+            color: #666;
+        }
+        .controls div .useCount {
+            color: red;
+        }
+        .controls div button {
+            width: 100px;
+            outline: none;
+            border: none;
+            background: rgb(0, 132, 255);
+            height: 30px;
+            cursor: pointer;
+            color: #fff;
+            font: bold 14px '宋体';
+            transition: all 0.5s;
+        }
+        .controls div button:hover {
+            background: rgb(0, 225, 255);
+        }
+        .controls div button:disabled {
+            background: rgba(0, 225, 255, 0.5);
+        }
+        .contentList {
+            margin-top: 50px;
+        }
+        .contentList li {
+            padding: 20px 0;
+            border-bottom: 1px dashed #ccc;
+            position: relative;
+        }
+        .contentList li .info {
+            position: relative;
+        }
+        .contentList li .info span {
+            position: absolute;
+            top: 15px;
+            left: 100px;
+            font: bold 16px '宋体';
+        }
+        .contentList li .info p {
+            position: absolute;
+            top: 40px;
+            left: 100px;
+            color: #aaa;
+            font-size: 12px;
+        }
+        .contentList img {
+            width: 80px;
+            border-radius: 50%;
+        }
+        .contentList li .content {
+            padding-left: 100px;
+            color: #666;
+            word-break: break-all;
+        }
+        .contentList li .the_del {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
+    <div class="w">
+        <div class="controls">
+            <img src="./images/9.6/tip.png" alt="" />
+            <br />
+            <textarea placeholder="说点什么吧..." id="area" cols="30" rows="10" maxlength="200"></textarea>
+            <div>
+                <span class="useCount" id="useCount">0</span>
+                <span>/</span>
+                <span>200</span>
+                <button id="send">发布</button>
+            </div>
+        </div>
+        <div class="contentList">
+            <ul id="list"></ul>
+        </div>
+    </div>
+    <li hidden>
+        <div class="info">
+            <img class="userpic" src="./images/9.6/03.jpg" />
+            <span class="username">死数据:百里守约</span>
+            <p class="send-time">死数据:发布于 2020年12月05日 00:07:54</p>
+        </div>
+        <div class="content">死数据:111</div>
+        <span class="the_del">X</span>
+    </li>
+    <script>
+        let array = [
+            { uname: '司马懿', imgSrc: './images/9.5/01.jpg' },
+            { uname: '女娲', imgSrc: './images/9.5/02.jpg' },
+            { uname: '百里守约', imgSrc: './images/9.5/03.jpg' },
+            { uname: '亚瑟', imgSrc: './images/9.5/04.jpg' },
+            { uname: '虞姬', imgSrc: './images/9.5/05.jpg' },
+            { uname: '张良', imgSrc: './images/9.5/06.jpg' },
+            { uname: '安其拉', imgSrc: './images/9.5/07.jpg' },
+            { uname: '李白', imgSrc: './images/9.5/08.jpg' },
+            { uname: '阿珂', imgSrc: './images/9.5/09.jpg' },
+            { uname: '墨子', imgSrc: './images/9.5/10.jpg' },
+            { uname: '鲁班', imgSrc: './images/9.5/11.jpg' },
+            { uname: '嬴政', imgSrc: './images/9.5/12.jpg' },
+            { uname: '孙膑', imgSrc: './images/9.5/13.jpg' },
+            { uname: '周瑜', imgSrc: './images/9.5/14.jpg' },
+            { uname: '老夫子', imgSrc: './images/9.5/15.jpg' },
+            { uname: '狄仁杰', imgSrc: './images/9.5/16.jpg' },
+            { uname: '扁鹊', imgSrc: './images/9.5/17.jpg' },
+            { uname: '马可波罗', imgSrc: './images/9.5/18.jpg' },
+            { uname: '露娜', imgSrc: './images/9.5/19.jpg' },
+            { uname: '孙悟空', imgSrc: './images/9.5/20.jpg' },
+            { uname: '黄忠', imgSrc: './images/9.5/21.jpg' },
+            { uname: '百里玄策', imgSrc: './images/9.5/22.jpg' },
+        ];
+        let textarea = document.querySelector('textarea');
+        let useCount = document.querySelector('.useCount');
+        let send = document.querySelector('#send');
+        let ul = document.querySelector('#list');
+        textarea.addEventListener('input', function () {
+            useCount.innerHTML = this.value.length;
+        });
+        send.addEventListener('click', function () {
+            let currentDateString = new Date().toLocaleString();
+            if (textarea.value.trim() === '') {
+                textarea.value = '';
+                useCount.innerHTML = 0;
+                return alert('内容不能为空');
+            }
+            function getRandom(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            let random = getRandom(0, array.length - 1);
+            let li = document.createElement('li');
+            li.innerHTML = `
+                <div class="info">
+                    <img class="userpic" src=${array[random].imgSrc}>
+                    <span class="username">${array[random].uname}</span>
+                    <p class="send-time">${currentDateString}</p>
+                </div>
+                <div class="content">${textarea.value}</div>
+                <span class="the_del">x</span>
+            `;
+            let del = li.querySelector('.the_del');
+            del.addEventListener('click', function () {
+                ul.removeChild(li);
+            });
+            ul.insertBefore(li, ul.children[0]);
+            textarea.value = '';
+            useCount.innerHTML = 0;
+        });
+        textarea.addEventListener('keyup', function (e) {
+            if (e.key === 'Enter') {
+                send.click();
+            }
+        });
+    </script> -->
+
+    <!-- 3.4 节点大小和位置 -->
+    <!-- ★★★ scroll 系列 ★★★ -->
+    <!-- 使用场景：我们想要页面滚动一段距离，比如 100px像素，就让某些元素显示隐藏，那我们怎么知道，页面滚动了 100px像素呢？ -->
+    <!-- 获取滚动（Scroll 系列）宽高： -->
+    <!-- 检测元素的内容宽度与高度（内容的真实大小（不包含滚动条和却包含超出的部分）），返回值不带单位。 -->
+    <!-- 【scroll】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，但包含真实区域），返回值不带单位） -->
+    <!-- 【offset】检测元素的内容宽高（检测元素的内容宽高（会包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 【client】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- scrollWidth 和 scrollHeight -->
+    <!-- 获取滚动（Scroll 系列）位置:  -->
+    <!-- 检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop和被卷去的左侧scrollLeft），返回值不带单位。 -->
+    <!-- scrollLeft 和 scrollTop -->
+    <!-- 这两个属性是可以修改的。 -->
+    <!-- Element.scrollWidth   返回类型为：Number，表示元素的滚动视图宽度。 -->
+    <!-- Element.scrollHeight  返回类型为：Number，表示元素的滚动视图高度。 -->
+    <!-- Element.scrollLeft    返回类型为：Number，表示该元素横向滚动条距离最左的位移。 -->
+    <!-- Element.scrollTop     返回类型为：Number，表示该元素纵向滚动条距离。 -->
+    <!-- Element.scrollLeftMax 返回类型为：Number，表示该元素横向滚动条可移动的最大值。 -->
+    <!-- Element.scrollTopMax  返回类型为：Number，表示该元素纵向滚动条可移动的最大值。 -->
+    <!-- 样例：检测元素的内容宽高和检测元素的滚动位置 -->
+    <!-- <style>
+        div {
+            width: 400px;
+            height: 100px;
+            background-color: skyblue;
+            overflow: auto;
+        }
+    </style>
+    <div>
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        // 检测元素的内容宽高（检测元素的内容宽高（不包含滚动条），返回值不带单位）
+        console.log('检测元素的内容宽度（返回值不带单位）：' + div.scrollWidth);
+        console.log('检测元素的内容高度（返回值不带单位）：' + div.scrollHeight);
+        // 提示：当div块级里面的内容超出以后，使用overflow:auto自动隐藏以后需要滚动显示的内容。
+        // 检测元素的滚动位置（检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop和被卷去的左侧scrollLeft），返回值不带单位）
+        div.addEventListener('scroll', function () {
+            console.log('检测元素的左右滚动宽度：' + this.scrollLeft);
+            console.log('检测元素的上下滚动高度：' + this.scrollTop);
+        });
+    </script> -->
+    <!-- 样例：检测页面滚动的距离 -->
+    <!-- <style>
+        body {
+            width: 3000px;
+            height: 3000px;
+        }
+    </style>
+    <div></div>
+    <script>
+        // 获取位置（检测元素的滚动位置）
+        window.document.addEventListener('scroll', function () {
+            console.log('检测页面X轴滚动的位置：' + document.documentElement.scrollLeft);
+            console.log('检测页面Y轴滚动的位置：' + document.documentElement.scrollTop);
+        });
+    </script> -->
+    <!-- ★★★ offset 系列 ★★★ -->
+    <!-- 使用场景：简单说，就是通过 JS 方式，得到元素在页面中的位置这样我们可以做，页面滚动到这个位置，就可以返回顶部的小盒子显示。 -->
+    <!-- 获取大小（Offset 系列）宽高： -->
+    <!-- 检测元素的内容宽度与高度（元素的真实大小（会包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 【scroll】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，但包含真实区域），返回值不带单位） -->
+    <!-- 【offset】检测元素的内容宽高（检测元素的内容宽高（会包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 【client】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- offsetWidth 和 offsetHeight -->
+    <!-- 获取大小（Offset 系列）位置： -->
+    <!-- 检测元素相对于父级元素的左右和上下偏移量位置，返回值不带单位。 -->
+    <!-- offsetLeft 和 offsetTop -->
+    <!-- element.offsetHeight 返回任何一个元素的高度包括边框（border）和内边距（padding），但不包含外边距（margin）。 -->
+    <!-- element.offsetWidth  返回元素的宽度，包括边框（border）和内边距（padding），但不包含外边距（margin）。 -->
+    <!-- element.offsetLeft   返回当前元素的相对水平偏移位置的偏移容器。 -->
+    <!-- element.offsetParent 返回元素的偏移容器。 -->
+    <!-- element.offsetTop    返回当前元素的相对垂直偏移位置的偏移容器。 -->
+    <!-- 样例：检测元素的内容宽高和检测元素的滚动位置 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin-top: 200px;
+            margin-left: 80px;
+            width: 400px;
+            height: 100px;
+            background-color: skyblue;
+            overflow: auto;
+        }
+    </style>
+    <div>
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        // 检测元素的内容宽高（检测元素的内容宽高（不包含滚动条），返回值不带单位）
+        console.log('检测元素的内容宽度（返回值不带单位）：' + div.scrollWidth);
+        console.log('检测元素的内容高度（返回值不带单位）：' + div.scrollHeight);
+        // 检测元素的内容宽高（检测元素的内容宽高（会包含滚动条），返回值不带单位）
+        console.log('检测元素的内容宽度（返回值不带单位）：' + div.offsetWidth);
+        console.log('检测元素的内容高度（返回值不带单位）：' + div.offsetHeight);
+        // 提示：当div块级里面的内容超出以后，使用overflow:auto自动隐藏以后需要滚动显示的内容。
+        // 检测元素的滚动位置（检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop和被卷去的左侧scrollLeft），返回值不带单位）
+        div.addEventListener('scroll', function () {
+            console.log('检测元素的左右滚动宽度：' + this.scrollLeft);
+            console.log('检测元素的上下滚动高度：' + this.scrollTop);
+        });
+        // 检测元素的偏移量位置（检测元素相对于父级元素的左右和上下偏移量位置，返回值不带单位）
+        console.log('相对于父级元素文档X轴的偏移量：' + div.offsetLeft);
+        console.log('相对于父级元素文档Y轴的偏移量：' + div.offsetTop);
+    </script> -->
+    <!-- ★★★ client 系列 ★★★ -->
+    <!-- 使用场景： -->
+    <!-- 获取位置（Client 系列）宽高： -->
+    <!-- 检测元素的内容宽度与高度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 【scroll】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，但包含真实区域），返回值不带单位） -->
+    <!-- 【offset】检测元素的内容宽高（检测元素的内容宽高（会包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 【client】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- clientWidth 和 clientHeight -->
+    <!-- 获取位置（Client 系列）位置： -->
+    <!-- 获取左边框和上边框宽度。 -->
+    <!-- clientLeft  和 clientTop -->
+    <!-- Element.clientHeight 只读，返回 Number 表示内部相对于外层元素的高度。 -->
+    <!-- Element.clientLeft   只读，返回 Number 表示该元素距离它左边界的宽度。 -->
+    <!-- Element.clientTop    只读，返回 Number 表示该元素距离它上边界的高度。 -->
+    <!-- Element.clientWidth  只读，返回 Number 表示该元素内部的宽度。 -->
+    <!-- 样例：检测元素的内容宽度与高度（可见的区域大小） -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 3000px;
+            height: 3000px;
+        }
+        div {
+            margin-top: 200px;
+            margin-left: 80px;
+            width: 400px;
+            height: 100px;
+            background-color: skyblue;
+            overflow: auto;
+        }
+    </style>
+    <div>
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+        Client 系列不包含边框。Offset 系列会包含边框。
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        // 检测元素的内容宽度与高度（内容的真实大小（不包含滚动条和却包含超出的部分）），返回值不带单位。
+        console.log('scroll检测元素的内容宽度（返回值不带单位）：' + div.scrollWidth);
+        console.log('scroll检测元素的内容高度（返回值不带单位）：' + div.scrollHeight);
+        // 检测元素的内容宽度与高度（元素的真实大小（会包含滚动条和不包含超出的部分）），返回值不带单位。
+        console.log('offset检测元素的内容宽度（返回值不带单位）：' + div.offsetWidth);
+        console.log('offset检测元素的内容高度（返回值不带单位）：' + div.offsetHeight);
+        // 检测元素的内容宽度与高度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。
+        console.log('client检测元素的内容宽度（返回值不带单位）：' + div.clientWidth);
+        console.log('client检测元素的内容高度（返回值不带单位）：' + div.clientHeight);
+        // 提示：当div块级里面的内容超出以后，使用overflow:auto自动隐藏以后需要滚动显示的内容。
+        // 检测元素的滚动位置（检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop和被卷去的左侧scrollLeft），返回值不带单位），会需要配合事件（scroll）
+        div.addEventListener('scroll', function () {
+            console.log('检测元素的左右滚动宽度：' + this.scrollLeft);
+            console.log('检测元素的上下滚动高度：' + this.scrollTop);
+        });
+        // 检测元素偏移量位置（检测元素相对于父级元素的左右和上下偏移量位置，返回值不带单位），不需要配合事件
+        console.log('相对于父级元素文档X轴的偏移量：' + div.offsetLeft);
+        console.log('相对于父级元素文档Y轴的偏移量：' + div.offsetTop);
+        // 检测元素的边框大小（就是个边框，毛用都没有），不需要配合事件
+        console.log('检测元素的可视区域到边的边框大小：' + div.clientLeft);
+        console.log('检测元素的可视区域到边的边框大小：' + div.clientTop);
+    </script> -->
+    <!-- 样例：scroll 窗口滚动的距离(scrollTop) + offset 元素偏移量位置(offsetTop) + client 窗口缩放的距离(clientWidth) -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 3000px;
+            height: 3000px;
+            background-color: aliceblue;
+        }
+        div {
+            position: fixed;
+            top: 600px;
+            width: 100px;
+            height: 22px;
+            line-height: 22px;
+            background-color: rgba(25, 25, 25, 0.5);
+            text-align: center;
+        }
+    </style>
+    <div>就是这里</div>
+    <script>
+        let div = document.querySelector('div');
+        // 检测窗口的滚动位置（检测窗口左右或者上下滚动的距离），会需要配合事件（scroll）
+        window.addEventListener('scroll', function () {
+            let target = div.offsetTop;
+            if (document.documentElement.scrollTop >= target) {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+            }
+        });
+        let body = document.querySelector('body');
+        // 检测窗口的大小位置（检测窗口左右或者上下缩放的大小），会需要配合事件（resize）
+        window.addEventListener('resize', function () {
+            if (document.documentElement.clientWidth >= 1366) {
+                body.style.backgroundColor = 'burlywood';
+            } else if (document.documentElement.clientWidth >= 1200) {
+                body.style.backgroundColor = 'cadetblue';
+            } else if (document.documentElement.clientWidth >= 800) {
+                body.style.backgroundColor = 'chocolate';
+            } else {
+                body.style.backgroundColor = 'darkgreen';
+            }
+        });
+    </script> -->
+    <!-- 经典案例：页面滚动事件 -->
+    <!-- <style>
+        body {
+            width: auto;
+            height: 3000px;
+        }
+        div {
+            margin: 12px;
+            padding: 3px;
+            border: 4px solid black;
+            width: 800px;
+            height: 80px;
+            background-color: cadetblue;
+        }
+    </style>
+    <div>x</div>
+    <script>
+        let div = document.querySelector('div');
+        // 加载事件（单次）
+        window.addEventListener('load', function () {
+            console.log('窗口加载事件');
+        })
+        // 滚动事件（不断滚动视窗触发）
+        window.addEventListener('scroll', function () {
+            console.log('得到从上到下滚动高度：' + document.documentElement.scrollTop);
+        });
+        console.log('----------------------------');
+        console.log(div.scrollWidth);  // 包含内边距Padding
+        console.log(div.scrollHeight); // 包含内边距Padding
+        console.log(div.scrollLeft);
+        console.log(div.scrollTop);
+        console.log('----------------------------');
+        console.log(div.offsetWidth);  // 包含内边距Padding，包含边框Border
+        console.log(div.offsetHeight); // 包含内边距Padding，包含边框Border
+        console.log(div.offsetLeft);   // 包含外边距Margin（默认8px像素）
+        console.log(div.offsetTop);    // 包含外边距Margin（默认8px像素）
+        console.log('----------------------------');
+        console.log(div.clientWidth);  // 包含内边距Padding
+        console.log(div.clientHeight); // 包含内边距Padding
+        console.log(div.clientLeft);   // 包含边框Border，包含边框Border
+        console.log(div.clientTop);    // 包含边框Border，包含边框Border
+    </script> -->
+    <!-- 经典实例：电梯导航（利用顶部到元素自己的距离offetTop赋值给顶部滚动距离scrollTop） -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 3000px;
+        }
+        .aside {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .item {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .current {
+            background-color: rgba(150, 150, 150, 0.8);
+            color: #fff;
+        }
+        .content {
+            width: 660px;
+            margin-left: 117px;
+            margin-top: 200px;
+        }
+        .navigate {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .content1 {
+            height: 300px;
+            background-color: burlywood;
+        }
+        .content2 {
+            height: 600px;
+            background-color: cadetblue;
+        }
+        .content3 {
+            height: 800px;
+            background-color: chocolate;
+        }
+        .content4 {
+            height: 1366px;
+            background-color: darkgreen;
+        }
+    </style>
+    <div class="aside">
+        <div class="item current">电子产品系列</div>
+        <div class="item">家具电器系列</div>
+        <div class="item">服装针织产品</div>
+        <div class="item">成人电影系列</div>
+    </div>
+    <div class="content">
+        <div class="navigate content1">电子产品系列</div>
+        <div class="navigate content2">家具电器系列</div>
+        <div class="navigate content3">服装针织产品</div>
+        <div class="navigate content4">成人电影系列</div>
+    </div>
+    <script>
+        // 1.获取元素（所有电梯导航列表items）
+        let items = document.querySelectorAll('.item');
+        // 1.获取元素（所有导航模块列表navigate）
+        let navigates = document.querySelectorAll('.navigate');
+        for (let i = 0; i < items.length; i++) {
+            // 2.注册事件（点击监听事件）
+            items[i].addEventListener('click', function () {
+                // 删除当前的类名
+                document.querySelector('.aside .current').classList.remove('current');
+                // 此次的添加类名
+                this.classList.add('current');
+                // 设置导航模块滚动顶部距离scrolltop等于顶部到元素自己距离offsetTop
+                document.documentElement.scrollTop = navigates[i].offsetTop;
+            });
+        }
+    </script> -->
+    <!-- 经典案例：调整窗口大小显示或隐藏相关内容 -->
+    <!-- <script>
+        // 当窗口变化的时候触发的事件
+        window.addEventListener('resize', function () {
+            let w = document.documentElement.clientWidth;
+            if (w >= 1366) {
+                document.body.style.backgroundColor = 'burlywood';
+            } else if (w >= 1200) {
+                document.body.style.backgroundColor = 'cadetblue';
+            } else if (w >= 800) {
+                document.body.style.backgroundColor = 'chocolate';
+            } else {
+                document.body.style.backgroundColor = 'darkgreen';
+            }
+        });
+    </script> -->
+    <!-- 经典案例：京东固定头部 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .content {
+            overflow: hidden;
+            width: 100%;
+            height: 3000px;
+            margin: 0 auto;
+        }
+        .header {
+            position: fixed;
+            top: -80px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: cadetblue;
+            text-align: center;
+            color: #fff;
+            line-height: 80px;
+            font-size: 30px;
+            transition: all .3s;
+        }
+        #target {
+            margin-top: 600px;
+            width: 100%;
+            height: 22px;
+            line-height: 22px;
+            background-color: rgba(25, 25, 25, 0.8);
+            text-align: center;
+            color: white;
+        }
+        .backtop {
+            display: none;
+            width: 50px;
+            left: 50%;
+            margin: 0 0 0 505px;
+            position: fixed;
+            bottom: 60px;
+            z-index: 100;
+            background-color: cadetblue;
+        }
+        .backtop a {
+            height: 50px;
+            width: 50px;
+            background-color: darkgreen;
+            opacity: 0.35;
+            overflow: hidden;
+            display: block;
+            text-indent: -999em;
+            cursor: pointer;
+        }
+    </style>
+    <div class="header">我是顶部导航栏</div>
+    <div class="content">
+        <div id="target">当页面滚动到此区域则显示头部导航</div>
+    </div>
+    <div class="backtop">
+        <img src="./images/close2.png" alt="">
+        <a href="javascript:;"></a>
+    </div>
+    <script>
+        // 1.获取元素（此元素从文档顶部到元素自己的距离是 target.offsetTop=600px 像素）
+        let target = document.querySelector('#target');
+        let header = document.querySelector('.header');
+        // 2.注册事件（窗口滚动事件）
+        window.addEventListener('scroll', function () {
+            // 当文档元素对象滚动顶部距离 doc.scrollTop 达到和目标元素顶部到自己距离 target.offsetTop 值时执行
+            if (document.documentElement.scrollTop >= target.offsetTop) {
+                header.style.top = '0';
+                header.innerHTML = '从上往下滚动 ' + target.offsetTop + 'px 像素显示这个顶部导航';
+                document.querySelector('.backtop').style.display = 'block';
+            } else {
+                // 让它负方向去显示吧，反正看不到
+                header.style.top = '-80px';
+                document.querySelector('.backtop').style.display = 'none';
+            }
+        });
+        // 2.注册事件（点击返回顶部块级区域）
+        document.querySelector('.backtop').children[1].addEventListener('click', function () {
+            document.documentElement.scrollTop = 0;
+        });
+    </script> -->
+    <!-- 经典案例：返回顶部按钮 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .item {
+            margin: 0 auto;
+            width: 800px;
+            height: 800px;
+        }
+        .backtop {
+            display: none;
+            width: 50px;
+            left: 50%;
+            margin: 0 0 0 505px;
+            position: fixed;
+            bottom: 60px;
+            z-index: 100;
+            background-color: cadetblue;
+        }
+        .backtop a {
+            height: 50px;
+            width: 50px;
+            background-color: darkgreen;
+            opacity: 0.35;
+            overflow: hidden;
+            display: block;
+            text-indent: -999em;
+            cursor: pointer;
+        }
+    </style>
+    <div class="item" style="background-color: burlywood;">第一块级区域</div><br>
+    <div class="item" style="background-color: cadetblue;">第二块级区域</div><br>
+    <div class="item" style="background-color: chocolate;">第三块级区域</div><br>
+    <div class="item" style="background-color: darkgreen;">第四块级区域</div>
+    <div class="backtop">
+        <img src="./images/close2.png" alt="">
+        <a href="javascript:;"></a>
+    </div>
+    <script>
+        // 1.获取元素
+        let backtop = document.querySelector('.backtop');
+        // 2.注册事件（页面滚动事件：滚动60px像素显示或者隐藏）
+        window.addEventListener('scroll', function () {
+            let move = document.documentElement.scrollTop;
+            if (move >= 600) {
+                backtop.style.display = 'block';
+            } else {
+                backtop.style.display = 'none';
+            }
+        });
+        // 2.注册事件（点击 backtop 块级中[0]元素或者[1]元素随便指定返回顶部 doc.scrollTop=0 即可
+        backtop.children[1].addEventListener('click', function () {
+            document.documentElement.scrollTop = 0;
+        });
+    </script> -->
+    <!-- 经典案例：轮播图 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        .main {
+            width: 700px;
+            margin: auto;
+            background: #000;
+        }
+        .slides {
+            height: 320px;
+            position: relative;
+        }
+        .slides ul li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: all .3s;
+        }
+        .slides li.active {
+            opacity: 1;
+        }
+        .slides .extra {
+            width: 700px;
+            height: 53px;
+            line-height: 53px;
+            position: absolute;
+            bottom: 0px;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+        .slides .extra h3 {
+            width: 82%;
+            margin: 0;
+            margin-right: 20px;
+            padding-left: 20px;
+            color: #98E404;
+            font-size: 28px;
+            float: left;
+            font-weight: 500;
+            font-family: "Microsoft Yahei", Tahoma, Geneva;
+        }
+        .slides .extra a {
+            width: 30px;
+            height: 29px;
+            display: block;
+            float: left;
+            margin-top: 12px;
+            margin-right: 3px;
+            background-image: url(./assets/icon_focus_switch.png);
+        }
+        .slides .extra .prev {
+            background-position: 0 0;
+        }
+        .slides .extra .prev:hover {
+            background-position: -30px 0;
+        }
+        .slides .extra .next {
+            background-position: -60px 0;
+        }
+        .slides .extra .next:hover {
+            background-position: -90px 0;
+        }
+        .indicator {
+            padding: 10px 0;
+        }
+        .indicator ul {
+            list-style-type: none;
+            margin: 0 0 0 4px;
+            padding: 0;
+            overflow: hidden;
+        }
+        .indicator ul li {
+            position: relative;
+            float: left;
+            width: 60px;
+            margin: 0 4px 0 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .indicator li img {
+            display: block;
+            border: 0;
+            text-align: center;
+            width: 60px;
+        }
+        .indicator li .mask {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .indicator li .border {
+            display: none;
+            width: 54px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 20;
+            border: 3px solid #98E404;
+        }
+        .indicator .active .mask {
+            display: none;
+        }
+        .indicator .active .border {
+            display: block;
+        }
+    </style>
+    <div class="main">
+        <div class="slides">
+            <ul>
+                <li class="active"><a href="#"><img src="./assets/b_01.jpg" alt="第1张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_02.jpg" alt="第2张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_03.jpg" alt="第3张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_04.jpg" alt="第4张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_05.jpg" alt="第5张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_06.jpg" alt="第6张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_07.jpg" alt="第7张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_08.jpg" alt="第8张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_09.jpg" alt="第9张图的描述信息"></a></li>
+                <li><a href="#"><img src="./assets/b_10.jpg" alt="第9张图的描述信息"></a></li>
+            </ul>
+            <div class="extra">
+                <h3>第1张图的描述信息</h3>
+                <a class="prev" href="javascript:;"></a>
+                <a class="next" href="javascript:;"></a>
+            </div>
+        </div>
+        <div class="indicator">
+            <ul>
+                <li class="active">
+                    <img src="./assets/s_01.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_02.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_03.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_04.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_05.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_06.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_07.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_08.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_09.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+                <li>
+                    <img src="./assets/s_10.jpg">
+                    <span class="mask"></span>
+                    <span class="border"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('.indicator li');
+        let piclis = document.querySelectorAll('.slides ul li');
+        let text = document.querySelector('.extra h3');
+        let next = document.querySelector('.next');
+        let prev = document.querySelector('.prev');
+        let main = document.querySelector('.main');
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].addEventListener('mouseenter', function () {
+                document.querySelector('.indicator .active').classList.remove('active');
+                this.classList.add('active');
+                document.querySelector('.slides ul .active').classList.remove('active');
+                piclis[i].classList.add('active');
+                text.innerHTML = `第${i + 1}张图的描述信息`;
+                index = i;
+            });
+        }
+        next.addEventListener('click', function () {
+            index++;
+            index = index % lis.length;
+            common();
+
+        });
+        prev.addEventListener('click', function () {
+            index--;
+            if (index < 0) {
+                index = lis.length - 1;
+            }
+            common();
+        });
+        function common() {
+            document.querySelector('.indicator .active').classList.remove('active');
+            lis[index].classList.add('active');
+            document.querySelector('.slides ul .active').classList.remove('active');
+            piclis[index].classList.add('active');
+            text.innerHTML = `第${index + 1}张图的描述信息`;
+        }
+        let timer = setInterval(function () {
+            next.click();
+        }, 1000);
+        main.addEventListener('mouseenter', function () {
+            clearInterval(timer);
+        });
+        main.addEventListener('mouseleave', function () {
+            timer = setInterval(function () {
+                next.click();
+            }, 1000);
+        });
+    </script> -->
+    <!-- 经典案例：手风琴 -->
+    <!-- <style>
+        ul {
+            list-style: none;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #accordion {
+            width: 1226px;
+            height: 460px;
+            margin: 50px auto;
+            background-color: burlywood;
+            overflow: hidden;
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+            transition: all 500ms;
+        }
+        div ul {
+            width: 1200px;
+        }
+    </style>
+    <div id="accordion">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="./images/1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/2.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/3.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/4.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/5.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // 1.获取元素（查询所有li元素集合）
+        let list = document.querySelectorAll('li');
+        window.addEventListener('load', function () {
+            for (let index = 0; index < list.length; index++) {
+                list[index].style.width = '100px';                
+            }
+            list[0].style.width = '800px';
+        });
+        for (let i = 0; i < list.length; i++) {
+            // 2.注册事件（鼠标移入事件）
+            list[i].addEventListener('mouseenter', function () {
+                for (let j = 0; j < list.length; j++) {
+                    // 排他思想去掉全部修改样式
+                    list[j].style.width = '100px';
+                }
+                // 排他思想保留自己
+                this.style.width = '800px';
+            });
+            // 2.注册事件（鼠标移开事件）
+            list[i].addEventListener('mouseleave', function () {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].style.width = '100px';
+                }
+                list[0].style.width = '800px';
+            });
+        }
+    </script> -->
+    <!-- 总结： -->
+    <!-- 获取滚动（Scroll 系列）宽高：scrollWidth&scrollHeight -->
+    <!-- 检测元素的内容宽度与高度（内容的真实大小（不包含滚动条和却包含超出的部分）），返回值不带单位。 -->
+    <!-- 【scroll】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，但包含真实区域），返回值不带单位） -->
+    <!-- 【offset】检测元素的内容宽高（检测元素的内容宽高（会包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 【client】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- ★★★获取滚动的位置★★★:scrollLeft&scrollTop  -->
+    <!-- 检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop和被卷去的左侧scrollLeft），返回值不带单位。 -->
+    <!-- 获取大小（Offset 系列）宽高：offsetWidth&offsetHeight -->
+    <!-- 检测元素的内容宽度与高度（元素的真实大小（会包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 【scroll】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，但包含真实区域），返回值不带单位） -->
+    <!-- 【offset】检测元素的内容宽高（检测元素的内容宽高（会包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 【client】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- ★★★获取偏移量位置★★★：offsetLeft&offsetTop -->
+    <!-- 检测元素相对于父级元素的左右和上下偏移量位置，返回值不带单位。 -->
+    <!-- ★★★获取可视区大小★★★：clientWidth&clientHeight -->
+    <!-- 检测元素的内容宽度与高度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 【scroll】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，但包含真实区域），返回值不带单位） -->
+    <!-- 【offset】检测元素的内容宽高（检测元素的内容宽高（会包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 【client】检测元素的内容宽高（检测元素的内容宽高（不包含滚动条，不包含真实区域），返回值不带单位） -->
+    <!-- 获取位置（Client 系列）位置：clientLeft&clientTop -->
+    <!-- 检测元素相对于边框之外中间的边框大小，获取左边框和上边框宽度。 -->
+    <!-- Document Object Model - Window 对象 -->
+    <!-- Document Object Model - Window -> 事件 -->
+    <!-- Properties                        Description -->
+    <!-- Window.load                       事件在整个页面及所有依赖资源如样式表和图片都已完成加载时触发。该事件不可取消，也不会冒泡。 -->
+    <!-- Document Object Model - Document 对象 -->
+    <!-- Document Object Model - Document -> 事件 -->
+    <!-- Document.scroll                   在滚动文档视图或元素时触发。 -->
+    <!-- Document Object Model - HTMLElement extends Element 对象 -->
+    <!-- Document Object Model - HTMLElement -> 属性 -->
+    <!-- Element.offsetWidth               元素自身可视宽度加上左右 border 的宽度。 -->
+    <!-- Element.offsetHeight              元素自身可视高度加上上下 border 的宽度。 -->
+    <!-- Element.offsetLeft                元素自己 border 左边距离父元素 border 左边或者 body 元素 border 左边的距离。 -->
+    <!-- Element.offsetTop                 元素自己 border 顶部距离父元素顶部或者 body 元素 border 顶部的距离。 -->
+    <!-- Document Object Model - Element 对象 -->
+    <!-- Document Object Model - Element -> 属性 -->
+    <!-- Element.classList                 返回该元素包含的 class 属性，是一个 DOMTokenList。 -->
+    <!-- Element.className                 返回一个 DOMString，表示这个元素的 class。 -->
+    <!-- Element.clientWidth               返回类型为 Number 表示该元素内部的宽度。 -->
+    <!-- Element.clientHeight              返回类型为 Number 表示该元素内部相对于外层元素的高度。 -->
+    <!-- Element.clientLeft                返回类型为 Number 表示该元素距离它左边界的宽度。 -->
+    <!-- Element.clientTop                 返回类型为 Number 表示该元素距离它上边界的高度。 -->
+    <!-- Element.scrollWidth               返回类型为 Number 表示元素的【滚动】视图宽度。 -->
+    <!-- Element.scrollHeight              返回类型为 Number 表示元素的【滚动】视图高度。 -->
+    <!-- Element.scrollLeft                返回类型为 Number 表示该元素横向【滚动】条距离最左的位移。 -->
+    <!-- Element.scrollTop                 返回类型为 Number 表示该元素纵向【滚动】条距离。 -->
+    <!-- Document Object Model - Element 对象 -->
+    <!-- Document Object Model - Element -> 鼠标事件 -->
+    <!-- Properties                        Description -->
+    <!-- Element.mousedown                 鼠标按下。在元素上按下定点设备按钮时激发。也可通过 onmousedown 属性获得。 -->
+    <!-- Element.mouseenter                鼠标输入。当指向设备（通常是鼠标）移动到连接了侦听器的元素上时激发。也可通过 onmouseenter 属性获得。 -->
+    <!-- Element.mouseleave                鼠标离开。当指向设备（通常是鼠标）的指针从附加了侦听器的元素中移出时激发。也可通过 onmouseleave 属性获得。 -->
+    <!-- Element.mousemove                 鼠标移动。在元素上方移动定点设备（通常是鼠标）时激发。也可通过 onmousemove 属性获得。 -->
+    <!-- Element.mouseout                  鼠标移出。当指向设备（通常是鼠标）从侦听器所连接的元素上或从其子元素上移开时激发。也可通过 onmouseout 属性获得。 -->
+    <!-- Element.mouseover                 鼠标悬停。当指向设备移动到侦听器所连接的元素或其子元素上时激发。也可通过 onmouseover 属性获得。 -->
+    <!-- Element.mouseup                   松开鼠标。在元素上释放定点设备按钮时激发。也可通过 onmouseup 属性获得。 -->
+    <!-- Document Object Model - MouseEvent 对象 -->
+    <!-- Properties                        Description -->
+    <!-- MouseEvent.pageX                  只读，鼠标指针相对于整个文档的 X 坐标。 -->
+    <!-- MouseEvent.pageY                  只读，鼠标指针相对于整个文档的 Y 坐标。 -->
+    <!-- Document Object Model - Touch 对象 -->
+    <!-- Properties                        Description -->
+    <!-- Touch.pageX                       只读，触点相对于 HTML 文档左边缘的 X 坐标。当存在水平滚动的偏移时，这个值包含了水平滚动的偏移。 -->
+    <!-- Touch.pageY                       只读，触点相对于 HTML 文档上边缘的 Y 坐标。当存在垂直滚动的偏移时，这个值包含了垂直滚动的偏移。 -->
+
+    <!-- 3.4 时间对象 -->
+    <!-- 在代码中发现了 new 关键字时，一般将这个操作称为实例化。 -->
+    <!-- 创建一个时间对象并获取时间。 -->
+    <!-- 获得当前时间： -->
+    <!-- let date = new Date(); -->
+    <!-- 获得指定时间： -->
+    <!-- let date = new Date('1949-01-01'); -->
+    <!-- 时间对象常用方法： -->
+    <!-- getFullYear()    获得 Date 对象的年份。以四位数字返回年份。 -->
+    <!-- getMonth()       获得 Date 对象的月份。返回值(0 ~ 11)。 -->
+    <!-- getDate()        获得 Date 对象的天数。返回值(1 ~ 31)。 -->
+    <!-- getDay()         获得 Date 对象的星期。返回值(0 ~ 6)。 -->
+    <!-- getHours()       返回 Date 对象的小时。返回值(0 ~ 23)。 -->
+    <!-- getMinutes()     返回 Date 对象的分钟。返回值(0 ~ 59)。 -->
+    <!-- getSeconds()     返回 Date 对象的秒数。返回值(0 ~ 59)。 -->
+
+    <!-- 3.5 时间戳 -->
+    <!-- 思考：什么是时间戳？ -->
+    <!-- 回答：是指1970年01月01日00时00分00秒起至现在的毫秒数，它是一种特殊的计量时间的方式。 -->
+    <!-- 三种方式获取时间戳： -->
+    <!-- 1.使用 getTime() 方法 -->
+    <!-- let date = new Date(); -->
+    <!-- let time = date.getTime(); -->
+    <!-- 2.简写 +new Date() 方式 -->
+    <!-- let date = +new Date(); -->
+    <!-- 3.使用 Date().now() 方式 -->
+    <!-- Date.now(); -->
+    <!-- (1).无需实例化。 -->
+    <!-- (2).但是只能得到当前的时间戳，而前面两种可以返回指定时间的时间戳。 -->
+    <!-- (3).重点记住 +new Date() 因为可以返回当前时间戳或者指定的时间戳。 -->
+
+    <!-- 3.6 重绘和回流 -->
+    <!-- 思考：浏览器是如何进行界面渲染的？ -->
+    <!-- (1).解析（Parser）HTML，生成 DOM 树（DOM Tree）。 -->
+    <!-- (2).同时解析（Parser）CSS，生成样式规则（Style Rules）。 -->
+    <!-- (3).根据 DOM 树和样式规则，生成渲染树（Render Tree）。 -->
+    <!-- (4).进行布局 Layout（回流/重排），根据生成的渲染树，得到节点的几何信息（位置，大小）。 -->
+    <!-- (5).进行绘制 Painting（重绘），根据计算和获取的信息进行整个页面的绘制。 -->
+    <!-- (6).展示（Display）在页面上。 -->
+    <!-- 回流（重排）： -->
+    <!-- 当 Render Tree 中部分或者全部元素的尺寸、结构、布局等发生改变时，浏览器就会重新渲染部分或全部文档的过程称为回流。 -->
+    <!-- 重绘： -->
+    <!-- 由于节点（元素）的样式的改变并不影响它在文档流中的位置和文档布局时，比如：color、background-color、outline等等称之为重绘。 -->
+    <!-- 重点：重绘不一定引起回流，而回流一定会引起重绘。 -->
+
+    <!-- 四、DOM 事件对象 -->
+    <!-- 4.1 DOM 事件对象 -->
+    <!-- 思考：事件对象是什么？ -->
+    <!-- 也是个对象，这个对象里有事件触发时的相关信息。 -->
+    <!-- 例如：鼠标点击事件中，事件对象就存了鼠标点在哪个位置等信息。 -->
+    <!-- 思考：如何获取？ -->
+    <!-- 在事件绑定的回调函数的第一个参数就是事件对象。 -->
+    <!-- 一般命名为：event、ev、e。 -->
+    <!-- element.addEventListener('click', function (event) {}); -->
+    <!-- 事件对象常用属性： -->
+    <!-- Event.bubbles                                只读，一个布尔值，用来表示该事件是否会在 DOM 中冒泡。 -->
+    <!-- Event.cancelBubble                           只读，一个布尔值，在事件处理器函数返回之前，将此属性的值设置为 true，亦可阻止事件继续冒泡。 -->
+    <!-- Event.cancelable                             只读，一个布尔值，表示事件是否可以取消。 -->
+    <!-- Event.composed                               只读，一个布尔值，表示事件是否可以穿过 Shadow DOM 和常规 DOM 之间的隔阂进行冒泡。 -->
+    <!-- Event.currentTarget                          只读，对事件当前注册的目标的引用。这是一个当前计划将事件发送到的对象。它是有可能在重定向的过程中被改变的。 -->
+    <!-- Event.deepPath                               非标准，一个由事件流所经过的 DOM 节点组成的数组。 -->
+    <!-- Event.defaultPrevented                       只读，一个布尔值，表示 event.preventDefault() 方法是否取消了事件的默认行为。 -->
+    <!-- Event.eventPhase                             只读，表示事件流正被处理到了哪个阶段。 -->
+    <!-- Event.explicitOriginalTarget                 只读，事件的明确（explicit）原始目标（Mozilla 专有属性）。 -->
+    <!-- Event.originalTarget                         只读，重设目标前的事件原始目标（Mozilla 专有属性）。 -->
+    <!-- Event.target                                 只读，对事件原始目标的引用，这里的原始目标指最初派发（dispatch）事件时指定的目标。 -->
+    <!-- Event.timeStamp                              只读，事件创建时的时间戳（精度为毫秒）。按照规范，这个时间戳是 Unix 纪元起经过的毫秒数，但实际上，在不同的浏览器中，对此时间戳的定义也有所不同。另外，规范正在将其修改为 DOMHighResTimeStamp。 -->
+    <!-- Event.type                                   只读，事件的类型，不区分大小写。 -->
+    <!-- Event.isTrusted                              只读，表示事件是由浏览器（例如用户点击）发起的，还是由脚本（使用事件创建方法，例如 Event.initEvent）发出的。 -->
+    <!-- 事件对象常用方法： -->
+    <!-- Event.createEvent()                          已弃用。创建一个新事件，如果使用此方法创建事件，则必须调用其自身的 initEvent() 方法，对其进行初始化。 -->
+    <!-- Event.composedPath()                         返回事件的路径（将在该对象上调用监听器）。如果阴影根节点 (shadow root) 创建时 ShadowRoot.mode 值为 closed，那么路径不会包括该根节点下阴影树 (shadow tree) 的节点。 -->
+    <!-- Event.initEvent                              已弃用。为通过 Event.createEvent() (en-US) 创建的事件初始化。该方法对已经被派发的事件无效。 -->
+    <!-- Event.preventDefault                         取消事件（如果该事件可取消）。 -->
+    <!-- Event.stopImmediatePropagation               对这个特定的事件而言，没有其他监听器被调用。这个事件既不会添加到相同的元素上，也不会添加到以后将要遍历的元素上（例如在捕获阶段）。 -->
+    <!-- Event.stopPropagation                        停止冒泡，阻止事件在 DOM 中继续冒泡。 -->
+    <!-- 4.1 DOM 事件对象（目标事件对象） -->
+    <!-- addEventListener()                           允许在目标事件中注册监听事件。 -->
+    <!-- dispatchEvent()                              允许发送事件到监听器上。 -->
+    <!-- removeEventListener()  运行一次注册在事件目标上的监听事件。 -->
+    <!-- 4.1 DOM 事件对象（监听事件对象） -->
+    <!-- handleEvent()                                把任意对象注册为事件处理程序。 -->
+    <!-- 4.1 DOM 事件对象（文档事件对象） -->
+    <!-- createEvent()                                创建事件。 -->
+    <!-- 4.1 DOM 事件对象（鼠标事件对象（MouseEvent）继承自父级接口事件对象（Event）） -->
+    <!-- MouseEvent.clientX                            鼠标指针在点击元素（DOM）中的 X 坐标。 -->
+    <!-- MouseEvent.clientY                            鼠标指针在点击元素（DOM）中的 Y 坐标。 -->
+    <!-- MouseEvent.offsetX                            鼠标指针相对于目标节点内边位置的 X 坐标。 -->
+    <!-- MouseEvent.offsetY                            鼠标指针相对于目标节点内边位置的 Y 坐标。 -->
+    <!-- MouseEvent.pageX                              鼠标指针相对于整个文档的 X 坐标。 -->
+    <!-- MouseEvent.pageY                              鼠标指针相对于整个文档的 Y 坐标。 -->
+    <!-- MouseEvent.screenX                            鼠标指针相对于全局（屏幕）的 X 坐标。 -->
+    <!-- MouseEvent.screenY                            鼠标指针相对于全局（屏幕）的 Y 坐标。 -->
+    <!-- MouseEvent.initMouseEvent()                   初始化鼠标事件对象的值。 -->
+    <!-- 4.1 DOM 事件对象（键盘事件对象（KeyboardEvent）继承自父级接口事件对象（Event）） -->
+    <!-- KeyboardEvent.altKey                          返回一个Boolean，如果按键事件产生时，键被按下，则该值为 true。     -->
+    <!-- KeyboardEvent.code                            返回一个DOMString，其 code 值代表触发事件的物理按键。 -->
+    <!-- KeyboardEvent.ctrlKey                         返回一个Boolean，如果按键事件发生时 Ctrl 键被按下，则该值为 true。 -->
+    <!-- KeyboardEvent.initKeyboardEvent()             初始化键盘事件对象的值。 -->
+
+    <!-- 4.2 DOM 事件流 -->
+    <!-- 事件流和两个阶段说明： -->
+    <!-- 事件流指的是事件完整执行过程中的流动路径。 -->
+    <!-- 说明：假设页面里有个div，当触发事件时，会经历两个阶段，分别是捕获阶段、冒泡阶段。 -->
+    <!-- 简单来说：捕获阶段是从父到子冒泡阶段是从子到父。 -->
+    <!-- 事件捕获和事件冒泡： -->
+    <!-- 事件冒泡概念:  -->
+    <!-- 当一个元素的事件被触发时，同样的事件将会在该元素的所有祖先元素中依次被触发。这一过程被称为事件冒泡。 -->
+    <!-- 简单理解：当一个元素触发事件后，会依次向上调用所有父级元素的同名事件。 -->
+    <!-- 事件冒泡是默认存在的。 -->
+    <!-- 事件捕获概念： -->
+    <!-- 从DOM的根元素开始去执行对应的事件（从外到里）。 -->
+    <!-- 事件捕获需要写对应代码才能看到效果。 -->
+    <!-- 代码： -->
+    <!-- element.addEventListener(事件类型, 事件处理函数, 是否使用捕获机制); -->
+    <!-- 说明： -->
+    <!-- addEventListene r第三个参数传入 true 代表是捕获阶段触发（很少使用）。 -->
+    <!-- 若传入 false 代表冒泡阶段触发，默认就是 false。 -->
+    <!-- 若是用 L0 事件监听，则只有冒泡阶段，没有捕获。 -->
+    <!-- 阻止事件流动： -->
+    <!-- 因为默认就有冒泡模式的存在，所以容易导致事件影响到父级元素。 -->
+    <!-- 若想把事件就限制在当前元素内，就需要阻止事件流动。 -->
+    <!-- 阻止事件流动需要拿到事件对象。 -->
+    <!-- 语法： -->
+    <!-- 事件对象.stopPropagation() -->
+    <!-- 此方法可以阻断事件流动传播，不光在冒泡阶段有效，捕获阶段也有。 -->
+    <!-- 鼠标经过事件： -->
+    <!-- mouseover  和 mouseout   会有冒泡效果。 -->
+    <!-- mouseenter 和 mouseleave 没有冒泡效果（推荐）。 -->
+    <!-- 阻止默认行为，比如链接点击不跳转，表单域的不提交。 -->
+    <!-- 语法： -->
+    <!-- Event.preventDefault()   通知浏览器不要执行与事件关联的默认动作。 -->
+    <!-- 两种注册事件的区别： -->
+    <!-- 1、传统on注册（L0） -->
+    <!-- 同一个对象,后面注册的事件会覆盖前面注册（同一个事件）。 -->
+    <!-- 直接使用 null 覆盖偶就可以实现事件的解绑。 -->
+    <!-- 都是冒泡阶段执行的。 -->
+    <!-- 2、事件监听注册（L2） -->
+    <!-- 语法: addEventListener(事件类型, 事件处理函数, 是否使用捕获)。 -->
+    <!-- 后面注册的事件不会覆盖前面注册的事件（同一个事件）。 -->
+    <!-- 可以通过第三个参数去确定是在冒泡或者捕获阶段执行。 -->
+    <!-- 必须使用：removeEventListener(事件类型, 事件处理函数, 获取捕获或者冒泡阶段)。 -->
+    <!-- 匿名函数无法被解绑。 -->
+
+    <!-- 4.3 DOM 事件委托 -->
+    <!-- 事件委托是利用事件流的特征解决一些开发需求的知识技巧。 -->
+    <!-- <script>
+        let ul = document.querySelector('ul');
+        ul.addEventListener('click', function (event) {
+            event.target.style.color = '#F8F8f8';
+        });
+    </script> -->
+    <!-- 总结： -->
+    <!-- 优点：给父级元素加事件（可以提高性能）。 -->
+    <!-- 原理：事件委托其实是利用事件冒泡的特点，给父元素添加事件，子元素可以触发。 -->
+    <!-- 实现：事件对象.target（Event.target） 可以获得真正触发事件的元素。 -->
+
+    <!-- 4.4 综合案例 -->
+
+    <!-- 4.5 滚动事件与加载事件 -->
+    <!-- 滚动事件： -->
+    <!-- 当页面进行滚动的时候触发的事件。 -->
+    <!-- 监听整个页面滚动：监听某个元素的内部滚动直接给某个元素加即可。 -->
+    <!-- 思考：为什么要学？ -->
+    <!-- 回答：很多网页需要检测用户把页面滚动到某个区域后做一些处理， 比如固定导航栏，比如返回顶部。 -->
+    <!-- <script>
+        // 页面滚动事件
+        window.addEventListener('scroll', function () {
+            // 执行的操作
+        });
+    </script> -->
+    <!-- 加载事件： -->
+    <!-- 加载外部资源（如图片、外联CSS和JavaScript等）加载完毕时触发的事件。 -->
+    <!-- 思考：为什么要学？ -->
+    <!-- 有些时候需要等页面资源全部处理完了做一些事情。 -->
+    <!-- 事件名：load -->
+    <!-- 监听页面所有资源加载完毕：给 window 添加 load 事件。 -->
+    <!-- 老代码喜欢把 script 写在 head 中，这时候直接找 dom 元素找不到。 -->
+    <!-- 监听页面所有资源加载完毕： -->
+    <!-- 注意：不光可以监听整个页面资源加载完毕，也可以针对某个资源绑定 load 事件。 -->
+    <!-- <script>
+        window.addEventListener('load', function () {
+            // 执行的操作
+        });
+    </script> -->
+    <!-- 加载事件： -->
+    <!-- 当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像等完全加载。 -->
+    <!-- 事件名：DOMContentLoaded -->
+    <!-- 监听页面DOM加载完毕：给 document 添加 DOMContentLoaded 事件。 -->
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 执行的操作
+        });
+    </script> -->
+    <!-- 事件对象 -->
+    <!-- 使用 addEventListener() 方法或为此接口的 oneventname 属性分配一个事件侦听器来侦听这些事件。 -->
+    <!-- Element.cancel            当用户指示浏览器要关闭当前打开的对话框时，在＜对话框＞上激发。例如，当用户按下 Esc 键或单击作为浏览器UI一部分的"关闭对话框"按钮。也可以通过 oncancel 属性获得。 -->
+    <!-- Element.error             当资源加载失败或无法使用时激发。例如，如果脚本出现执行错误，或者找不到图像或图像无效。也可通过oneror属性获得。 -->
+    <!-- Element.scroll            在滚动文档视图或元素时激发。也可通过 onscroll 属性获得。 -->
+    <!-- Element.select            选择某些文本后激发。也可通过 onselect 属性获得。也可通过 onshow 属性获得。 -->
+    <!-- Element.wheel             当用户旋转定点设备（通常是鼠标）上的滚轮按钮时激发。也可通过 onwheel 属性获得。 -->
+    <!-- 剪贴板事件 -->
+    <!-- Element.copy              当用户通过浏览器的用户界面启动复制操作时激发。也可通过 oncopy  属性获得。 -->
+    <!-- Element.cut               当用户通过浏览器的用户界面启动剪切操作时激发。也可通过 oncut   属性获得。 -->
+    <!-- Element.paste             当用户通过浏览器的用户界面启动粘贴操作时激发。也可通过 onpaste 属性获得。 -->
+    <!-- 合成事件 -->
+    <!-- Element.compositionend    当文本合成系统（如输入法编辑器）完成或取消当前合成会话时激发。 -->
+    <!-- Element.compositionstart  当文本合成系统（如输入法编辑器）启动新的合成会话时激发。 -->
+    <!-- Element.compositionupdate 当在由文本合成系统（如输入法编辑器）控制的文本合成会话的上下文中接收到新字符时激发。 -->
+    <!-- 焦点事件 -->
+    <!-- Element.blur              元素失去焦点时激发。也可通过 onblur 属性获得。 -->
+    <!-- Element.focus             当元素获得焦点时激发。也可通过 onfocus 属性获得。 -->
+    <!-- Element.focusin           当元素即将获得焦点时激发。 -->
+    <!-- Element.focusout          在元素即将失去焦点时激发。 -->
+    <!-- 全屏事件 -->
+    <!-- Element.fullscreenchange  当元素转换到全屏模式或从全屏模式转换出来时发送给元素。也可通过 onfullscreenchange 属性获得。 -->
+    <!-- Element.fullscreenerror   如果在尝试将元素切换到全屏模式或从全屏模式切换出时发生错误，则发送给元素。也可通过 onfullscreeneerror 属性获得。 -->
+    <!-- 键盘事件 -->
+    <!-- Element.keydown           按键时激发。也可通过 onkeydown 属性获得。 -->
+    <!-- Element.keypress          当按下产生字符值的键时激发。已弃用 也可通过 onkeypress 属性获得。 -->
+    <!-- Element.keyup             释放密钥时激发。也可通过 onkeyup 属性获得。 -->
+    <!-- 鼠标事件 -->
+    <!-- Element.auxclick          在元素上按下并释放非主要定点设备按钮（例如，除左键以外的任何鼠标按钮）时激发。也可通过 onauxclick 属性获得。 -->
+    <!-- Element.click             在单个元素上按下并释放定点设备按钮（例如，鼠标的主按钮）时激发。也可通过 onclick 属性获得。 -->
+    <!-- Element.contextmenu       当用户试图打开上下文菜单时激发。也可通过 oncontextmenu 属性获得。 -->
+    <!-- Element.dblclick          在单个元素上单击两次定点设备按钮（例如，鼠标的主按钮）时激发。也可通过 ondblclick 属性获得。 -->
+    <!-- Element.mousedown         在元素上按下定点设备按钮时激发。也可通过 onmousedown 属性获得。 -->
+    <!-- Element.mouseenter        当指向设备（通常是鼠标）移动到连接了侦听器的元素上时激发。也可通过 onmouseenter 属性获得。 -->
+    <!-- Element.mouseleave        当指向设备（通常是鼠标）的指针从附加了侦听器的元素中移出时激发。也可通过 onmouseleave 属性获得。 -->
+    <!-- Element.mousemove         在元素上方移动定点设备（通常是鼠标）时激发。也可通过 onmousemove 属性获得。 -->
+    <!-- Element.mouseout          当指向设备（通常是鼠标）从侦听器所连接的元素上或从其子元素上移开时激发。也可通过 onmouseout 属性获得。 -->
+    <!-- Element.mouseover         当指向设备移动到侦听器所连接的元素或其子元素上时激发。也可通过 onmouseover 属性获得。 -->
+    <!-- Element.mouseup           在元素上释放定点设备按钮时激发。也可通过 onmouseup 属性获得。 -->
+    <!-- 触摸事件 -->
+    <!-- Element.touchcancel       当一个或多个触摸点以特定于实现的方式被中断时（例如，创建了太多触摸点）激发。也可通过 ontouchcancel 属性获得。 -->
+    <!-- Element.touchend          从触摸表面移除一个或多个触摸点时激发。也可通过 ontouchend 属性获得。 -->
+    <!-- Element.touchmove         当一个或多个触摸点沿着触摸表面移动时激发。也可通过 ontouchmove 属性获得。 -->
+    <!-- Element.touchstart        当一个或多个触摸点放置在触摸表面上时激发。也可通过 ontouchstart 属性获得。 -->
+
+    <!-- 五、DOM 网页特效（PC + Mobile） -->
+
+    <!-- 六、BOM 操作浏览器 -->
+    <!-- 6.1 BOM -->
+    <!-- BOM（Browser Object Model）是浏览器对象模型。 -->
+    <!-- 窗口对象 window   是浏览器内置中的全局对象，我们所学习的所有 Web APIs 的知识内容都是基于 window 对象实现的。 -->
+    <!-- 窗口对象 window   对象下包含了 navigator、location、document、history、screen 5个属性，即所谓的 BOM （浏览器对象模型）。 -->
+    <!-- 文档对象 document 是实现 DOM 的基础，它其实是依附于 window 的属性。 -->
+    <!-- 注意：依附于 window 对象的所有属性和方法，使用时可以省略 window。 -->
+    <!-- 6.2 定时器（延时函数） -->
+    <!-- JavaScript 内置的一个用来让代码延迟执行的函数，叫：setTimeout。 -->
+    <!-- 1.setTimeout(回调函数, 等待的毫秒数) -->
+    <!-- 2.setInterval(回调函数, 等待的毫秒数) -->
+    <!-- setTimeout 仅仅只执行一次，所以可以理解为就是把一段代码延迟执行, 平时省略 window。 -->
+    <!-- 清除定时器（延时函数）： -->
+    <!-- 1.let timer = setTimeout(回调函数, 等待的毫秒数); -->
+    <!-- clearTimeout(timer); -->
+    <!-- 2.let timer = setInterval(回调函数, 等待的毫秒数); -->
+    <!-- clearTimeout(timer); -->
+    <!-- 两种定时器（延时函数）对比： -->
+    <!-- setInterval  特征是重复执行，首次执行会延时。 -->
+    <!-- setTimeout   特征是延时执行，只执行 1 次。 -->
+    <!-- setTimeout   结合递归函数，能模拟 setInterval 重复执行。 -->
+    <!-- clearTimeout 清除由 setTimeout 创建的定时任务。 -->
+    <!-- 6.3 JavaScript 执行机制 -->
+    <!-- JavaScript 语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。 -->
+    <!-- Javascript 这门脚本语言诞生的使命所致 JavaScript 是为处理页面中用户的交互，以及操作 DOM 而诞生的。比如我们对某个 DOM 元素进行添加和删除操作，不能同时进行。 应该先进行添加，之后再删除。 -->
+    <!-- JavaScript 是单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。这样所导致的问题是：如果 JS 执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。 -->
+    <!-- 6.4 同步和异步 -->
+    <!-- 为了解决这个问题，利用多核 CPU 的计算能力，HTML5 提出 Web Worker 标准，允许JavaScript 脚本创建多个线程。于是，JS 中出现了同步和异步。 -->
+    <!-- 同步： -->
+    <!-- 前一个任务结束后再执行后一个任务，程序的执行顺序与任务的排列顺序是一致的、同步的。比如做饭的同步做法：我们要烧水煮饭，等水开了（10分钟之后），再去切菜，炒菜。 -->
+    <!-- 异步： -->
+    <!-- 你在做一件事情时，因为这件事情会花费很长时间，在做这件事的同时，你还可以去处理其他事情。比如做饭的异步做法，我们在烧水的同时，利用这10分钟，去切菜，炒菜。 -->
+    <!-- 他们的本质区别： 这条流水线上各个流程的执行顺序不同。 -->
+    <!-- 6.5 同步任务和异步任务 -->
+    <!-- 同步任务： -->
+    <!-- 同步任务都在主线程上执行，形成一个执行栈。 -->
+    <!-- 异步任务： -->
+    <!-- JS 的异步是通过回调函数实现的。 -->
+    <!-- 一般而言，异步任务有以下三种类型: -->
+    <!-- 1、普通事件，如 click、resize 等 -->
+    <!-- 2、资源加载，如 load、error 等 -->
+    <!-- 3、定时器，包括 setInterval、setTimeout 等 -->
+    <!-- 异步任务相关添加到任务队列中（任务队列也称为消息队列）。 -->
+    <!-- JavaScript 执行机制： -->
+    <!-- 1、先执行执行栈中的同步任务。 -->
+    <!-- 2、异步任务放入任务队列中。 -->
+    <!-- 3、一旦执行栈中的所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行。 -->
+    <!-- 6.6 Location 对象 -->
+    <!-- location 的数据类型是对象，它拆分并保存了 URL 地址的各个组成部分。 -->
+    <!-- console.log(location.href); -->
+    <!-- href 属性获取完整的 URL 地址，对其赋值时用于地址的跳转。 -->
+    <!-- console.log(location.search); -->
+    <!-- search 属性获取地址中携带的参数，符号 ？后面部分。 -->
+    <!-- console.log(location.hash); -->
+    <!-- hash 属性获取地址中的哈希值，符号 # 后面部分。 -->
+    <!-- 后期 vue 路由的铺垫，经常用于不刷新页面，显示不同页面，比如 网易云音乐。 -->
+    <!-- document.querySelector('button').addEventListener('click', function () { location.reload(true); }); -->
+    <!-- reload 方法用来刷新当前页面，传入参数 true 时表示强制刷新。 -->
+    <!-- 常用属性和方法： -->
+    <!-- href      属性获取完整的 URL 地址，对其赋值时用于地址的跳转。 -->
+    <!-- search    属性获取地址中携带的参数，符号 ？后面部分。 -->
+    <!-- hash      属性获取地址中的啥希值，符号 # 后面部分。 -->
+    <!-- reload    方法用来刷新当前页面，传入参数 true 时表示强制刷新。 -->
+    <!-- 6.7 Navigator 对象 -->
+    <!-- navigator 对象的数据类型是对象，该对象下记录了浏览器自身的相关信息。 -->
+    <!-- 通过 userAgent 检测浏览器的版本及平台。 -->
+    <!-- <script>
+        // 检测 userAgent（浏览器信息）
+        !(function () {
+            const userAgent = navigator.userAgent
+            // 验证是否为Android或iPhone
+            const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+            const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+            // 如果是Android或iPhone，则跳转至移动站点
+            if (android || iphone) {
+                location.href = 'http://m.itcast.cn'
+            }
+        })();
+    </script> -->
+    <!-- 6.8 History 对象 -->
+    <!-- history 对象的数据类型是对象，该对象与浏览器地址栏的操作相对应，如前进、后退、历史记录等等。 -->
+    <!-- history 对象一般在实际开发中比较少用，但是会在一些 OA 办公系统中见到。 -->
+    <!-- 6.8 Swiper 插件 -->
+    <!-- 插件: 就是别人写好的一些代码,我们只需要复制对应的代码,就可以直接实现对应的效果。 -->
+    <!-- 学习插件的基本过程。 -->
+    <!-- 熟悉官网,了解这个插件可以完成什么需求 https://www.swiper.com.cn/  -->
+    <!-- 看在线演示,找到符合自己需求的demo https://www.swiper.com.cn/demo/index.html -->
+    <!-- 查看基本使用流程 https://www.swiper.com.cn/usage/index.html -->
+    <!-- 查看APi文档,去配置自己的插件 https://www.swiper.com.cn/api/index.html -->
+    <!-- 注意: 多个swiper同时使用的时候, 类名需要注意区分。 -->
+
+    <!-- 6.7 本地存储 -->
+    <!-- 随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，HTML5 规范提出了相关解决方案。 -->
+    <!-- 1、数据存储在用户浏览器中。 -->
+    <!-- 2、设置、读取方便、甚至页面刷新不丢失数据。 -->
+    <!-- 3、容量较大，sessionStorage 和 localStorage 约存储 5M 左右数据。 -->
+    <!-- localStorage -->
+    <!-- 1、生命周期永久生效，除非手动删除 否则关闭页面也会存在。 -->
+    <!-- 2、可以多窗口（页面）共享（同一浏览器可以共享）。 -->
+    <!-- 3、以键值对的形式存储使用。 -->
+    <!-- 存储数据： -->
+    <!-- localStorage.setItem(key, value); -->
+    <!-- 获取数据： -->
+    <!-- localStorage.getItem(key); -->
+    <!-- 删除数据： -->
+    <!-- localStorage.removeItem(key); -->
+    <!-- 存储复杂数据类型存储： -->
+    <!-- 本地只能存储字符串，无法存储复杂数据类型。需要将复杂数据类型转换成 JSON 字符串，在存储到本地。 -->
+    <!-- JSON.stringify(复杂数据类型); -->
+    <!-- 将复杂数据转换成 JSON 字符串存储本地存储中。 -->
+    <!-- JSON.parse(JSON字符串); -->
+    <!-- 将JSON字符串转换成对象取出时候使用。 -->
+    <!-- sessionStorage -->
+    <!-- 1、生命周期为关闭浏览器窗口。 -->
+    <!-- 2、在同一个窗口（页面）下数据可以共享。 -->
+    <!-- 3、以键值对的形式存储使用。 -->
+    <!-- 4、用法跟 localStorage 基本相同。 -->
+    <!-- 6.8 自定义属性 -->
+    <!-- 固有属性: -->
+    <!-- 标签天生自带的属性，比如：class、id、title等等, 可以直接使用点语法操作。 -->
+    <!-- 自定义属性: -->
+    <!-- 由程序员自己添加的属性，在 DOM 对象中找不到, 无法使用点语法操作，必须使用专门的 API。 -->
+    <!-- 获取自定义属性: -->
+    <!-- getAttribute('属性名'); -->
+    <!-- 设置自定义属性: -->
+    <!-- setAttribute('属性名', '属性值'); -->
+    <!-- 删除自定义属性: -->
+    <!-- removeAttribute('属性名'); -->
+    <!-- data-自定义属性: -->
+    <!-- 传统的自定义属性没有专门的定义规则，开发者随意定值，不够规范，所以在 html5 中推出来了专门的【data-自定义属性】在标签上一律以【data-】开头。 -->
+    <!-- 在DOM对象上一律以 dataset 对象方式获取。 -->
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #721c24;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+
+        }
+        table {
+            margin: 0 auto;
+            width: 800px;
+            border-collapse: collapse;
+            color: #004085;
+        }
+        th {
+            padding: 10px;
+            background: #cfe5ff;
+
+            font-size: 20px;
+            font-weight: 400;
+        }
+        td,
+        th {
+            border: 1px solid #b8daff;
+        }
+        td {
+            padding: 10px;
+            color: #666;
+            text-align: center;
+            font-size: 16px;
+        }
+        tbody tr {
+            background: #fff;
+        }
+        tbody tr:hover {
+            background: #e1ecf8;
+        }
+        .info {
+            width: 900px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .info input,
+        .info select {
+            width: 80px;
+            height: 27px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #b8daff;
+            padding-left: 5px;
+            box-sizing: border-box;
+            margin-right: 15px;
+        }
+        .info button {
+            width: 60px;
+            height: 27px;
+            background-color: #004085;
+            outline: none;
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .info .age {
+            width: 50px;
+        }
+    </style>
+    <h1>新增职员</h1>
+    <form class="info" autocomplete="off">
+        姓名：
+        <input type="text" class="uname" name="uname" />
+        年龄：
+        <input type="text" class="age" name="age" />
+        性别:
+        <select name="gender" class="gender">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        薪资：
+        <input type="text" class="salary" name="salary" />
+        就业城市：
+        <select name="city" class="city">
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+            <option value="曹县">曹县</option>
+        </select>
+        <button class="add">录入</button>
+    </form>
+    <h1>职员信息表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>薪资</th>
+                <th>就业城市</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        // 1. 读取本地存储的数据   student-data  本地存储的命名
+        const data = localStorage.getItem('student-data');
+        // 2. 如果有就返回对象，没有就声明一个空的数组 array 一会渲染的时候用的
+        const array = data ? JSON.parse(data) : [];
+        // 获取 tbody
+        const tbody = document.querySelector('tbody');
+        // 3. 渲染模块函数
+        function render() {
+            const trArray = array.map(function (item, i) {
+                return `<tr>
+                    <td>${item.stuId}</td>
+                    <td>${item.uname}</td>
+                    <td>${item.age}</td>
+                    <td>${item.gender}</td>
+                    <td>${item.salary}</td>
+                    <td>${item.city}</td>
+                    <td>
+                        <a href="javascript:" data-id=${i}>删除</a>
+                    </td>
+                </tr>`;
+            });
+            // 因为 trArray 是个数组， 我们不要数组，我们要的是 tr的字符串 join()
+            tbody.innerHTML = trArray.join('');
+        }
+        render();
+        // 4. 录入模块
+        const info = document.querySelector('.info');
+        // 获取表单form 里面带有 name属性的元素
+        const items = info.querySelectorAll('[name]');
+        // console.log(items)
+        info.addEventListener('submit', function (e) {
+            // 阻止提交
+            e.preventDefault();
+            // 声明空的对象
+            const obj = {};
+            // 加入有2条数据   2 
+            obj.stuId = array.length ? array[array.length - 1].stuId + 1 : 1;
+            // 非空判断
+            for (let i = 0; i < items.length; i++) {
+                // item 是每一个表单
+                const item = items[i];
+                if (items[i].value === '') {
+                    return alert('输入内容不能为空');
+                }
+                obj[item.name] = item.value;
+            }
+            // 追加给数组
+            array.push(obj);
+            //  把数组 array 存储到本地存储里面
+            localStorage.setItem('student-data', JSON.stringify(array));
+            // 渲染页面
+            render();
+            // 重置表单
+            this.reset();
+        });
+        // 5. 删除模块
+        tbody.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                // 删除数组对应的这个数据
+                array.splice(e.target.dataset.id, 1);
+                // 写入本地存储
+                localStorage.setItem('student-data', JSON.stringify(array));
+                // 重新渲染
+                render();
+            }
+        });
+    </script> -->
+
+    <!-- 七、正则表达式 -->
+    <!-- 7.1 RegExp 概述 -->
+    <!-- 正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式。在 JavaScript 中，正则表达式也是对象。 -->
+    <!-- 通常用来查找、替换那些符合正则表达式的文本，许多语言都支持正则表达式。 -->
+    <!-- 正则表达式在 JavaScript 中的使用场景： -->
+    <!-- 例如验证表单：用户名表单只能输入英文字母、数字或者下划线，昵称输入框中可以输入中文（匹配）。 -->
+    <!-- 比如用户名【/^[a-z0-9_-]{3,16}$/】正则表达。 -->
+    <!-- 过滤掉页面内容中的一些敏感词（替换），或从字符串中获取我们想要的特定部分（提取）等等。 -->
+    <!-- 7.2 RegExp 语法 -->
+    <!-- JavaScript 中定义正则表达式的语法有两种，我们先学习其中比较简单的方法。 -->
+    <!-- 1、定义正则表达式语法 -->
+    <!-- let 变量名 = /表达式/; -->
+    <!-- 解释：其中 / / 是正则表达式字面量。 -->
+    <!-- 比如：let regExp = / 前端 /; -->
+    <!-- 2、判断是否有符合规则的字符串 -->
+    <!-- test() 方法用来查看正则表达式与指定的字符串是否匹配。 -->
+    <!-- regObj.test(被检测的字符串); -->
+    <!-- 比如： -->
+    <!-- let srt = '什么内容，描述内容，这些内容'; -->
+    <!-- let reg = / 内容 /; -->
+    <!-- let tmp = reg.test(str); -->
+    <!-- console.log(tmp); -->
+    <!-- 如果正则表达式与指定的字符串匹配，返回 true，否则 false。 -->
+    <!-- 3、检索（查找）符合规则的字符串 -->
+    <!-- exec() 方法在一个指定字符串中执行一个搜索匹配。 -->
+    <!-- regObj.exec(被检测的字符串); -->
+    <!-- 比如： -->
+    <!-- let srt = '什么内容，描述内容，这些内容'; -->
+    <!-- let reg = / 内容 /; -->
+    <!-- let tmp = reg.exec(str); -->
+    <!-- console.log(tmp); -->
+    <!-- 如果匹配成功，exec() 方法返回一个数组，否则返回 null。 -->
+    <!-- 使用 /regularExpressionBody/modifier 定义正则表达式。 -->
+    <!-- 使用 regExp.test()                   检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。 -->
+    <!-- 7.3 元字符 -->
+    <!-- 普通字符： -->
+    <!-- 大多数的字符仅能够描述它们本身，这些字符称作普通字符，例如所有的字母和数字。 -->
+    <!-- 也就是说普通字符只能够匹配字符串中与它们相同的字符。 -->
+    <!-- 元字符（特殊字符）： -->
+    <!-- 是一些具有特殊含义的字符，可以极大提高了灵活性和强大的匹配功能。 -->
+    <!-- 比如：规定用户只能输入英文 26 个英文字母，普通字符的话【abcdefghijklmnopqrstuvwxyz】。 -->
+    <!-- 但是换成元字符写法：[a-z] -->
+    <!-- 参考文档： -->
+    <!-- MDN：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions -->
+    <!-- 正则测试工具: http://tool.oschina.net/regex -->
+    <!-- 为了方便记忆和学习，我们对众多的元字符进行了分类： -->
+    <!-- 1、边界符（表示位置，开头和结尾，必须用什么开头，用什么结尾）。 -->
+    <!-- 2、量词（表示重复次数）。 -->
+    <!-- 3、字符类（比如 \d 表示 0~9）。 -->
+    <!-- 7.4 边界符 -->
+    <!-- 正则表达式中的边界符（位置符）用来提示字符所处的位置，主要有两个字符。 -->
+    <!-- 边界符 ^ 表示匹配行首的文本（以谁开始）。 -->
+    <!-- 边界符 $ 表示匹配行尾的文本（以谁结束）。 -->
+    <!-- 如果 ^ 和 $ 在一起，表示必须是精确匹配。 -->
+    <!-- 正则表达式中的边界符（位置符）用来提示字符所处的位置，主要有两个字符。 -->
+    <!-- 为了方便记忆和学习，我们对众多的元字符进行了分类： -->
+    <!-- 1、边界符（表示位置，开头和结尾，必须用什么开头，用什么结尾）。 -->
+    <!-- 2、量词（表示重复次数）。 -->
+    <!-- 3、字符类（比如 \d 表示 0~9）。 -->
+    <!-- 7.5 量词 -->
+    <!-- 量词用来设定某个模式出现的次数。 -->
+    <!-- 量词 *     用来表示重复零次或者更多次。 -->
+    <!-- 量词 +     用来表示重复一次或者更多次。 -->
+    <!-- 量词 ?     用来表示重复零次或者一次。 -->
+    <!-- 量词 {n}   用来表示重复n次。 -->
+    <!-- 量词 {n,}  用来表示重复n次或者更多次。 -->
+    <!-- 量词 {n,m} 用来表示重复n次到m次。 -->
+    <!-- 注意：逗号左右两侧千万不要出现空格。 -->
+    <!-- 7.6 字符类 -->
+    <!-- (1) [ ] 匹配字符集合 -->
+    <!-- 后面的字符串只要包含 abc 中任意一个字符，都返回 true。 -->
+    <!-- (1) [ ] 里面加上 - 连字符 -->
+    <!-- 使用连字符 - 表示一个范围 -->
+    <!-- 比如： -->
+    <!-- [a-z]    表示 a 到 z 26个英文字母都可以。 -->
+    <!-- [a-zA-Z] 表示大小写都可以。 -->
+    <!-- [0-9]    表示 0~9 的数字都可以。 -->
+    <!-- (1) [ ] 里面加上 ^ 取反符号 -->
+    <!-- 比如： -->
+    <!-- [^a-z] 匹配除了小写字母以外的字符。 -->
+    <!-- 注意要写到中括号里面。 -->
+    <!-- (2) 匹配除换行符之外的任何单个字符 -->
+    <!-- (3) 预定义：指的是某些常见模式的简写方式 -->
+    <!-- 7.7 修饰符 -->
+    <!-- 修饰符约束正则执行的某些细节行为，如是否区分大小写、是否支持多行匹配等等。 -->
+    <!-- 语法： -->
+    <!-- /表达式/修饰符 -->
+    <!-- i 是单词 ignore 的缩写，正则匹配时字母不区分大小写。 -->
+    <!-- g 是单词 global 的缩写，匹配所有满足正则表达式的结果。 -->
+    <!-- console.log(/a/i.test('a')); -->
+    <!-- console.log(/a/i.test('A')); -->
+    <!-- 替换 replace 替换 -->
+    <!-- 字符串.replace(/正则表达式/, '替换的文字'); -->
+    <!-- 总结： -->
+    <!-- 1、边界符（表示位置，^开头和结尾$，必须用什么开头（^），必须用什么结尾（$））。 -->
+    <!-- 2、量词（表示重复的次数，n+包含至少一个n字符串，n*包含零个或多个n字符串，n?包含零个或一个n字符串，(n,m)表示重复n到m次）。 -->
+    <!-- 3、字符类或者表达式（方括号用于查找某个范围内的字符，[abc]查找方括号之间的任何字符，[0-9]查找任何从0至9的数字，(x|y)查找任何以|分隔的选项）。 -->
+    <!-- 4、预定类或者元字符（元字符是拥有特殊含义的字符，\d查找数字，\w查找任何字母和数字，\s查找空白字符，\b匹配单词边界，\uxxxx查找以十六进制数xxxx规定的Unicode字符）。 -->
+    <!-- 5、修饰符（可以在全局搜索中不区分大小写，i正则匹配时字母不区分大小写，g匹配所有满足正则表达式的结果，m执行多行匹配）。 -->
+    <!-- 使用 /regularExpressionBody/modifier 定义正则表达式。 -->
+    <!-- 使用 /[abc]\dn+/i                    定义正则表达式。 -->
+    <!-- 使用 /[0-9]\sn*/g                    定义正则表达式。 -->
+    <!-- 使用 /(x|y)\bn?/m                    定义正则表达式。 -->
+    <!-- 使用 /(x|y)\uxxxxn?/m                定义正则表达式。 -->
+    <!-- 使用 regExp.test()                   检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。 -->
+
+</body>
+
+</html>
