@@ -3,7 +3,6 @@
 // peer vue@"^3.2.0" from vue-router@4.2.4
 
 import Vue from "vue";
-
 // 第01步：导入第三方路由模块（依赖包）
 import VueRouter from 'vue-router';
 
@@ -15,6 +14,9 @@ import Tab2 from "@/components/tabs/Tab2.vue";
 import Main from "@/components/Main.vue";
 import Login from "@/components/Login.vue";
 import ContainerView from "@/components/ContainerView.vue";
+import SupportView from "@/components/SupportView.vue";
+import Cat1 from "@/components/cats/Cat1.vue";
+import Cat2 from "@/components/cats/Cat2.vue";
 
 // 第02步：调用Vue.use()函数，把VueRouter安装为Vue插件
 Vue.use(VueRouter);
@@ -34,6 +36,13 @@ const router = new VueRouter({
                 // 第08步：配置子路由规则（注意：前面不要加斜杠（/）），默认tab1可以省略，对应<router-link to="/about">Table-1</router-link>
                 {path: '', component: Tab1},
                 {path: 'tab2', component: Tab2}
+            ]
+        },
+        {
+            path: '/support', component: SupportView, children: [
+                {path: '/', redirect: 'cat1'},
+                {path: 'cat1', component: Cat1},
+                {path: 'cat2', component: Cat2}
             ]
         },
         {path: '/main', component: Main},

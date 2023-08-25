@@ -1318,6 +1318,8 @@ import App from '@/App.vue';
 
 // 第05步：导入自定义路由模块
 import router from "@/router/index.js";
+// 第05步：导入第三方模块插件（状态管理：vuex)
+import store from "@/store/index.js";
 
 // 导入样式
 import '@/assets/css/bootstrap.css';
@@ -1328,10 +1330,16 @@ Vue.config.productionTip = false;
 // 04.实例对象使用饿了么UI插件
 Vue.use(ElementUI);
 
-// 第06步：挂载路由模块实例对象
+// 第06步：挂载 router 路由模块
+// 第06步：挂载 vuex   状态管理
+// 第06步：挂载 render 渲染函数
 new Vue({
+    // 核心三：渲染函数
     render: h => h(App),
-    router: router
+    // 核心一：路由管理
+    router: router,
+    // 核心二：状态管理
+    store: store
 }).$mount('#app');
 
 

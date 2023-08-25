@@ -163,7 +163,7 @@
  * 当数据源发生变化时，会被 ViewModel 监听到，VM 会根据最新的数据源自动更新页面的结构。
  * 当表单元素的值发生变化时，也会被 VM 监听到，VM 会把变化过后最新的值自动同步到 Model 数据源中。
  *
- * vue 调试工具？
+ * vue-devtools 调试工具？
  * vue 官方提供的 vue-devtools 调试工具，能够方便开发者对 vue 项目进行调试与开发。
  * Chrome 浏览器在线安装 vue-devtools ：
  * https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd/
@@ -1860,26 +1860,26 @@
  * 一、Vue 核心
  * 1.1 Vue 简介
  *     官网：
- *     (1).英文官网: https://vuejs.org/
- *     (2).中文官网: https://cn.vuejs.org/
+ *         (1).英文官网: https://vuejs.org/
+ *         (2).中文官网: https://cn.vuejs.org/
  *     介绍：
- *     (1).动态构建用户界面的渐进式 JavaScript 框架
- *     (2).作者: 尤雨溪
+ *         (1).动态构建用户界面的渐进式 JavaScript 框架
+ *         (2).作者: 尤雨溪
  *     特点：
- *     (1).遵循MVVM模式。
- *     (2).编码简洁，体积小，运行效率高，适合移动端或者PC端开发。
- *     (3).它本身只关注UI，也可以引入其它第三方库开发项。
+ *         (1).遵循MVVM模式。
+ *         (2).编码简洁，体积小，运行效率高，适合移动端或者PC端开发。
+ *         (3).它本身只关注UI，也可以引入其它第三方库开发项。
  *     与其它 JS 框架的关联：
- *     (1).借鉴 Angular 的模板和数据绑定技术。
- *     (2).借鉴 React 的组件化和虚拟DOM。
+ *         (1).借鉴 Angular 的模板和数据绑定技术。
+ *         (2).借鉴 React 的组件化和虚拟DOM。
  *     Vue 相关库：
- *     (1).vue-cli: vue 脚手架。
- *     (2).vue-resource。
- *     (3).axios。
- *     (4).vue-router: 路由。
- *     (5).vuex: 状态管理。
- *     (6).element-ui: 基于 vue 的 UI 组件库（PC 端）。
- *     (7).……
+ *         (1).vue-cli      vue 脚手架。
+ *         (2).vue-resource 模块发送请求。插件。通过【XMLHttpRequest】或者【JSONP】发起请求并进行处理。
+ *         (3).axios        方式发送请求。插件。基于【Promise】用于浏览器和【nodejs】的HTTP客户端。
+ *         (4).vue-router   vue 路由。
+ *         (5).vuex         vue 状态管理。
+ *         (6).element-ui   基于 vue 的 UI 组件库（PC 端）。
+ *         (7).……
  * 1.2 Vue 初识
  *     (1).想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象；
  *     (2).root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法；
@@ -2045,35 +2045,35 @@
  *             });
  *         }
  * 1.6 事件处理【$event】
- *     事件的基本使用：
- *     (1).使用 v-on:click 或 @click 绑定事件，其中 click 是事件名。
- *     (2).事件的回调需要配置在 methods 对象中，最终会在 vm 实例对象上。
- *     (3).在 methods 中配置的函数，不要用箭头函数，否则 this 指向就不是 vm 实例对象了，而是 window 对象。
- *     (4).在 methods 中配置的函数，都是被 Vue 所管理的函数，this 的指向是 vm 实例对象或者组件实例对象。
- *     (5).使用 @click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参。
- *     Vue中的事件修饰符：
- *     (1).prevent 阻止默认事件（常用）。阻止事件默认行为：event.preventDefault()。
- *     (2).stop    阻止事件冒泡（常用）。停止事件冒泡：event.stopPropagation()。
- *     (3).once    事件只触发一次（常用）。
- *     (4).capture 使用事件的捕获模式。
- *     (5).self    只有 event.target 是当前操作的元素时才触发事件。
- *     (6).passive 事件的默认行为立即执行，无需等待事件回调执行完毕。
- *     Vue中常用的按键别名：
- *     (1).enter  回车键。
- *     (2).delete 删除键。捕获删除和退格键。
- *     (3).esc    回退键。
- *     (4).space  空格键。
- *     (5).tab    换行键。特殊，必须配合keydown去使用。
- *     (1).up     向上键。
- *     (2).down   向下键。
- *     (3).left   向左键。
- *     (4).right  向右键。
- *     Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case（短横线命名）。
- *     系统修饰键（用法特殊）：ctrl、alt、shift、meta
- *     (1).配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。
- *     (2).配合keydown使用：正常触发事件。
- *     也可以使用keyCode去指定具体的按键（不推荐）。
- *     Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名。
+ *     (1).事件的基本使用：
+ *         (1).使用 v-on:click 或 @click 绑定事件，其中 click 是事件名。
+ *         (2).事件的回调需要配置在 methods 对象中，最终会在 vm 实例对象上。
+ *         (3).在 methods 中配置的函数，不要用箭头函数，否则 this 指向就不是 vm 实例对象了，而是 window 对象。
+ *         (4).在 methods 中配置的函数，都是被 Vue 所管理的函数，this 的指向是 vm 实例对象或者组件实例对象。
+ *         (5).使用 @click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参。
+ *     (2).Vue中的事件修饰符：
+ *         (1).prevent 阻止默认事件（常用）。阻止事件默认行为：event.preventDefault()。
+ *         (2).stop    阻止事件冒泡（常用）。停止事件冒泡：event.stopPropagation()。
+ *         (3).once    事件只触发一次（常用）。
+ *         (4).capture 使用事件的捕获模式。
+ *         (5).self    只有 event.target 是当前操作的元素时才触发事件。
+ *         (6).passive 事件的默认行为立即执行，无需等待事件回调执行完毕。
+ *     (3).Vue中常用的按键别名：
+ *         (1).enter  回车键。
+ *         (2).delete 删除键。捕获删除和退格键。
+ *         (3).esc    回退键。
+ *         (4).space  空格键。
+ *         (5).tab    换行键。特殊，必须配合keydown去使用。
+ *         (1).up     向上键。
+ *         (2).down   向下键。
+ *         (3).left   向左键。
+ *         (4).right  向右键。
+ *         Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case（短横线命名）。
+ *     (4).系统修饰键（用法特殊）：ctrl、alt、shift、meta
+ *         (1).配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。
+ *         (2).配合keydown使用：正常触发事件。
+ *         也可以使用keyCode去指定具体的按键（不推荐）。
+ *         Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名。
  *     绑定监听：
  *     (1).语法：v-on:click="fun"
  *     (2).参数：@click="fun" 或者 @click="fun(参数)"
@@ -3731,6 +3731,120 @@
  *         a).指定过渡样式: transition。
  *         b).指定隐藏时的样式: opacity/其它。
  * 四、Vue 中的 Ajax
+ *     (1).场景：
+ *         在开发中经常会遇到跨域这个问题。今天想从跨域的原理说起，接着到解决方案，最后到框架对跨域的封装。
+ *     (2).原理：
+ *         跨域指的是在URL访问地址中的协议、域名、端口任意一个不同，都被称为跨域访问。
+ *         先对一个URL进行部分的拆分：
+ *             http://carts.shopping:8080/api/index.html
+ *             http://192.168.50.168:8080/api/index.html
+ *             协议：
+ *                 http 或者 https
+ *             域名：
+ *                 carts.shopping 或者 192.168.50.168
+ *             端口号：
+ *                 8080
+ *             路径：
+ *                 api
+ *             文件：
+ *                 index.html
+ *         如果单独针对前端不涉及服务器，那么是无法处理端口、协议不同的情况，要解决这种情况，必须涉及到服务器，使用代理等方法。
+ *     (3).CORS
+ *         CORS：Cross-Origin Resource Sharing 跨域资源共享。
+ *         大家最经常使用的跨域解决方案是：CORS（Cross-Origin Resource Sharing 跨域资源共享）。
+ *         注意：需要前后端统一 http 的请求头。
+ * 4.0 配置代理
+ *     (1).xhr           new XMLHttpRequest();
+ *     (2).jQuery-Ajax   $.ajax();
+ *     (3).axios         .get();
+ *     (4).fetch         .
+ *     (5).vue-resource  插件库。
+ * 第一种：xhr 原生
+ *     const xhr = new XMLHttpRequest();
+ *     xhr.open('post', 'url', 'true');
+ *     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+ *     xhr.send('name' + username);
+ * 第二种：jQuery-Ajax
+ *     $.ajax({
+ *         url: 'http://abc.com/abc.html',
+ *         dataType:'jsonp',
+ *         jsonp: 'jsonpcallback',
+ *         success: function(data) {
+ *             // 处理返回函数
+ *             console.log('data', data);
+ *         },
+ *         error: function() {
+ *             console.log(500);
+ *         }
+ *     });
+ * 第三种：Axios
+ *     # npm install axios
+ *     const url = 'http://localhost:8080/api/list'
+ *     axios.get(url).then(
+ *         response => {
+ *             console.log(response.data);
+ *         },
+ *         error => {
+ *             console.log(error.message);
+ *         }
+ *     );
+ *     报错：
+ *     Access to XMLHttpRequest at '' from origin '' has been blocked by CORS policy: 'Acess-Control-Allow-Origin'
+ *     解决方式一：
+ *     (1).vue.config.js
+ *     (2).开启配置代理服务器
+ *     module.exports = {
+ *         devServer: {
+ *             proxy: 'http://localhost:8080'
+ *         }
+ *     }
+ *     解决方式二：
+ *     (1).vue.config.js
+ *     (2).开启配置代理服务器
+ *     module.exports {
+ *         devServer: {
+ *             proxy: {
+ *                 '/api': {
+ *                     target: '<url>',
+ *                     ws: true,
+ *                     changeOrigin: true
+ *                 },
+ *                 '/foo': {
+ *                     target: '<other_url>'
+ *                 }
+ *             }
+ *         }
+ *     }
+ * 第四种：fetch
+ *     // 候补
+ * 第五种：vue-resource 插件库
+ *     (0).安装第三方模块
+ *     # npm install vue-resource
+ *     (1).引入插件
+ *     import vueResource from 'vue-resource';
+ *     (2).使用插件
+ *     Vue.use(vueResource);
+ *     export default {
+ *         name:'SearchView',
+ *         data() {
+ *             return {
+ *                 keyWord: ''
+ *             }
+ *         },
+ *         methods: {
+ *             search() {
+ *                 this.$http.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
+ *                     response => {
+ *                         console.log(response.data);
+ *                         this.$bus.$emit('share', response.data);
+ *                     },
+ *                     error => {
+ *                         this.$bus.$emit('share', 500);
+ *                     }
+ *                 )
+ *             }
+ *         },
+ *     }
  * 4.1 解决开发环境 Ajax 跨域问题
  *     使用代理服务器。
  * 4.2 github 用户搜索案例
@@ -3745,16 +3859,63 @@
  *     2).vue-resource
  *     vue 插件库，vue1.x 版本使用广泛，官方已不维护。
  * 4.4 slot 插槽
- *     1.不使用插槽
- *     2.默认插槽
- *     3.具名插槽
- *     4.作用域插槽
- *     理解：
- *         父组件向子组件传递带数据的标签，当一个组件有不确定的结构时，就需要使用 slot 插槽技术，
- *     注意：
- *         插槽内容是在父组件中编译后，再传递给子组件的。
+ *     (1).不使用插槽
+ *     <template>
+ *         <div class="category">
+ *             <h3>{{title}}分类</h3>
+ *         </div>
+ *     </template>
+ *     (2).默认插槽
+ *     <template>
+ *         <div class="category">
+ *             <h3>{{title}}分类</h3>
+ *             <!-- 定义一个插槽（挖个坑，等着组件的使用者进行填充） -->
+ *             <slot>我是一些默认值，当使用者没有传递具体结构时，我会出现</slot>
+ *         </div>
+ *     </template>
+ *     (3).具名插槽
+ *     // App.vue
+ *     <template>
+ *         <div class="container">
+ *             <Category title="美食" >
+ *                 <img slot="center" src="https://s3.ax1x.com/2021/01/16/srJlq0.jpg" alt="">
+ *                 <a slot="footer" href="http://www.atguigu.com">更多美食</a>
+ *             </Category>
+ *             <Category title="游戏" >
+ *                 <ul slot="center">
+ *                     <li v-for="(g,index) in games" :key="index">{{g}}</li>
+ *                 </ul>
+ *                 <div class="foot" slot="footer">
+ *                     <a href="http://www.atguigu.com">单机游戏</a>
+ *                     <a href="http://www.atguigu.com">网络游戏</a>
+ *                 </div>
+ *             </Category>
+ *             <Category title="电影">
+ *                 <video slot="center" controls src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
+ *                 <template v-slot:footer>
+ *                     <div class="foot">
+ *                         <a href="http://www.atguigu.com">经典</a>
+ *                         <a href="http://www.atguigu.com">热门</a>
+ *                         <a href="http://www.atguigu.com">推荐</a>
+ *                     </div>
+ *                     <h4>欢迎前来观影</h4>
+ *                 </template>
+ *             </Category>
+ *         </div>
+ *     </template>
+ *     // CategoryView.vue
+ *     <template>
+ *         <div class="category">
+ *             <h3>{{title}}分类</h3>
+ *             <!-- 定义一个插槽（挖个坑，等着组件的使用者进行填充） -->
+ *             <slot name="center">我是Center插槽，当使用者没有传递具体结构时，我会出现哈！！！</slot>
+ *             <slot name="footer">我是Footer插槽，当使用者没有传递具体结构时，我会出现哒！！！</slot>
+ *         </div>
+ *     </template>
+ *     (4).作用域插槽
+ *     // App.vue
  *     <Category title="游戏">
- *         <template scope="list">
+ *         <template scope="liuweiwei">
  *             <ul>
  *                 <li v-for="(g, index) in list.games" :key="index">{{g}}</li>
  *             </ul>
@@ -3772,10 +3933,15 @@
  *             <h4 v-for="(g,index) in games" :key="index">{{g}}</h4>
  *         </template>
  *     </Category>
+ *     // CategoryView.vue
  *     <div class="category">
  *         <h3>{{title}}分类</h3>
  *         <slot :games="games" msg="hello">我是默认的一些内容</slot>
  *     </div>
+ *     理解：
+ *         父组件向子组件传递带数据的标签，当一个组件有不确定的结构时，就需要使用 slot 插槽技术，
+ *     注意：
+ *         插槽内容是在父组件中编译后，再传递给子组件的。
  * 五、Vuex
  * 5.1 Vuex 的理解
  *     1. 概念：专门在 Vue 中实现集中式状态（数据）管理的一个 Vue 插件，对 vue 应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
@@ -3879,7 +4045,115 @@
  *     3. Mint UI：http://mint-ui.github.io
  * 7.2 PC 端常用 UI 组件库
  *     1. Element UI：https://element.eleme.cn
- *     2. IView UI：https://www.iviewui.co
+ *     2. IView UI：https://www.iviewui.com
+ */
+
+
+
+
+/**
+ * 总结：
+ * 【黑马程序员Vue视频教程目录】
+ * 一、webpack 前端工程化
+ *     (01).创建 vue-cli 工程。
+ *     (02).创建 vite 工程。
+ *     (03).打包发布。
+ * 二、vue 基础
+ *     (01).MVVM 原理
+ *     (02).vue-devtools 调试工具
+ *     (03).vue 指令
+ *         01).内容渲染指令。
+ *         02).属性绑定指令。
+ *         03).事件绑定指令。
+ *         04).双向绑定指令。
+ *         05).条件渲染指令。
+ *         06).列表渲染指令。
+ *     (04).过滤器
+ *         01).私有过滤器。
+ *         02).全局过滤器。
+ *     (05).侦听器
+ *         01).侦听 property 变化。
+ *     (06).计算属性
+ *         01).计算 property 数据。
+ * 三、vue-cli 脚手架
+ *     (01).单页面应用程序（Single Page Application）
+ * 四、vue 组件
+ *     (01).组件关系
+ *     (02).组件结构
+ *     (03).组件使用
+ *     (04).私有组件
+ *     (05).全局组件
+ *     (06).组件之间的关系
+ *     (07).EventBus.js 模块
+ * 五、引用
+ *     (01).ref 引用属性
+ *     (02).$refs 引用对象
+ * 六、生命周期
+ *     (01).生命周期的三个阶段
+ *     (02).生命周期的钩子函数
+ * 七、动态组件
+ *     (01).<component>
+ *     (02).<component> + <keep-alive>
+ * 八、插槽
+ *     (01).抽象元素<slot></slot>
+ * 九、自定义指令
+ *     (01).私有自定义指令
+ *     (02).全局自定义指令
+ * 十、路由
+ *     (01).前端路由
+ *     (02).简易的前端路由
+ *     (03).vue-router 路由
+ *     (04).vue-router 路由常用方法
+ *         01).重定向路由
+ *         02).嵌套路由
+ *         03).动态路由
+ *         04).使用 $router 对象，params 参数接收
+ *         05).使用 props 自定义属性接收
+ *         06).vue-router 路由常用API
+ *         07).vue-router 路由全局守卫
+ * 【官网Vue视频教程目录】
+ *
+ * 【尚硅谷Vue视频教程目录】
+ * 一、基础
+ *     (01).安装
+ *     (02).介绍
+ *     (03).vue 实例
+ *     (04).模板语法
+ *     (01).计算属性与侦听属性
+ *     (02).Class与Style绑定
+ *     (03).条件渲染
+ *     (04).列表渲染
+ *     (05).事件处理
+ *     (06).表单输入绑定
+ *     (07).组件基础
+ * 二、深入了解组件
+ *     (01).组件注册
+ *     (02).Prop
+ *     (03).自定义事件
+ *     (04).插槽
+ *     (05).动态组件与异步组件
+ *     (06).处理边界情况
+ * 三、过滤与动画
+ *     (01).进入与离开&&列表过渡
+ *     (02).状态过渡
+ * 四、可复用性与组合
+ *     (01).混入
+ *     (02).自定义指令
+ *     (03).渲染函数与JSX
+ *     (04).插件
+ *     (05).过滤器
+ * 五、工具
+ *     (01).单文件组件
+ *     (02).测试
+ *     (03).TypeScript支持
+ *     (04).生产环境部署
+ * 六、规模化
+ *     (01).路由
+ *     (02).状态管理
+ *     (03).服务端渲染
+ *     (04).安全
+ * 七、内在
+ *     (01).深入响应式原理
  */
 
 
@@ -3897,8 +4171,10 @@ import App from '@/App2.vue';
 // 03.导入第三方饿了么样式文件
 import 'element-ui/lib/theme-chalk/index.css';
 
-// 第05步：导入路由模块
+// 第05步：导入第三方模块插件（路由模块：vue-router）
 import router from "@/router/index.js";
+// 第05步：导入第三方模块插件（状态管理：vuex)
+import store from "@/store/index.js";
 
 // 导入 bootstrap 样式
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -3910,10 +4186,16 @@ Vue.config.productionTip = false;
 // 04.实例对象使用饿了么UI插件
 Vue.use(ElementUI);
 
-// 第06步：挂载router路由模块
+// 第06步：挂载 router 路由模块
+// 第06步：挂载 vuex   状态管理
+// 第06步：挂载 render 渲染函数
 new Vue({
-    render: h => h(App),
-    router: router
+    // 核心一：路由管理
+    router: router,
+    // 核心二：状态管理
+    store: store,
+    // 核心三：渲染函数
+    render: h => h(App)
 }).$mount('#app');
 
 
