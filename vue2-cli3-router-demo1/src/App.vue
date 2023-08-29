@@ -15,7 +15,7 @@
 // 导入组件
 import Home from '@/components/Home.vue';
 import Movie from '@/components/Movie.vue';
-import About from '@/components/About.vue';
+import About from '@/components/VueRouterView.vue';
 
 export default {
   name: 'App',

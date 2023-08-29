@@ -8,15 +8,15 @@ import VueRouter from 'vue-router';
 
 import Home from "@/components/Home.vue";
 import Movie from "@/components/Movie.vue";
-import About from "@/components/About.vue";
+import About from "@/components/VueRouterView.vue";
 import Tab1 from "@/components/tabs/Tab1.vue";
 import Tab2 from "@/components/tabs/Tab2.vue";
 import Main from "@/components/Main.vue";
 import Login from "@/components/Login.vue";
-import ContainerView from "@/components/ContainerView.vue";
-import SupportView from "@/components/SupportView.vue";
-import Cat1 from "@/components/cats/Cat1.vue";
-import Cat2 from "@/components/cats/Cat2.vue";
+import ContainerView from "@/components/ElementUIView.vue";
+import SupportView from "@/components/VuexStoreView.vue";
+import Cat1 from "@/components/cats/VuexStoreCountView1.vue";
+import Cat2 from "@/components/cats/VuexStorePersonView2.vue";
 
 // 第02步：调用Vue.use()函数，把VueRouter安装为Vue插件
 Vue.use(VueRouter);

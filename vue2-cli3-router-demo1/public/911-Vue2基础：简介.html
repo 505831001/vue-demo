@@ -651,14 +651,14 @@
     <!-- 2. 创建列表隔行变色项目 -->
     <!-- 1).新建项目空白目录，并运行 npm init –y 命令，初始化包管理配置文件 package.json。 -->
     <!-- PS D:\workspace-vue\vue2> npm init -y -->
-    <!-- 
-    Wrote to D:\workspace-vue\vue2\package.json: 
-    {                                                        
-        "name": "vue2",                                        
-        "version": "1.0.0",                                    
-        "description": "",                                     
-        "main": "index.js",                                    
-        "scripts": {                                           
+    <!--
+    Wrote to D:\workspace-vue\vue2\package.json:
+    {
+        "name": "vue2",
+        "version": "1.0.0",
+        "description": "",
+        "main": "index.js",
+        "scripts": {
             "test": "echo \"Error: no test specified\" && exit 1"
         },
         "keywords": [],
@@ -673,15 +673,15 @@
     <!-- -S 是--save的简写。 -->
     <!-- -D 是--save-dev的简写。 -->
     <!-- 官网：https://www.npmjs.com/package/webpack -->
-    <!-- 
-    Install with npm: 
-    npm install --save-dev webpack 
-    Install with yarn: 
-    yarn add webpack --dev 
+    <!--
+    Install with npm:
+    npm install --save-dev webpack
+    Install with yarn:
+    yarn add webpack --dev
     -->
     <!-- PS D:\workspace-vue\vue2> npm install jquery -S -->
-    <!-- 
-    Wrote to D:\workspace-vue\vue2\package.json: 
+    <!--
+    Wrote to D:\workspace-vue\vue2\package.json:
     {
         "name": "vue2",
         "version": "1.0.0",
@@ -708,8 +708,8 @@
     <!-- # npm install webpack@5.42.1 webpack-cli@4.7.2 -D -->
     <!-- 不指定版本： -->
     <!-- # npm install webpack webpack-cli -D -->
-    <!-- 
-    Wrote to D:\workspace-vue\vue2\package.json: 
+    <!--
+    Wrote to D:\workspace-vue\vue2\package.json:
     {
         "name": "vue2",
         "version": "1.0.0",
@@ -759,7 +759,7 @@
         }
     } -->
     <!-- 3).在终端中运行 npm run dev 命令，启动 webpack 进行项目的打包构建。 -->
-    <!-- 
+    <!--
     PS D:\workspace-vue\vue2> npm run dev
     > vue2@1.0.0 dev
     > webpack
@@ -1660,7 +1660,7 @@
     <!-- v-html -->
     <!-- v-text 指令和插值表达式只能渲染纯文本内容。如果要把包含 HTML 标签的字符串渲染为页面的 HTML 元素，则需要用到 v-html 这个指令： -->
     <!-- 最终渲染的结果为： -->
-    <!-- 
+    <!--
     <div id="app">
         // 自定义属性表达式（会覆盖元素内部原有的内容，不建议使用。）
         <p v-text="username"></p>
@@ -2767,7 +2767,7 @@
     <!-- 各种菜单... -->
 
     <!-- 3. node 与 npm 与 vue 和 vue-cli 安装操作 -->
-    <!-- 
+    <!--
     # 安装：
     # 查看node版本
     C:\Users\Administrator>node -v
@@ -2965,7 +2965,7 @@
         }).$mount('#app');
     </script> -->
     <!-- 【重点】模块结构：App.vue -->
-    <!-- 
+    <!--
     <template>
         <div id="app">
           <nav>
@@ -2976,7 +2976,7 @@
         </div>
     </template> -->
     <!-- 【重点】页面文件：index.html -->
-    <!-- 
+    <!--
     <!DOCTYPE html>
     <html lang="">
       <head>
@@ -3141,7 +3141,7 @@
           <h1>{{ msg }}</h1>
         </div>
     </template>
-    <script lang="ts">  
+    <script lang="ts">
     </script>
     // Add "scoped" attribute to limit CSS to this component only
     <style scoped lang="scss">
@@ -3149,7 +3149,7 @@
     <!-- 拓展：@ 艾特符号的起源（webpack 工具） -->
     <!-- 1).配置艾特（@）符号代替指定目录。 -->
     <!-- 2).配置文件（webpack.config.js）。 -->
-    <!-- 
+    <!--
     <script>
         // 0. 导入第三方模块
         const pathModule = require('path');
@@ -3180,7 +3180,7 @@
     <!-- 1).为什么 F 组件不能用在组件 C 组件中。 -->
     <!-- 2).怎样才能在组件 C 组件中使用 F 组件。 -->
     <!-- 第一组件：App.vue -->
-    <!-- 
+    <!--
     <template>
         <div id="app-container">
           <h1>App.vue 根组件</h1>
@@ -3250,7 +3250,7 @@
     <!-- 4.3 注册全局组件 -->
     <!-- 在 vue 项目的 main.js 入口文件中，通过 Vue.component() 方法，可以注册全局组件。示例代码如下： -->
     <!-- 第一入口：main.js -->
-    <!-- 
+    <!--
     <script>
         // 导入第三方vue模块包，得到Vue这个构造函数
         import Vue from 'vue';
@@ -3608,7 +3608,7 @@
         min-height: 250px;
         flex: 1;
         }
-    
+
         h3 {
         color: blue;
         }
@@ -3625,7 +3625,7 @@
             min-height: 250px;
             flex: 1;
         }
-      
+
         h3 {
             color: blue;
         }
@@ -3869,7 +3869,7 @@
         export default new Vue();
     </script> -->
     <!-- 2).在数据发送方，调用：bus.$emit('事件名称', 要发送的数据) 方法【触发一个自定义事件】。 -->
-    <!-- 
+    <!--
     <script>
         import bus from '@/components/eventBus';
         export default {
@@ -3887,7 +3887,7 @@
     </script>
     -->
     <!-- 3).在数据接收方，调用：bus.$on('事件名称', 事件处理函数) 方法【注册一个自定义事件】。 -->
-    <!-- 
+    <!--
     <script>
         import bus from '@/components/eventBus';
         export default {
@@ -4229,7 +4229,7 @@
 
     <!-- 2. 如何实现动态组件渲染 -->
     <!-- vue 提供了一个内置的 <component> 组件，专门用来实现动态组件的渲染。示例代码如下： -->
-    <!-- 
+    <!--
     <script>
         export default {
             data() {
@@ -4250,7 +4250,7 @@
     <!-- 3. 使用 keep-alive 保持状态 -->
     <!-- 默认情况下，切换动态组件时无法保持组件的状态。此时可以使用 vue 内置的 <keep-alive> 组件保持动态组件的状态。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
     <keep-alive>
         <component v-bind:is="componentName"></component>
     </keep-alive>
@@ -4259,7 +4259,7 @@
     <!-- 4. keep-alive 对应的生命周期函数 -->
     <!-- 当组件被缓存时，会自动触发组件的 deactivated 生命周期函数。 -->
     <!-- 当组件被激活时，会自动触发组件的 activated 生命周期函数。 -->
-    <!-- 
+    <!--
     <script>
         export default {
             created() {
@@ -4284,7 +4284,7 @@
 
     <!-- 5. keep-alive 的 include 属性 -->
     <!-- include 属性用来指定：只有名称匹配的组件会被缓存。多个组件名之间使用英文的逗号分隔： -->
-    <!-- 
+    <!--
     <keep-alive include="MyLeft, MyRight">
         <component v-bing:is="componentName"></component>
     </keep-alive>
@@ -4342,7 +4342,7 @@
     <!-- 2. 体验插槽的基础用法 -->
     <!-- 在封装组件时，可以通过 <slot> 元素定义插槽，从而为用户预留内容占位符。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
     <template>
         <p>这是 MyComponentOne 组件的第一个P标签。</p>
         // 通过 slot 标签，为用户预留内容占位符，也叫【插槽】。
@@ -4353,7 +4353,7 @@
     <!-- 2.1 没有预留插槽的内容会被丢弃 -->
     <!-- 如果在封装组件时没有预留任何 <slot> 插槽，则用户提供的任何自定义内容都会被丢弃。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
     <template>
         <p>这是 MyComponentOne 组件的第一个P标签。</p>
         // 通过 slot 标签，为用户预留内容占位符，也叫【插槽】。
@@ -4368,7 +4368,7 @@
     <!-- 2.2 后备内容 -->
     <!-- 封装组件时，可以为预留的 <slot> 插槽提供后备内容（默认内容）。如果组件的使用者没有为插槽提供任何内容，则后备内容会生效。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
     <template>
         <p>这是 MyComponentOne 组件的第一个P标签。</p>
         // 通过 slot 标签，为用户预留内容占位符，也叫【插槽】。
@@ -4377,7 +4377,7 @@
     </template>
     -->
     <!-- 案例演示： -->
-    <!-- 
+    <!--
     <template>
         <div class="app-container">
             // Slot 插槽
@@ -4609,7 +4609,7 @@
         }
     </script> -->
     <!-- Goods.vue 预留 slot 插槽： -->
-    <!-- 
+    <!--
     <template>
         <div class="goods-container">
             // 商品的数量
@@ -4618,7 +4618,7 @@
     </template>
     -->
     <!-- Counter.vue 父子相互传值： -->
-    <!-- 
+    <!--
     <template>
         <div>
           <button type="button" class="btn btn-light btn-sm" v-on:click="sub">-</button>
@@ -4660,7 +4660,7 @@
     <!-- 2. 自定义指令的分类 -->
     <!-- vue 中的自定义指令分为两类，分别是： -->
     <!-- 1).私有自定义指令。 -->
-    <!-- 
+    <!--
     export default {
         directives: {
           // 自定义名为 color 的指令，指向一个配置对象。
@@ -4678,10 +4678,10 @@
               el.style.color = binding.value;
             }
           }
-    }, 
+    },
     -->
     <!-- 2).全局自定义指令。 -->
-    <!-- 
+    <!--
     import Vue from 'vue';
     import App from './App.vue';
     import 'bootstrap/dist/css/bootstrap.min.css'
@@ -4734,7 +4734,7 @@
     <!-- bind 函数只调用 1 次：当指令第一次绑定到元素时调用，当 DOM 更新时 bind 函数不会被触发。  -->
     <!-- update 函数会在每次 DOM 更新时被调用。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
     <template>
         <div class="header-container" v-color="color">
           <span>{{ title }}</span>
@@ -4774,7 +4774,7 @@
     <!-- 3).能够知道如何自定义指令 -->
     <!-- 私有自定义指令：directives:{} -->
     <!-- 全局自定义指令：Vue.directive() -->
-    <!-- 
+    <!--
     <template>
         <div class="header-container" v-color="color">
           <span>{{ title }}</span>
@@ -4823,7 +4823,7 @@
     <!-- 下载模块：npm install --save axios -->
     <!-- 下载模块：npm install axios -S -->
     <!-- 案例演示： -->
-    <!-- 
+    <!--
     import Vue from 'vue';
     import App from './App.vue';
     import axios from "axios";
@@ -4837,7 +4837,7 @@
       render: h => h(App),
     }).$mount('#app');
     -->
-    <!-- 
+    <!--
     <script>
         export default {
             methods: {
@@ -4864,7 +4864,7 @@
 
     <!-- 八、路由章节 -->
     <!-- 锚链接概念： -->
-    <!-- 
+    <!--
     // CSS Files
     <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
     <style>
@@ -4926,7 +4926,7 @@
 
     <!-- 4. 什么是前端路由 -->
     <!-- 通俗易懂的概念：Hash 地址（#/home，也就是传说中的锚链接）与 vue 组件之间的对应关系。 -->
-    <!-- 
+    <!--
     // 这就是传说中的锚链接呀。页面不会跳转，但是会有历史记录。
     // ./example-04.html#b1
     // ./example-04.html#b2
@@ -4960,7 +4960,7 @@
     <!-- 步骤1：通过 <component> 标签，结合 comName 动态渲染组件。示例代码如下： -->
     <!-- 步骤2：在 App.vue 组件中，为 <a> 链接添加对应的 hash 值： -->
     <!-- 步骤3：在 created 生命周期函数中，监听浏览器地址栏中 hash 地址的变化，动态切换要展示的组件的名称： -->
-    <!-- 
+    <!--
     <template>
         <div class="app-container">
             <h1>App 根组件</h1>
@@ -4977,7 +4977,7 @@
         // 导入组件
         import Home  from '@/components/Home.vue';
         import Movie from '@/components/Movie.vue';
-        import About from '@/components/About.vue';
+        import About from '@/components/VueRouterView.vue';
         export default {
             name: 'App',
             // 注册组件
@@ -5033,14 +5033,14 @@
     <!-- 2.2 创建路由模块 -->
     <!-- 在 src 源代码目录下，新建 router/index.js 路由模块，并初始化如下的代码： -->
     <!-- 示例代码如下：/src/router/index.js -->
-    <!-- 
+    <!--
         // 1. 导入第三方模块
         import Vue from 'vue';
         // 1. 导入第三方模块
         import VueRouter from "vue-router";
         import Home from "@/components/Home.vue";
         import Movie from "@/components/Movie.vue";
-        import About from "@/components/About.vue";
+        import About from "@/components/VueRouterView.vue";
         // 2. 使用
         Vue.use(VueRouter);
         // 3. 创建实例
@@ -5059,7 +5059,7 @@
     <!-- 2.3 导入并挂载路由模块 -->
     <!-- 在 src/main.js 入口文件中，导入并挂载路由模块。 -->
     <!-- 示例代码如下：/src/main.js -->
-    <!-- 
+    <!--
         import Vue from 'vue';
         import App from './App2.vue';
         // 导入路由模块
@@ -5079,7 +5079,7 @@
     <!-- 2.4 声明路由链接和占位符 -->
     <!-- 1).在 src/App.vue 组件中，使用 vue-router 提供的【<router-view>】声明路由【占位符】： -->
     <!-- 示例代码如下：/src/App.vue -->
-    <!-- 
+    <!--
     <template>
         <div class="app-container">
           <h1>App2 组件</h1>
@@ -5102,7 +5102,7 @@
     -->
     <!-- 2).在 src/App.vue 组件中，使用 vue-router 提供的【<router-link>】和【<router-view>】声明路由【链接】和【占位符】： -->
     <!-- 示例代码如下：/src/App2.vue -->
-    <!-- 
+    <!--
     <template>
         <div class="app-container">
             <h1>App2 组件</h1>
@@ -5127,14 +5127,14 @@
     <!-- 3. 声明路由的匹配规则 -->
     <!-- 在 src/router/index.js 路由模块中，通过【routes】数组声明路由的匹配规则。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
         // 1. 导入第三方模块
         import Vue from 'vue';
         // 1. 导入第三方模块
         import VueRouter from "vue-router";
         import Home from "@/components/Home.vue";
         import Movie from "@/components/Movie.vue";
-        import About from "@/components/About.vue";
+        import About from "@/components/VueRouterView.vue";
         // 2. 使用
         Vue.use(VueRouter);
         // 3. 创建实例
@@ -5154,7 +5154,7 @@
     <!-- 1. 路由重定向 -->
     <!-- 路由重定向指的是：用户在访问地址 A 的时候，强制用户跳转到地址 C ，从而展示特定的组件页面。 -->
     <!-- 通过路由规则的【redirect】属性，指定一个新的路由地址，可以很方便地设置路由的重定向： -->
-    <!-- 
+    <!--
         // 3. 创建实例
         const router = new VueRouter({
             routes: [
@@ -5173,8 +5173,8 @@
     <!-- 2).点击子级路由链接显示子级模板内容。 -->
 
     <!-- 3.1 声明子路由链接和子路由占位符 -->
-    <!-- 在 About.vue 组件中，声明 tab1 和 tab2 的子路由链接以及子路由占位符。示例代码如下： -->
-    <!-- 
+    <!-- 在 VueRouterView.vue 组件中，声明 tab1 和 tab2 的子路由链接以及子路由占位符。示例代码如下： -->
+    <!--
     <template>
         <div class="about-container">
           <h3>About 组件</h3>
@@ -5191,7 +5191,7 @@
     <!-- 3.2 通过 children 属性声明子路由规则 -->
     <!-- 在 src/router/index.js 路由模块中，导入需要的组件，并使用 children 属性声明子路由规则： -->
     <!-- 写法一：通过【children】属性指定重定向子路由。 -->
-    <!-- 
+    <!--
         // 3. 创建实例
         const router = new VueRouter({
             routes: [
@@ -5208,7 +5208,7 @@
         });
     -->
     <!-- 写法二：通过默认子路由（如果【children】数组中，某个路由规则的【path】值为空字符串，则这条路由规则，叫做默认子路由。） -->
-    <!-- 
+    <!--
         // 3. 创建实例
         const router = new VueRouter({
             routes: [
@@ -5227,24 +5227,24 @@
 
     <!-- 4. 动态路由匹配 -->
     <!-- 思考：有如下 3 个路由链接。 -->
-    <!-- 
+    <!--
         <router-link to="/about/tab1">子路由一</router-link>
         <router-link to="/about/tab2">子路由二</router-link>
         <router-link to="/about/tab3">子路由三</router-link>
     -->
     <!-- 思考：，定义如下 3 个路由规则，是否可行。 -->
-    <!-- 
+    <!--
         {path: '/about/tab1', component: Tab1},
         {path: '/about/tab2', component: Tab2},
         {path: '/about/tab3', component: Tab3}
     -->
     <!-- 缺点：路由规则的复用性差。 -->
-    
+
     <!-- 4.1 动态路由的概念 -->
     <!-- 动态路由指的是：把 Hash 地址中可变的部分定义为参数项，从而提高路由规则的复用性。 -->
     <!-- 在 vue-router 中使用英文的冒号（:）来定义路由的参数项。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
         // 路由中的动态参数以英文的冒号（:）进行声明，冒号后面的是动态参数的名称。
         {path: '/media/:id', component: Media}
         // 将以下 3 个路由规则，合并成了一个，提高了路由规则的复用性。
@@ -5255,7 +5255,7 @@
 
     <!-- 4.2 $route.params 参数对象 -->
     <!-- 在动态路由渲染出来的组件中，可以使用 this.$route.params 对象访问到动态匹配的参数值。 -->
-    <!-- 
+    <!--
     <template>
         <div class="movie-container">
             // this.$route  是路由的参数对象。
@@ -5287,7 +5287,7 @@
     <!-- 4.3 使用 props 接收路由参数 -->
     <!-- 为了简化路由参数的获取形式，vue-router 允许在路由规则中开启 props 传参。 -->
     <!-- 示例代码如下： -->
-    <!-- 
+    <!--
         // 3. 创建实例
         const router = new VueRouter({
             routes: [
@@ -5303,7 +5303,7 @@
             ]
         });
     -->
-    <!-- 
+    <!--
     <template>
         <div class="app-container">
             // this.$route  是路由的参数对象。
@@ -5331,7 +5331,7 @@
         </div>
     </template>
     -->
-    <!-- 
+    <!--
     <template>
         <div class="movie-container">
             // this.$route  是路由的参数对象。
@@ -5397,7 +5397,7 @@
     <!-- 3).go()              方法，可以在浏览历史中前进和后退。 -->
     <!-- 1).$router.back()    方法，在历史记录中，后退到上一个页面。 -->
     <!-- 2).$router.forward() 方法，在历史记录中，前进到下一个页面。 -->
-    <!-- 
+    <!--
         <template>
         <div class="home-container">
             <h3>Home 组件</h3>
@@ -5473,7 +5473,7 @@
     <!-- 3).当前用户没有后台主页的访问权限，不允许跳转到后台主页：next(false) -->
 
     <!-- 6.4 控制后台主页的访问权限 -->
-    <!-- 
+    <!--
         // 1. 导入第三方模块
         import VueRouter from "vue-router";
         // 2. 把 VueRouter 安装为 Vue 项目的插件，Vue.use() 函数的作用，就是来安装插件的
@@ -5592,7 +5592,7 @@
     <!-- 常用指令 -->
 
     <!-- 自定义指令 -->
-    <!-- 
+    <!--
     需求1：定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10倍。
     需求2：定义一个v-fbind指令，和v-bind功能类似，但可以让其所绑定的input元素默认获取焦点。
     自定义指令总结：
@@ -5639,7 +5639,7 @@
     -->
 
     <!-- 生命周期 -->
-    <!-- 
+    <!--
     // 此阶段：挂载阶段
     (01).Init Events & Lifecycle                初始化：生命周期、事件、但数据代理还未开始。
     (02).beforeCreate()                         此时：无法通过vm访问到data中的数据、methods中的方法。
@@ -5671,7 +5671,7 @@
     -->
 
     <!-- 组件 -->
-    <!-- 
+    <!--
     Vue中使用组件的三大步骤：
         (1).定义组件（创建组件）。
         (2).注册组件。
@@ -5689,7 +5689,7 @@
         <SchoolView></SchoolView>
     -->
 
-    <!-- 
+    <!--
     几个注意点：
     (1).关于组件名:
         一个单词组成：
@@ -5709,7 +5709,7 @@
         const school = Vue.extend(options) 可简写为：const school = options
     -->
 
-    <!-- 
+    <!--
     关于VueComponent：
     (1).school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。
     (2).我们只需要写<school/>或<school></school>，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：new VueComponent(options)。
@@ -5736,19 +5736,19 @@
     总结：【VueComponent】vc和【Vue】vm还是有区别的哈！！！
     -->
 
-    <!-- 
+    <!--
     分析Vue的实例对象vm与VueComponent的实例对象vc的关系：
     (1).一个重要的内置关系：
         VueComponent.prototype.__proto__ === Vue.prototype
     (2).为什么要有这个关系：
         让组件实例对象（vc）可以访问到 Vue 原型上的属性、方法。
     -->
-    
+
     <!-- vue-cli脚手架 -->
     <!-- vue-cli -> Vue - Command Line Interface -->
 
     <!-- ref属性与props属性 -->
-    <!-- 
+    <!--
     ref="myH3"
     ref="myBtn"
     ref="myIpt"
@@ -5774,7 +5774,7 @@
     -->
 
     <!-- mixin混入 -->
-    <!-- 
+    <!--
     import {hunhe1,hunhe2} from '@/mixin.js';
     // 全局混合
     Vue.mixin(hunhe1);
@@ -5801,7 +5801,7 @@
     -->
 
     <!-- 插件 -->
-    <!-- 
+    <!--
     import plugins from '@/plugins.js';
     // 配置文件使用插件plugins.js
     Vue.use(plugins);
@@ -5835,7 +5835,7 @@
     -->
 
     <!-- 组件案例： -->
-    <!-- 
+    <!--
     添加：
     (01).先从App.vue组件传递给MyHeader.vue组件通过绑定属性v-bind。
     <MyList v-bind:list="array"></MyList>
@@ -5924,13 +5924,13 @@
     -->
 
     <!-- 本地存储：SessionStorage与LocalStorage -->
-    <!-- 
+    <!--
     sessionStorage.setItem('token', JSON.stringify(token));
     const result = sessionStorage.getItem('token');
     console.log(JSON.parse(result));
     sessionStorage.removeItem('token');
     sessionStorage.clear();
-    -- 
+    --
     localStorage.setItem('token', JSON.stringify(token));
     const result = localStorage.getItem('token');
     console.log(JSON.parse(result));
@@ -5939,7 +5939,7 @@
     -->
 
     <!-- 组件自定义事件 -->
-    <!-- 
+    <!--
     // 子级组件
     this.$emit('share', value);
     // 父级组件
@@ -5957,7 +5957,7 @@
     -->
 
     <!-- 全局事件总线 -->
-    <!-- 
+    <!--
     // 全局事件总线，任意组件间通信
     (1).一种组件间通信的方式，适用于任意组件间通信。
     (2).安装全局事件总结；
@@ -5974,7 +5974,7 @@
     -->
 
     <!-- $nextTick -->
-    <!-- 
+    <!--
     (1).语法：this.$nextTick(callback)
     (2).作用：在下一次DOM更新结束后，执行其指定的回调函数。
     (3).场景：当改变数据后，要基于更新后的新DOM进行某些操作时，要在$nextTick()所指定的回调函数中执行。
@@ -5991,7 +5991,7 @@
     -->
 
     <!-- 动画 -->
-    <!-- 
+    <!--
     Vue封装的过渡与动画。
     (1).作用：在插入、更新或者移除DOM元素时，在合适的时候给元素添加样式类名。
     (2).图示：
@@ -6016,7 +6016,7 @@
     -->
 
     <!-- 过渡 -->
-    <!-- 
+    <!--
     Vue封装的过渡与动画。
     (1).作用：在插入、更新或者移除DOM元素时，在合适的时候给元素添加样式类名。
     (2).图示：
@@ -6037,7 +6037,7 @@
     -->
 
     <!-- 配置代理 -->
-    <!-- 
+    <!--
     (1).xhr           new XMLHttpRequest();
     (2).jQuery        $.ajax();
     (3).axios         .get();
@@ -6083,7 +6083,7 @@
     -->
 
     <!-- vue-resource 插件库 -->
-    <!-- 
+    <!--
     (0).安装第三方模块
     # npm install vue-resource
     (1).引入插件
@@ -6114,7 +6114,7 @@
     -->
 
     <!-- 插槽Slot -->
-    <!-- 
+    <!--
     <Category title="游戏">
       <template scope="list">
         <ul>
@@ -6141,7 +6141,7 @@
     -->
 
     <!-- Vuex -->
-    
+
 
     <!-- 路由 -->
 

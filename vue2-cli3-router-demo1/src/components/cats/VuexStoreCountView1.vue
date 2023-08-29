@@ -41,7 +41,7 @@
 import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
 
 export default {
-  name: 'Cat1',
+  name: 'VuexStoreCountView1',
   data() {
     return {
       n: 1,

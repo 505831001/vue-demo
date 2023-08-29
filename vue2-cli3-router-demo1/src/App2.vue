@@ -13,9 +13,9 @@
     <router-link to="/movie/1">国内专区</router-link>
     <router-link to="/movie/2?name=rh&age=18">日韩专区</router-link>
     <router-link to="/movie/3">欧美专区</router-link>
-    <router-link to="/about">关于我们</router-link>
-    <router-link to="/support">技术支持</router-link>
-    <router-link to="/contain">布局容器</router-link>
+    <router-link to="/about">路由管理VueRouter</router-link>
+    <router-link to="/support">状态管理Vuex</router-link>
+    <router-link to="/contain">饿了么UI</router-link>
     <hr/>
     <!-- 第07步：定义路由的【占位符】router-view -->
     <router-view></router-view>

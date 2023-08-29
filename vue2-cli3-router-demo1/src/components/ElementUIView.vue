@@ -82,7 +82,7 @@
 
 <script>
 export default {
-  name: 'ContainerView',
+  name: 'ElementUIView',
   data() {
     const item = {
       date: '2023-08-09',
