@@ -1339,7 +1339,11 @@ new Vue({
     // 核心一：路由管理
     router: router,
     // 核心二：状态管理
-    store: store
+    store: store,
+    // 核心四：事件总线
+    beforeCreate() {
+        Vue.prototype.$bus = this
+    }
 }).$mount('#app');
 
 

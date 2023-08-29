@@ -26,7 +26,11 @@ new Vue({
   // 核心二：状态管理
   store: store,
   // 核心三：渲染函数
-  render: h => h(App)
+  render: h => h(App),
+  // 核心四：事件总线
+  beforeCreate() {
+    Vue.prototype.$bus = this
+  }
 }).$mount('#app');
 
 

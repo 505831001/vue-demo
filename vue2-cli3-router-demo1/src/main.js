@@ -3944,8 +3944,343 @@
  *         插槽内容是在父组件中编译后，再传递给子组件的。
  * 五、Vuex
  * 5.1 Vuex 的理解
- *     1. 概念：专门在 Vue 中实现集中式状态（数据）管理的一个 Vue 插件，对 vue 应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
- *     2. Github 地址: https://github.com/vuejs/vuex
+ * 概念：
+ *     (1).专门在 Vue 中实现集中式状态（数据）管理的一个 Vue 插件，对 vue 应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
+ *     (1).在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
+ *     (2).Github 地址: https://github.com/vuejs/vuex
+ * 场景：
+ *     (1).多个组件需要共享数据时。
+ * 搭建环境：
+ *     // @/store/index.js
+ *     (0).下载第三方模板插件状态管理依赖包
+ *         # npm install vuex@3.6.2
+ *     (1).引入第三方模板插件状态管理依赖包
+ *         import Vuex from 'vuex';
+ *     (2).使用第三方模板插件状态管理vuex
+ *         Vue.use(Vuex);
+ *     (3).创建状态管理实例对象
+ *         const store = new Vuex.Store({
+ *             state: {},
+ *             getters: {},
+ *             mutations: {},
+ *             actions: {},
+ *             modules: {}
+ *         });
+ *     (4).向外共享状态管理实例对象
+ *         export default store;
+ *     // @/main.js
+ *     (5).导入第三方模块插件状态管理实例对象
+ *         import store from "@/store/index.js";
+ *     (6).挂载第三方模板插件状态管理实例对象store
+ *         new Vue({
+ *             // 核心一：路由管理
+ *             router: router,
+ *             // 核心二：状态管理
+ *             store: store,
+ *             // 核心三：渲染函数
+ *             render: h => h(App)
+ *         }).$mount('#app');
+ * 基本使用：
+ *     (1).初始化数据。配置：actions，配置：mutations，配置：state，均在操作文件：@/store/index.js。
+ *         import Vue  from 'vue';
+ *         import Vuex from 'vuex';
+ *         Vue.use(Vuex);
+ *         const store = new Vuex.Store({
+ *             state: {
+ *                 sum: 0
+ *             },
+ *             mutations: {
+ *                 ADD(state, value) {
+ *                     state.sum += value;
+ *                 }
+ *             },
+ *             actions: {
+ *                 additionWait(context, value) {
+ *                     context.commit('ADD', value);
+ *                 }
+ *             }
+ *         });
+ *         export default store;
+ *     (2).组件中读取vuex中的数据：$store.state.sum。
+ *         <h4>当前求和为：{{ this.$store.state.sum }}</h4>
+ *     (3).组件中修改vuex中的数据：$store.dispatch('action中的方法名', 数据)，或者$store.commit('mutations中的方法名', 数据)。
+ *         data() {
+ *             return {
+ *                 n: 1
+ *             };
+ *         },
+ *         methods: {
+ *             increment() {
+ *                 this.$store.commit('ADD', this.n);
+ *             },
+ *             incrementWait() {
+ *                 this.$store.dispatch('additionWait', this.n);
+ *             }
+ *         }
+ *     备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写dispatch，直接编写commit。
+ * getters基本使用：
+ *     (1).概念：当state中的数据需要经过加工后再使用时，可以使用getters加工。
+ *     (2).在@/store/index.js中追加getters配置。
+ *         import Vue  from 'vue';
+ *         import Vuex from 'vuex';
+ *         Vue.use(Vuex);
+ *         const store = new Vuex.Store({
+ *             state: {
+ *                 sum: 0
+ *             },
+ *             getters: {
+ *                 dataProcessing(state) {
+ *                     return state.sum * 10;
+ *                 }
+ *             },
+ *             mutations: {
+ *                 ADD(state, value) {
+ *                     state.sum += value;
+ *                 }
+ *             },
+ *             actions: {
+ *                 additionWait(context, value) {
+ *                     context.commit('ADD', value);
+ *                 }
+ *             }
+ *         });
+ *         export default store;
+ *     (3).组件中读取数据：$store.getters.dataProcessing。
+ *         <h4>当前求和翻十倍：{{ this.$store.getters.dataProcessing }}</h4>
+ * Vuex提供的四个map方法的使用：
+ *         // 引入第三方模板状态管理vuex的什么mapState
+ *         import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
+ *     (1).使用Vuex中的mapState方法，用于帮助我们映射```state```中的数据为计算属性。
+ *         <!-- Vuex.$store.mapState()或者Vuex.$store.mapGetters() -->
+ *         <button v-on:click="increment()">递增+1</button>
+ *         <button v-on:click="decrement()">递减-1</button>
+ *         <button v-on:click="incrementOdd()">当前求和为奇数再加</button>
+ *         <button v-on:click="incrementWait()">等一等再加</button>
+ *         computed: {
+ *             // 借助mapState生成计算属性，从state中读取数据。（对象写法）
+ *             ...mapState({key1: 'sum', key2: 'message', key3: 'status'}),
+ *             // 借助mapState生成计算属性，从state中读取数据。（数组写法）
+ *             ...mapState(['sum', 'message', 'status']),
+ *         },
+ *         // 获取计算属性的值
+ *         <h4>通过Vuex插件mapState()函数获取state中的数据：{{key1}}，{{key2}}，{{key3}}</h4>
+ *         <h4>通过Vuex插件mapState()函数获取state中的数据：{{sum}}，{{message}}，{{status}}</h4>
+ *     (2).使用Vuex中的mapGetters方法，用于帮助我们映射```getters```中的数据为计算属性。
+ *         <!-- Vuex.$store.mapState()或者Vuex.$store.mapGetters() -->
+ *         <button v-on:click="increment()">递增+1</button>
+ *         <button v-on:click="decrement()">递减-1</button>
+ *         <button v-on:click="incrementOdd()">当前求和为奇数再加</button>
+ *         <button v-on:click="incrementWait()">等一等再加</button>
+ *         computed: {
+ *             // 借助mapGetters生成计算属性，从getters中读取数据。（对象写法）
+ *             ...mapGetters({bigSum: 'dataProcessing'}),
+ *             // 借助mapGetters生成计算属性，从getters中读取数据。（数组写法）
+ *             ...mapGetters(['dataProcessing']),
+ *         },
+ *         // 获取计算属性的值
+ *         <h4>通过Vuex插件mapGetters()函数获取getters中的数据：{{bigSum}}</h4>
+ *         <h4>通过Vuex插件mapGetters()函数获取getters中的数据：{{dataProcessing}}</h4>
+ *     (3).使用Vuex中的mapActions方法，用于帮助我们生成与```actions```对话的方法。即：包含$store.dispatch(xxx)的函数。
+ *         <!-- Vuex.$store.mapMutations()或者Vuex.$store.mapActions() -->
+ *         <button v-on:click="increment(n)">递增+1</button>
+ *         <button v-on:click="decrement(n)">递减-1</button>
+ *         <button v-on:click="incrementOdd(n)">当前求和为奇数再加</button>
+ *         <button v-on:click="incrementWait(n)">等一等再加</button>
+ *         methods:{
+ *             // 靠mapActions生成：increment、decrement（对象形式）
+ *             ...mapMutations({increment:'ADD', decrement:'SUB'}),
+ *             // 靠mapMutations生成：ADD、SUB（对象形式）
+ *             ...mapMutations(['ADD', 'SUB']),
+ *         }
+ *     (4).使用Vuex中的mapMutations方法，用于帮助我们生成与```mutations```对话的方法。即：包含$store.commit(xxx)的函数。
+ *         <!-- Vuex.$store.mapMutations()或者Vuex.$store.mapActions() -->
+ *         <button v-on:click="increment(n)">递增+1</button>
+ *         <button v-on:click="decrement(n)">递减-1</button>
+ *         <button v-on:click="incrementOdd(n)">当前求和为奇数再加</button>
+ *         <button v-on:click="incrementWait(n)">等一等再加</button>
+ *         methods:{
+ *             // 靠mapActions生成：incrementOdd、incrementWait（对象形式）
+ *             ...mapActions({incrementOdd: 'addOdd', incrementWait: 'addWait'}),
+ *             // 靠mapActions生成：incrementOdd、incrementWait（数组形式）
+ *             ...mapActions(['addOdd', 'addWait']),
+ *         }
+ *     备注：mapActions与mapMutations使用时，若需要传递参数需要：在模板中绑定事件时传递好参数，否则参数是事件对象。
+ * Vuex模块化+命名空间基本使用：
+ *     (1).目的：让代码更好维护，让多种数据分类更加明确。
+ *     (2).修改：@/store/index.js。
+ *         // 统计命名空间一
+ *         const countAbout = {
+ *             // 开启命名空间
+ *             namespaced:true,
+ *             state:{
+ *                 x:200,
+ *                 sum:0,
+ *                 school:'SZ',
+ *                 subject:'Font-End'
+ *             },
+ *             mutations: {
+ *                 ADD(state, value) {
+ *                     state.sum += value;
+ *                 },
+ *                 SUB() {
+ *                     state.sum -= value;
+ *                 }
+ *             },
+ *             actions: {
+ *                 jiaOdd(context, value) {
+ *                     if(context.state.sum % 2) {
+ *                         context.commit('ADD', value);
+ *                     }
+ *                 },
+ *                 jiaWait(context, value) {
+ *                     setTimeout(() => {
+ *                         context.commit('ADD', value);
+ *                     }, 1000);
+ *                 }
+ *             },
+ *             getters: {
+ *                 bigSum(state){
+ *                     return state.sum * 10
+ *                 }
+ *             }
+ *         }
+ *         // 职工命名空间二
+ *         const personAbout = {
+ *             // 开启命名空间
+ *             namespaced:true,
+ *             state:{
+ *                 y:500,
+ *                 list:[
+ *                     {id:1, name:'a', age:28}
+ *                 ]
+ *             },
+ *             getters:{
+ *                 firstPersonName(state){
+ *                     return state.personList[0].name
+ *                 }
+ *             },
+ *             mutations: {
+ *                 ADD_PERSON(state, value) {
+ *                     state.personList.unshift(value);
+ *                 }
+ *             },
+ *             actions: {
+ *                 addPersonWang(context, value) {
+ *                     if(value.name.indexOf('王') === 0) {
+ *                         context.commit('ADD_PERSON', value);
+ *                     }
+ *                 }
+ *             }
+ *         }
+ *         // 创建状态管理实例对象
+ *         const store = new Vuex.Store({
+ *             modules: {
+ *                 countAbout,
+ *                 personAbout
+ *             }
+ *         });
+ *         // 向外共享状态管理实例对象
+ *         export default store;
+ *     提示：或者创建两个不同的JS文件，比如：@/store/count-store.js和@/store/person-store.js，然后在@/store/index.js中引入。
+ *     (3).开启命名空间后，组件中读取state数据：
+ *         // 方式一：自己直接读取
+ *         this.$store.state.personAbout.list;
+ *         // 方式二：借助mapState读取：
+ *         ...mapState('countAbout',['sum', 'school', 'subject']),
+ *     （4）.开启命名空间后，组件中读取getters数据：
+ *         // 方式一：自己直接读取
+ *         this.$store.getters['personAbout/firstPersonName'];
+ *         // 方式二：借助mapGetters读取：
+ *         ...mapGetters('countAbout', ['bigSum']);
+ *     （5）.开启命名空间后，组件中调用dispatch
+ *         // 方式一：自己直接dispatch
+ *         this.$store.dispatch('personAbout/addPersonWang', person);
+ *         // 方式二：借助mapActions：
+ *         ...mapActions('countAbout', {incrementOdd:'jiaOdd', incrementWait:'jiaWait'});
+ *     （6）.开启命名空间后，组件中调用commit
+ *         //方式一：自己直接commit
+ *         this.$store.commit('personAbout/ADD_PERSON', person);
+ *         //方式二：借助mapMutations：
+ *         ...mapMutations('countAbout',{increment:'ADD', decrement:'SUB'}),
+ *     实例：(命名空间一)count-store.js+(命名空间二)person-store.js+index.js
+ *         // PersonView.vue
+ *         <h4>通过Vuex插件mapState()函数获取modules中的数据：{{val1}}，{{val2}}，{{val3}}</h4>
+ *         <h4>通过Vuex插件mapState()函数获取modules中的数据：{{countSum}}，{{countMessage}}，{{countStatus}}</h4>
+ *         <h4>通过Vuex插件mapState()函数获取modules中的数据：{{personSum}}，{{personMessage}}，{{personStatus}}</h4>
+ *         import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
+ *         computed: {
+ *            // mapState()
+ *            // 借助mapState生成计算属性，从state中读取数据。（对象写法）
+ *            ...mapState({key1: 'sum', key2: 'message', key3: 'status', key4: 'list'}),
+ *            // 借助mapState生成计算属性，从state中读取数据。（数组写法）
+ *            ...mapState(['sum', 'message', 'status', 'list']),
+ *            // mapState()
+ *            // 借助mapState()函数生成计算属性，从模块命名空间中读取数据。（对象写法）
+ *            ...mapState('countStore', {val1: 'countSum', val2: 'countMessage', val3: 'countStatus'}),
+ *            // 借助mapState()函数生成计算属性，从模块命名空间中读取数据。（数组写法）
+ *            ...mapState('countStore', ['countSum', 'countMessage', 'countStatus']),
+ *            ...mapState('personStore', ['personSum', 'personMessage', 'personStatus']),
+ *            // mapGetters()
+ *            // 借助mapGetters生成计算属性，从getters中读取数据。（对象写法）
+ *            ...mapGetters({bigSum: 'dataProcessing'}),
+ *            // 借助mapGetters生成计算属性，从getters中读取数据。（数组写法）
+ *            ...mapGetters(['dataProcessing']),
+ *         },
+ *         methods: {
+ *            // mapMutations()
+ *            // 靠mapActions生成：increment、decrement（对象形式）
+ *            ...mapMutations({increment:'ADD', decrement:'SUB'}),
+ *            // 靠mapMutations生成：ADD、SUB（对象形式）
+ *            ...mapMutations(['ADD', 'SUB']),
+ *            // mapActions()
+ *            // 靠mapActions生成：incrementOdd、incrementWait（对象形式）
+ *            ...mapActions({incrementOdd: 'addOdd', incrementWait: 'addWait'}),
+ *            // 靠mapActions生成：incrementOdd、incrementWait（数组形式）
+ *            ...mapActions(['addOdd', 'addWait']),
+ *         },
+ *         // CountView.vue
+ *         <h4 style="color: red">当前求和为：{{ this.$store.state.sum }}</h4>
+ *         <h4 style="color: red">当前求和翻十倍：{{ this.$store.getters.dataProcessing }}</h4>
+ *         <h4 style="color: red">当前总人数是：{{ this.$store.state.list.length }}</h4>
+ *         <h4 style="color: red">列表中第一个人的名字是：{{ firstName }}</h4>
+ *         <input type="text" placeholder="请输入模糊搜索关键字..." v-model="nickname">&nbsp
+ *         <button v-on:click="addPerson()">新增</button>
+ *         <input type="text" placeholder="请输入模糊搜索关键字..." v-model="nickname">&nbsp;
+ *         <button v-on:click="add()">添加</button>
+ *         <ul>
+ *             <li v-for="person in list" v-bind:key="person.id">{{ person.nickname }}</li>
+ *         </ul>
+ *         <ul>
+ *             <li v-for="person in personList" v-bind:key="person.id">工号：{{person.id}}，姓名：{{person.name}}，年龄：{{person.age}}</li>
+ *         </ul>
+ *         // 通过计算属性（Computed）获取状态管理插件中的状态或数据（State）生成属性。
+ *         computed: {
+ *             list() {
+ *                 return this.$store.state.list;
+ *             },
+ *             sum() {
+ *                 return this.$store.state.sum;
+ *             },
+ *             personList() {
+ *               return this.$store.state.personStore.personList;
+ *             },
+ *             firstName() {
+ *                 return this.$store.getters['personStore/firstName'];
+ *             }
+ *         },
+ *         methods: {
+ *             // 通过状态管理后厨：用于操作数据（State）的函数添加数据（State）
+ *             addPerson() {
+ *                 const person = {id: nanoid(), nickname: this.nickname, status: 0, isDelete: false};
+ *                 this.$store.commit('ADD_LIST', person);
+ *                 this.nickname = '';
+ *             },
+ *             add() {
+ *                 const person = {id: nanoid(), name: this.nickname, age: 44, state: 0};
+ *                 this.$store.commit('personStore/ADD_PERSON', person);
+ *                 this.nickname = '';
+ *             }
+ *         }
  * 5.2 Vuex 的使用
  *     1. 多个组件依赖于同一状态。
  *     2. 来自不同组件的行为需要变更同一状态。
@@ -4159,16 +4494,16 @@
 
 
 
-// 01.指定饿了么UI版本下载依赖包
+// 指定饿了么UI版本下载依赖包
 // # npm install element-ui@2.15.9 -S
 
 import Vue from 'vue';
-// 02.导入第三方饿了么UI依赖包
+// 导入第三方饿了么UI依赖包
 import ElementUI from 'element-ui';
 
 import App from '@/App2.vue';
 
-// 03.导入第三方饿了么样式文件
+// 导入第三方饿了么样式文件
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 第05步：导入第三方模块插件（路由模块：vue-router）
@@ -4183,7 +4518,7 @@ import '@/assets/global.css';
 
 Vue.config.productionTip = false;
 
-// 04.实例对象使用饿了么UI插件
+// 实例对象使用饿了么UI插件
 Vue.use(ElementUI);
 
 // 第06步：挂载 router 路由模块
@@ -4195,7 +4530,11 @@ new Vue({
     // 核心二：状态管理
     store: store,
     // 核心三：渲染函数
-    render: h => h(App)
+    render: h => h(App),
+    // 核心四：事件总线
+    beforeCreate() {
+        Vue.prototype.$bus = this
+    }
 }).$mount('#app');
 
 
