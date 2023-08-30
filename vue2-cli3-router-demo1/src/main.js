@@ -4334,6 +4334,8 @@
  * 六、Vue-Router 路由
  * 6.1 vue-router 的理解
  *     vue 的一个插件库，专门用来实现 SPA 应用。
+ *     一个路由（route）就是一组映射关系（key - value），多个路由需要路由器（router）进行管理。
+ *     前端路由：key是路径，value是组件。
  * 6.2 对 SPA 应用的理解
  *     1. 单页 Web 应用（Single Page web Application，SPA）。
  *     2. 整个应用只有一个完整的页面。
@@ -4341,38 +4343,278 @@
  *     4. 数据需要通过 ajax 请求获取。
  * 6.3 什么是路由？
  *     1. 一个路由就是一组映射关系（key - value）。
- *     2. key 为路径, value 可能是 function 或 component。
- * 6.4 路由的分类？
- *     1. 后端路由：
- *     1).理解：value 是 function, 用于处理客户端提交的请求。
- *     2).工作过程：服务器接收到一个请求时，根据请求路径找到匹配的函数来处理请求，返回响应数据。
- *     2. 前端路由：
- *     1).理解：value 是 component，用于展示页面内容。
- *     2).工作过程：当浏览器的路径改变时, 对应的组件就会显示。
- * 6.5 效果
+ *     2. key 为【路径】，value 可能是【function】或者【component】。
+ * 6.4 路由的分类？【重点】
+ *     (1).后端路由：
+ *         1).理解：value 是【function】，用于处理客户端提交的请求。
+ *         2).工作过程：服务器接收到一个请求时，根据请求路径找到匹配的函数来处理请求，返回响应数据。
+ *     (2).前端路由：
+ *         1).理解：value 是【component】，用于展示页面内容。
+ *         2).工作过程：当浏览器的路径改变时, 对应的组件就会显示。
+ * 6.5 路由的基本使用
+ *     ```@/router/index.js```
+ *     (1).安装vue-router插件依赖包
+ *     // 第00步：安装vue-router路由依赖包
+ *     # npm install vue-router@3.2.0
+ *     // 第01步：导入第三方路由模块（依赖包）
+ *     import VueRouter from 'vue-router';
+ *     import About from '@/components/About';
+ *     import Home from '@/components/Home';
+ *     (2).使用插件
+ *     Vue.use(VueRouter);
+ *     // 第02步：调用Vue.use()函数，把VueRouter安装为Vue插件
+ *     Vue.use(VueRouter);
+ *     (3).编写路由配置项
+ *     // 第03步：创建路由模块实例对象
+ *     const router = new VueRouter({
+ *         routes:[
+ *             {path:'/about', component: About},
+ *             {path:'/home', component: Home}
+ *         ]
+ *     });
+ *     // 第04步：向外共享路由的实例对象
+ *     export default router;
+ *     ```@/main.js```
+ *     // 第05步：导入第三方模块插件（路由模块：vue-router）
+ *     import router from "@/router/index.js";
+ *     // 第06步：挂载 router 路由模块
+ *     // 第06步：挂载 vuex   状态管理
+ *     // 第06步：挂载 render 渲染函数
+ *     new Vue({
+ *         // 核心一：路由管理
+ *         router: router,
+ *         // 核心二：状态管理
+ *         store: store,
+ *         // 核心三：渲染函数
+ *         render: h => h(App),
+ *         // 核心四：事件总线
+ *         beforeCreate() {
+ *             Vue.prototype.$bus = this
+ *         }
+ *     }).$mount('#app');
+ *     ```@/App.vue```
+ *     <!-- 第07步：定义路由的【链接】router-link -->
+ *     <router-link to="/home">公司首页</router-link>
+ *     <!-- 第07步：定义路由的【占位符】router-view -->
+ *     <router-view></router-view>
+ *     (4).实现切换路由的链接
+ *     <router-link active-class="active" to="/about">About</router-link>
+ *     (5).指定展示位置路由的占位符
+ *     <router-view></router-view>
+ *     (6).浏览器访问
  *     http://localhost:8080/#/
+ * 6.5 路由几个注意点：
+ *     (1).路由组件通常存放在```pages```文件夹，一般组件通常存放在```components```文件夹。
+ *     (2).通过切换，【隐藏了】的路由组件，默认是被销毁掉的，需要的时候再去挂载。
+ *     (3).每个组件都有自己的```$route```属性，里面存储着自己的路由信息。
+ *     (4).整个应用只有一个```router```，可以通过组件的```$router```属性获取到。
  * 6.6 总结
  *     编写使用路由的 3 个步骤：
- *     1. 定义路由组件。
- *     2. 注册路由。
- *     3. 使用路由。
+ *     (1).定义路由组件。
+ *     (2).注册路由。
+ *     (3).使用路由。
  * 6.7 嵌套（多级）路由
- *    http://localhost:8080/#/
+ *     (1).配置路由规则，使用children配置项：
+ *     const router = new VueRouter({
+ *         routes:[
+ *             {path: '/about', component: About},
+ *             {path: '/home', component: Home, children: [
+ *                 {path: 'news', component: News},
+ *                 {path: 'message', component: Message}
+ *             ]}
+ *         ]
+ *     });
+ *     注意：子级路由不要写斜杠（/），子级路由不要写斜杠（/），子级路由不要写斜杠（/），重要的事情说三遍。
+ *     (2).跳转（要写完整路径）：
+ *     <router-link to="/home/news">News</router-link>
  * 6.8 路由传参
- *    http://localhost:8080/#/
+ *     // path 或者 name
+ *     <router-link class="list-group-item" active-class="active" :to="`/movies/12306/andy?username=LiuWeiWei&password=123456`">中国铁路</router-link>
+ *     <router-link class="list-group-item" active-class="active" :to="{path:'/movies/10086/jack',query:{username:'LiuWeiWei',password:123456}}">中国移动</router-link>
+ *     <router-link class="list-group-item" active-class="active" :to="{name:'movies',params:{id:10010,title:'lucy'}}">中国电信</router-link>
+ *     // query
+ *     <!-- 跳转路由并携带【query】参数，to的字符串写法 -->
+ *     <router-link :to="`/home/message/detail?id=${item.id}&title=${item.title}`">{{item.name}}</router-link>
+ *     <router-link :to="`/movies/12306/jessica?username=LiuWeiWei&password=123456`">中国铁路</router-link>
+ *     <!-- 跳转路由并携带【query】参数，to的对象的写法 -->
+ *     <router-link :to="{path:'/home/message/detail',query:{id:item.id,title:item.title}}">{{item.name}}</router-link>
+ *     <router-link :to="{path:'/movies/10086/jessica',query:{username:'LiuWeiWei',password:123456}}">中国移动</router-link>
+ *     // params
+ *     <!-- 跳转路由并携带【params】参数，to的字符串写法 -->
+ *     <router-link :to="`/home/message/detail/${item.id}/${item.title}`">{{item.name}}</router-link>
+ *     <router-link :to="`/movies/12306/jessica`">中国铁路</router-link>
+ *     <!-- 跳转路由并携带【params】参数，to的对象的写法 -->
+ *     <router-link :to="{name:'xiangqing',params:{id:item.id,title:item.title}}">{{item.name}}</router-link>
+ *     <router-link :to="{name:'movies',params:{id:10010,title:'lucy'}}">中国电信</router-link>
+ *     (1).路由的query参数
+ *         1).传递参数
+ *             // 跳转并携带query参数，to的字符串写法
+ *             <router-link to="/movie/2?name=LiuWeiWei&age=38">日韩专区</router-link>
+ *             // 跳转并携带query参数，to的对象写法
+ *             <router-link v-bind:to="{path:'/movie/3', query:{id:'10086',title:'中国移动'}}">欧美专区</router-link>
+ *         2).接收参数
+ *             <span>路由的Query参数获取：name->{{this.$route.query.name}},age->{{ this.$route.query.age}}</span><br>
+ *             <span>路由的Query参数获取：id->{{this.$route.query.id}},title->{{ this.$route.query.title}}</span><br>
+ *             computed: {
+ *                 id() {
+ *                     return $route.query.id;
+ *                 },
+ *                 title() {
+ *                     return $route.query.title;
+ *                 }
+ *             }
+ *     (2).路由的params参数
+ *         1).配置路由，声明接收params参数
+ *         // 第08步：配置路由规则，开启 props 传递参数，从而获取动态参数（/:mid）的值。
+ *         {name: 'alias', path: '/movie/:mid', component: Movie, props: true},
+ *         2).传递参数
+ *         <router-link to="/movie/1">国内专区</router-link>
+ *         <router-link to="/movie/2?name=LiuWeiWei&age=38">日韩专区</router-link>
+ *         <router-link v-bind:to="{path:'/movie/3', query:{id:'10086',title:'中国移动'}}">西欧专区</router-link>
+ *         <router-link v-bind:to="{name:'alias', query:{id:'10086',title:'中国移动'}}">南美专区</router-link>
+ *         3).接收参数
+ *         <span>路由的Params参数获取：mid->{{ this.$route.params.mid }}，或者：{{ mid }}</span>
+ *         特别注意：路由携带params参数时，若使用to的对象写法，则不能使用path配置项，必须使用name配置。
+ *     (3).路由的Props配置
+ *         1).作用：让路由组件更方便的收到参数。
+ *         // 第08步：配置路由规则，开启 props 传递参数，从而获取动态参数（/:mid）的值。
+ *         {name: 'alias', path: '/movie/:mid', component: Movie, props: true},
+ *         // 定义自定义属性props动态参数mid
+ *         export default {
+ *             name: 'Movie',
+ *             props: [
+ *                 'mid'
+ *             ],
+ *         }
+ *         // 渲染动态参数mid的值
+ *         <span>路由的Params参数获取：{{ mid }}</span>
+ *         传说中的三种写法：
+ *         // 第一种写法：props值为布尔值，布尔值为true，则把路由收到的所有params参数通过props传给组件
+ *         {name: 'alias', path: '/movie/:mid', component: Movie, props: true}
+ *         // 第二种写法：props值为对象，该对象中所有的key-value的组合最终都会通过props传给组件
+ *         props:{mid:200}
+ *         // 第三种写法：props值为函数，该函数返回的对象中每一组key-value都会通过props传给组件
+ *         props(route) {
+ *             return {
+ *                 mid: route.query.mid
+ *             }
+ *         }
+ * 6.9 路由命名
+ *     (1).作用：
+ *         1).可以简化路由的跳转。
+ *     (2).使用：
+ *         1).给路由命名
+ *         const router = new VueRouter({
+ *             routes:[
+ *                 // 添加name属性给路由命名
+ *                 {name: 'about', path: '/about', component: About},
+ *                 {name: 'home', path: '/home', component: Home, children: [
+ *                     {name: 'news', path: 'news', component: News},
+ *                     {name: 'message', path: 'message', component: Message}
+ *                 ]}
+ *             ]
+ *         });
+ *         2).简化跳转
+ *         // 简化前，需要写完整的路径
+ *         <router-link v-bind:to="/home/message">简化之前【全路径】跳转</router-link>
+ *         // 简化后，直接通过名字跳转
+ *         <router-link v-bind:to="{name:'message'}">简化之后【路由名】跳转</router-link>
+ * 6.9 router-link 标签的Replace属性
+ *     (1).作用：控制路由跳转时操作浏览器历史记录的模式。
+ *     (2).浏览器的历史记录有两种写入方式：分别为push和replace。
+ *         1).push    是追加新的历史记录。每跳转一次，都会有一个历史记录产生。
+ *         2).replace 是替换当前历史记录。第跳转一次，都会替换上次历史记录。
+ *         提示：路由跳转时候默认为push。
+ *     (3).如何开启replace模式：
+ *         // 添加replace属性即可替换为替换当前历史记录
+ *         <router-link to="/movie/1">国内专区</router-link>
+ *         <router-link to="/movie/2?name=LiuWeiWei&age=38">日韩专区</router-link>
+ *         <router-link v-bind:to="{path:'/movie/3', query:{id:'10086',title:'中国移动'}}">西欧专区</router-link>
+ *         <router-link v-bind:to="{name:'alias', query:{id:'10086',title:'中国移动'}}">南美专区</router-link>
+ *         <router-link replace to="/about">路由管理VueRouter</router-link>
+ *         <router-link replace to="/support">状态管理Vuex</router-link>
+ *         <router-link replace to="/contain">饿了么UI</router-link>
  * 6.9 编程式路由导航
  *     声明式导航与编程式导航的区别？
- *         1).在浏览器中，点击链接实现导航的方式，叫做声明式导航。
- *             例如：普通网页中点击【<a>链接】、或者 VUE 项目中点击【<router-link>】都属于声明式导航。
- *         2).在浏览器中，调用 API 方法实现导航的方式，叫做编程式导航。
- *             例如：普通网页中调用【location.href】跳转到新页面的方式，属于编程式导航。
+ *     (1).在浏览器中，点击链接实现导航的方式，叫做声明式导航。
+ *         例如：普通网页中点击【<a>链接】、或者 VUE 项目中点击【<router-link>】都属于声明式导航。
+ *     (2).在浏览器中，调用 API 方法实现导航的方式，叫做编程式导航。
+ *         例如：普通网页中调用【location.href】跳转到新页面的方式，属于编程式导航。
  *     vue-router 路由提供了许多编程式导航的 API，其中最常用的导航 API 分别是：
  *     相关 API：
- *     1. this.$router.push(path)    : 相当于点击路由链接(可以返回到当前路由界面)。
- *     2. this.$router.replace(path) : 用新路由替换当前路由(不可以返回到当前路由界面)。
- *     3. this.$router.back()        : 请求(返回)上一个记录路由。
- *     4. this.$router.go(-1)        : 请求(返回)上一个记录路由。
- *     5. this.$router.go(1)         : 请求下一个记录路由。
+ *         (1).this.$router.push(path)    : 相当于点击路由链接(可以返回到当前路由界面)。
+ *         (2).this.$router.replace(path) : 用新路由替换当前路由(不可以返回到当前路由界面)。
+ *         (3).this.$router.back()        : 请求(返回)上一个记录路由。
+ *         (4).this.$router.forward()     : 请求(返回)下一个记录路由。
+ *         (5).this.$router.go(-1)        : 请求(返回)上一个记录路由。
+ *         (5).this.$router.go(1)         : 请求(返回)下一个记录路由。
+ *     示例：
+ *         <button type="button" @click="back()">后退</button>
+ *         <button type="button" @click="forward()">前进</button>
+ *         <button type="button" @click="goto()">goto(n)</button>
+ *         methods: {
+ *             back(){
+ *                 this.$router.back();
+ *             },
+ *             forward(){
+ *                 this.$router.forward();
+ *             },
+ *             test(){
+ *                 this.$router.go(3);
+ *             }
+ *         },
+ *     示例：
+ *         <button @click="pushShow(m)">push()查看</button>
+ *         <button @click="replaceShow(m)">replace()查看</button>
+ *         methods: {
+ *             pushShow(m) {
+ *                 this.$router.push({
+ *                     name:'details',
+ *                     query:{
+ *                         id:m.id,
+ *                         title:m.title
+ *                     }
+ *                 });
+ *             },
+ *             replaceShow(m) {
+ *                 this.$router.replace({
+ *                     name:'details',
+ *                     query:{
+ *                         id:m.id,
+ *                         title:m.title
+ *                     }
+ *                 });
+ *             }
+ *         },
+ * 6.9 缓存路由组件
+ *     (1).作用：
+ *         让不展示的路由组件保持挂载状态，不被销毁。
+ *     (2).具体编码
+ *         <keep-alive include="News">
+ *             <router-view></router-view>
+ *         </keep-alive>
+ *     (3).keep-alive 几个参数：
+ *         1).include 参数指定【需要缓存】的组件name集合，参数格式支持String, RegExp, Array。当为字符串的时候，多个组件名称以逗号隔开。
+ *         2).exclude 参数指定【不需要缓存】的组件name集合，参数格式和include一样。
+ *         3).max     参数指定最多可缓存组件的数量，超过数量删除第一个。参数格式支持String、Number。
+ *         注意：不带任何参数，则默认所有组件都需要缓存。
+ *     (4).两个新的生命周期钩子函数
+ *         1).作用：路由组件所独有的两个钩子，用于捕获路由组件的激活状态。
+ *         2).具体名字：
+ *             (1).activated()   路由组件被激活时触发。
+ *             (2).deactivated() 路由组件被失活时触发。
+ *         注意：只要当组件被缓存的时候，才能触发这两个钩子函数生效。
+ *     (5).示例：
+ *         // 缓存所有路由组件
+ *         <keep-alive>
+ *             <router-view></router-view>
+ *         </keep-alive>
+ *         // 缓存一个路由组件
+ *         <keep-alive include="News">
+ *             <router-view></router-view>
+ *         </keep-alive>
+ *         // 缓存多个路由组件
+ *         <!-- <keep-alive :include="['News','Message']"> -->
  * 七、Vue UI 组件库
  * 7.1 Mobile 端常用 UI 组件库
  *     1. Vant：https://youzan.github.io/vant
@@ -4498,12 +4740,17 @@
 // # npm install element-ui@2.15.9 -S
 
 import Vue from 'vue';
+// 导入第三方BootStrapUI依赖包
+// import BootstrapVue from "bootstrap-vue";
 // 导入第三方饿了么UI依赖包
 import ElementUI from 'element-ui';
 
-import App from '@/App2.vue';
+import App from '@/App3.vue';
 
-// 导入第三方饿了么样式文件
+// 导入第三方BootStrapUI样式文件
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap-vue/dist/bootstrap-vue.css';
+// 导入第三方饿了么UI样式文件
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 第05步：导入第三方模块插件（路由模块：vue-router）
@@ -4512,13 +4759,15 @@ import router from "@/router/index.js";
 import store from "@/store/index.js";
 
 // 导入 bootstrap 样式
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '@/assets/css/bootstrap.css';
 // 全局样式
 import '@/assets/global.css';
 
 Vue.config.productionTip = false;
 
-// 实例对象使用饿了么UI插件
+// 使用BootStrapUI插件
+// Vue.use(BootstrapVue);
+// 使用饿了么UI插件
 Vue.use(ElementUI);
 
 // 第06步：挂载 router 路由模块

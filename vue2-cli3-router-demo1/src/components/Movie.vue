@@ -1,10 +1,16 @@
 <template>
   <div class="movie-container">
-    <h3>Movie 组件</h3>
+    <h3>Movie-{{mid}} 组件</h3>
     <!-- 声明式导航： -->
     <!-- this.$route  是路由的【参数对象】。 -->
     <!-- this.$router 是路由的【导航对象】。 -->
     <!-- 开启 props 传递参数对象，从而获取动态参数（/:mid）的值。 -->
+    <span>路由的Query参数获取：name->{{this.$route.query.name }},age->{{ this.$route.query.age }}</span>
+    <br>
+    <span>路由的Query参数获取：id->{{this.$route.query.id }},title->{{ this.$route.query.title }}</span>
+    <br>
+    <span>路由的Params参数获取：mid->{{ this.$route.params.mid }}，或者：{{ mid }}</span>
+    <br>
     <span>影视专区组件：{{ $route.params.mid }}，或者：{{ mid }}</span>
     <!-- 编程式导航： -->
     <!--

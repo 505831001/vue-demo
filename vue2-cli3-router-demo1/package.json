@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.0.2",
+    "bootstrap-vue": "^2.23.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.9",
     "nanoid": "^4.0.2",
