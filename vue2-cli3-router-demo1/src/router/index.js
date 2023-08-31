@@ -24,12 +24,18 @@ import News from "@/pages/News.vue";
 import Message from "@/pages/Message.vue";
 import Detail from "@/pages/Detail.vue";
 import Movies from "@/pages/Movies.vue";
+import ElementUIView from "../pages/ElementUIView.vue";
 
 // 第02步：调用Vue.use()函数，把VueRouter安装为Vue插件
 Vue.use(VueRouter);
 
 // 第03步：创建路由模块实例对象
 const router = new VueRouter({
+    // 配置路由模式（两种：hash，history）
+    mode: 'history',
+    // 应用的基路径
+    base: process.env.BASE_URL,
+    // 配置路由规则
     routes: [
         // 第08步：配置路由规则（前面需要加斜杠（/））
         {
@@ -47,9 +53,37 @@ const router = new VueRouter({
             component: Home,
             children: [
                 {
+                    path: '/',
+                    redirect: 'news'
+                },
+                {
+                    name: 'news',
                     path: 'news',
                     component: News
                 },
+                // {
+                //     name: 'news',
+                //     path: 'news',
+                //     component: News,
+                //     // 配置独享路由守卫（就此路由规则享用此路由守卫）
+                //     meta: {
+                //         token: true,
+                //         title: '新闻联播'
+                //     },
+                //     beforeEnter: function (to, from, next) {
+                //         console.log('独享路由守卫', to.name, from.name);
+                //         if (to.meta.token) {
+                //             if (localStorage.getItem('token') === to.meta.token) {
+                //                 next();
+                //             } else {
+                //                 alert(`认证失败！无权登录！返回登录页面！！！`);
+                //                 next('/login');
+                //             }
+                //         } else {
+                //             next();
+                //         }
+                //     }
+                // },
                 {
                     path: 'message',
                     component: Message,
@@ -81,7 +115,7 @@ const router = new VueRouter({
             path: '/movies/:mid/:title',
             component: Movies,
             props: true
-        }
+        },
         // 第08步：配置路由规则，开启 props 传递参数，从而获取动态参数（/:mid）的值。
         // {
         //     name: 'alias',
@@ -130,17 +164,25 @@ const router = new VueRouter({
         // {name: 'main', path: '/main', component: Main},
         // {name: 'login', path: '/login', component: Login},
         // {name: 'contain', path: '/contain', component: ContainerView}
+        {
+            name: 'elemeui',
+            path: '/elemeui',
+            component: ElementUIView
+        }
     ]
 });
 
 // 第03步：全局前置守卫（全局前置监听器）
+// 第03步：全局前置路由守卫————初始化的时候被调用、每次路由切换之前被调用
 router.beforeEach(function (to, from, next) {
-    // to     参数是将要访问的路由的信息对象
-    // from   参数是将要离开的路由的信息对象
-    // next() 函数表示放行，允许这次路由导航
+    // to     参数是将要访问的路由的信息对象。去哪里的路由规则。
+    // from   参数是将要离开的路由的信息对象。从哪来的路由规则。
+    // next() 函数表示放行，允许这次路由导航。放行函数。
     // 当前用户拥有后台主页的访问权限，直接放行：next()
     // 当前用户没有后台主页的访问权限，强制其跳转到登录页面：next('/login')
     // 当前用户没有后台主页的访问权限，不允许跳转到后台主页：next(false)
+    console.log('去哪里呀：', to.name);
+    console.log('从哪来呀：', from.name);
     if (to.path === '/main') {
         const token = localStorage.getItem('token');
         console.log(token);
@@ -152,6 +194,14 @@ router.beforeEach(function (to, from, next) {
     } else {
         next();
     }
+});
+
+// 第03步：全局后置守卫（全局后置监听器）
+// 第03步：全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
+router.afterEach(function (to, from) {
+    console.log('去哪里呀：', to.name);
+    console.log('从哪来呀：', from.name);
+    document.title = to.meta.title || '如果没有标题就用我吧';
 });
 
 // 第04步：向外共享路由的实例对象

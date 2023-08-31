@@ -1,5 +1,9 @@
 <template>
-  <h4 class="text-center">商品管理</h4>
+  <div>
+    <h4 class="text-center" v-bind:style="{opacity}">商品管理</h4>
+    <br>
+    <br>
+  </div>
 </template>
 
 <script>
@@ -7,7 +11,7 @@ export default {
   name: 'MyGoods',
   data() {
     return {
-
+      opacity: 1
     }
   },
   // 11.创建之前的钩子（在此生命周期函数执行的时候，Data和Methods中的数据都还没有初始化。）
@@ -28,19 +32,27 @@ export default {
   },
   // 13.更新之前的钩子（此时页面中显示的数据还是旧数据，但是Data中的数据是最新的，并且页面并未和最新的数据同步。）
   beforeUpdate() {
-    console.log(`生命周期钩子之更新之前的钩子！`);
+    // console.log(`生命周期钩子之更新之前的钩子！`);
   },
   // 13.更新时候的钩子（此时页面显示数据和最新的Data数据同步。）
   updated() {
-    console.log(`生命周期钩子之更新时候的钩子！GoodsView.vue 组件被更新了呀！`);
+    // console.log(`生命周期钩子之更新时候的钩子！GoodsView.vue 组件被更新了呀！`);
   },
   // 14.激活时候的钩子（实例被激活的时候使用，用于重复激活一个组件实例的时候。）
   activated() {
     console.log(`生命周期钩子之重新激活组件实例的钩子！`);
+    this.timer = setInterval(() => {
+      console.log('@');
+      this.opacity -= 0.01;
+      if (this.opacity <= 0) {
+        this.opacity = 1;
+      }
+    }, 15);
   },
   // 14.激活之前的钩子（组件实例没有被激活的时候。）
   deactivated() {
     console.log(`生命周期钩子之重新激活之前组件实例的钩子！GoodsView.vue 组件未被激活呀！`);
+    clearInterval(this.timer);
   },
   // 15.销毁之前的钩子（当执行该生命周期函数的时候，实例本身所有Data，所有Methods，以及过滤器等等都处于可用状态，并没有真正执行销毁。）
   beforeDestroy() {
@@ -61,4 +73,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  h4 {
+    color: darkgreen;
+  }
 </style>

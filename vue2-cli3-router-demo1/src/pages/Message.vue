@@ -55,6 +55,9 @@ export default {
     }
   },
   beforeDestroy() {
+    console.log('Home组件的Message组件即将被销毁了呀！');
+  },
+  destroyed() {
     console.log('Home组件的Message组件即将被销毁了呀！！！');
   },
   activated() {

@@ -15,8 +15,11 @@ const store = new Vuex.Store({
         // 当前的和
         sum: 0
     },
+    // 加工：准备getters——用于将state中的数据进行加工
     getters: {
-
+        dataProcessing(state) {
+            return state.sum * 10;
+        }
     },
     // 解释：准备改变状态管理（State）用于操作存储数据。
     mutations: {
@@ -44,7 +47,7 @@ const store = new Vuex.Store({
             }, 1000);
         }
     },
-    // 解释：模块化。防止混入。
+    // 解释：模块化。命名空间namespaced。
     modules: {
 
     }

@@ -3943,14 +3943,13 @@
  *     注意：
  *         插槽内容是在父组件中编译后，再传递给子组件的。
  * 五、Vuex
- * 5.1 Vuex 的理解
- * 概念：
+ * 5.1 Vuex 概念：
  *     (1).专门在 Vue 中实现集中式状态（数据）管理的一个 Vue 插件，对 vue 应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
  *     (1).在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
  *     (2).Github 地址: https://github.com/vuejs/vuex
- * 场景：
+ * 5.2 Vuex 场景：
  *     (1).多个组件需要共享数据时。
- * 搭建环境：
+ * 5.3 Vuex 搭建环境：
  *     // @/store/index.js
  *     (0).下载第三方模板插件状态管理依赖包
  *         # npm install vuex@3.6.2
@@ -3980,7 +3979,7 @@
  *             // 核心三：渲染函数
  *             render: h => h(App)
  *         }).$mount('#app');
- * 基本使用：
+ * 5.4 Vuex 基本使用：
  *     (1).初始化数据。配置：actions，配置：mutations，配置：state，均在操作文件：@/store/index.js。
  *         import Vue  from 'vue';
  *         import Vuex from 'vuex';
@@ -4018,7 +4017,7 @@
  *             }
  *         }
  *     备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写dispatch，直接编写commit。
- * getters基本使用：
+ * 5.5 Vuex getters()基本使用：
  *     (1).概念：当state中的数据需要经过加工后再使用时，可以使用getters加工。
  *     (2).在@/store/index.js中追加getters配置。
  *         import Vue  from 'vue';
@@ -4047,7 +4046,7 @@
  *         export default store;
  *     (3).组件中读取数据：$store.getters.dataProcessing。
  *         <h4>当前求和翻十倍：{{ this.$store.getters.dataProcessing }}</h4>
- * Vuex提供的四个map方法的使用：
+ * 5.6 Vuex 提供的四个map方法的使用：
  *         // 引入第三方模板状态管理vuex的什么mapState
  *         import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
  *     (1).使用Vuex中的mapState方法，用于帮助我们映射```state```中的数据为计算属性。
@@ -4105,7 +4104,7 @@
  *             ...mapActions(['addOdd', 'addWait']),
  *         }
  *     备注：mapActions与mapMutations使用时，若需要传递参数需要：在模板中绑定事件时传递好参数，否则参数是事件对象。
- * Vuex模块化+命名空间基本使用：
+ * 5.7 Vuex 模块化+命名空间基本使用：
  *     (1).目的：让代码更好维护，让多种数据分类更加明确。
  *     (2).修改：@/store/index.js。
  *         // 统计命名空间一
@@ -4604,6 +4603,20 @@
  *             (1).activated()   路由组件被激活时触发。
  *             (2).deactivated() 路由组件被失活时触发。
  *         注意：只要当组件被缓存的时候，才能触发这两个钩子函数生效。
+ *         activated() {
+ *             console.log('Home组件的Message组件被激活了呀！！！');
+ *             this.timer = setInterval(() => {
+ *                 console.log('@');
+ *                 this.opacity -= 0.01;
+ *                 if (this.opacity <= 0) {
+ *                     this.opacity = 1;
+ *                 }
+ *             }, 15);
+ *         },
+ *         deactivated() {
+ *             console.log('Home组件的Message组件被缓存了呀！！！');
+ *             clearInterval(this.timer);
+ *         },
  *     (5).示例：
  *         // 缓存所有路由组件
  *         <keep-alive>
@@ -4615,6 +4628,140 @@
  *         </keep-alive>
  *         // 缓存多个路由组件
  *         <!-- <keep-alive :include="['News','Message']"> -->
+ * 6.12 路由守卫
+ *     (1).作用
+ *         对路由进行权限控制。
+ *         提示：路由守卫，就好比古代的带刀侍卫。路由守卫是守护路由器，带刀侍卫是守护皇宫吧。
+ *     (2).分类
+ *         1).全局守卫。两个：全局前置守卫，全局后置守卫。
+ *         2).独享守卫。
+ *         3).组件内守卫。两个：组件内进入守卫，组件内离开守卫。
+ *     (3).全局守卫
+ *         // 第03步：全局前置守卫（全局前置监听器）
+ *         // 第03步：全局前置路由守卫————初始化的时候被调用、每次路由切换之前被调用
+ *         router.beforeEach(function (to, from, next) {
+ *             // to     参数是将要访问的路由的信息对象。去哪里的路由规则。
+ *             // from   参数是将要离开的路由的信息对象。从哪来的路由规则。
+ *             // next() 函数表示放行，允许这次路由导航。放行函数。
+ *             // 当前用户拥有后台主页的访问权限，直接放行：next()
+ *             // 当前用户没有后台主页的访问权限，强制其跳转到登录页面：next('/login')
+ *             // 当前用户没有后台主页的访问权限，不允许跳转到后台主页：next(false)
+ *             console.log('去哪里呀：', to.name);
+ *             console.log('从哪来呀：', from.name);
+ *             if (to.path === '/main') {
+ *                 const token = localStorage.getItem('token');
+ *                 console.log(token);
+ *                 if (token) {
+ *                     next();
+ *                 } else {
+ *                     next('/login');
+ *                 }
+ *             } else {
+ *                 next();
+ *             }
+ *         });
+ *         // 第03步：全局后置守卫（全局后置监听器）
+ *         // 第03步：全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
+ *         router.afterEach(function (to, from) {
+ *             console.log('去哪里呀：', to.name);
+ *             console.log('从哪来呀：', from.name);
+ *             document.title = to.meta.title || '如果没有标题就用我吧';
+ *         });
+ *     (4).独享守卫
+ *         {
+ *             name: 'news',
+ *             path: 'news',
+ *             component: News,
+ *             // 配置独享路由守卫（就此路由规则享用此路由守卫）
+ *             meta: {
+ *                 token: true,
+ *                 title: '新闻联播'
+ *             },
+ *             beforeEnter: function (to, from, next) {
+ *                 console.log('独享路由守卫', to.name, from.name);
+ *                 if (to.meta.token) {
+ *                     if (localStorage.getItem('token') === to.meta.token) {
+ *                         next();
+ *                     } else {
+ *                         alert(`认证失败！无权登录！返回登录页面！！！`);
+ *                         next('/login');
+ *                     }
+ *                 } else {
+ *                     next();
+ *                 }
+ *             }
+ *         },
+ *     (5).组件内守卫
+ *         export default {
+ *             name: 'About',
+ *             beforeDestroy() {
+ *                 console.log('About组件即将被销毁了呀！');
+ *             },
+ *             destroyed() {
+ *                 console.log('About组件即将被销毁了呀！！！');
+ *             },
+ *             mounted() {
+ *                 console.log('About组件挂载完毕了呀！！！', this);
+ *             },
+ *             // 组件内守卫：进入守卫，通过路由规则，进入该组件时被调用
+ *             beforeRouteEnter(to, from, next) {
+ *                 console.log('组件内进入守卫', to, from);
+ *                 if (to.meta.token) {
+ *                     if (localStorage.getItem('token') === to.meta.token) {
+ *                         next();
+ *                     } else {
+ *                         alert(`认证失败！鉴权无效！返回登录页面！！！`);
+ *                         next('/login');
+ *                     }
+ *                 } else {
+ *                     next();
+ *                 }
+ *             },
+ *             // 组件内守卫：离开守卫，通过路由规则，离开该组件时被调用
+ *             beforeRouteLeave(to, from, next) {
+ *                 console.log('组件内离开守卫', to, from);
+ *                 next();
+ *             }
+ *         }
+ * 6.13 路由的两种工作模式
+ *     (1).对于一个url来说，什么是hash值？回答：井号（#）及其后面的内容就是hash值。
+ *     (2).hash值不会包含在 HTTP 请求中，即：hash 值不会带给服务器。
+ *     (3).hash模式：
+ *        1).地址中永远带着（#）井号，不美观。
+ *        2).若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法。
+ *        3).兼容性较好。
+ *     (4).history模式：
+ *        1).地址干净，美观。
+ *        2).兼容性和hash模式相比略差。
+ *        3).应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。
+ *     (5).实例
+ *         // 第02步：调用Vue.use()函数，把VueRouter安装为Vue插件
+ *         Vue.use(VueRouter);
+ *         // 第03步：创建路由模块实例对象
+ *         const router = new VueRouter({
+ *             // 路由模式（两种：hash，history）
+ *             mode: 'history',
+ *             // vue-router 的 base 属性可以设置所有路由的基础路径，即将路由的路径相对于该基础路径来定义。
+ *             base: process.env.BASE_URL,
+ *             // 路由规则
+ *             routes: [
+ *                 // 第08步：配置路由规则（前面需要加斜杠（/））
+ *                 {
+ *                     path: '/',
+ *                     redirect: '/about'
+ *                 },
+ *                 {
+ *                     name: 'about',
+ *                     path: '/about',
+ *                     component: About
+ *                 }
+ *             ]
+ *         });
+ *     (6).在 Vue CLI 3 及以上版本的项目中，可以在 vue.config.js 中进行配置，示例代码如下：
+ *         // vue.config.js
+ *         module.exports = {
+ *             publicPath: process.env.NODE_ENV === 'production' ? '/your-base-path' : '/'
+ *         };
  * 七、Vue UI 组件库
  * 7.1 Mobile 端常用 UI 组件库
  *     1. Vant：https://youzan.github.io/vant
@@ -4623,6 +4770,13 @@
  * 7.2 PC 端常用 UI 组件库
  *     1. Element UI：https://element.eleme.cn
  *     2. IView UI：https://www.iviewui.com
+ * 7.3 引入饿了么UI组件库
+ *     // 导入第三方饿了么UI依赖包
+ *     import ElementUI from 'element-ui';
+ *     // 导入第三方饿了么UI样式文件
+ *     import 'element-ui/lib/theme-chalk/index.css';
+ *     // 使用饿了么UI插件
+ *     Vue.use(ElementUI);
  */
 
 
@@ -4688,13 +4842,78 @@
  *         05).使用 props 自定义属性接收
  *         06).vue-router 路由常用API
  *         07).vue-router 路由全局守卫
- * 【官网Vue视频教程目录】
- *
  * 【尚硅谷Vue视频教程目录】
+ * 一、基础
+ *     (01).模板语法
+ *     (02).数据绑定
+ *     (03).MVVM模型
+ *     (04).数据代理
+ *     (05).事件处理
+ *     (06).侦听属性与计算属性
+ *     (07).Class与Style绑定
+ *     (08).条件渲染
+ *     (09).列表渲染
+ *     (10).表单数据收集
+ *     (11).过滤器
+ *     (12).内置指令与自定义指令
+ *     (13).Vue实例生命周期
+ * 二、组件化编程
+ *     (01).模块
+ *     (02).组件
+ *     (03).Vue组件
+ *     (04).关于VueComponent
+ *     (05).非单文件组件
+ *     (06).单文件组件
+ * 三、Vue-CLI 脚手架
+ *     (01).vue-cli脚手架初始化
+ *     (02).vue-cli项目模板结构
+ *     (03).ref引用属性与$refs引用对象和props自定义属性
+ *     (04).混入
+ *     (05).插件
+ *     (06).组件化编码流程
+ *     (07).Vue中的自定义事件
+ *     (08).全局事件总线【重点】
+ *     (09).消息订阅与发布
+ *     (10).过滤与动画
+ * 四、Vue中的Ajax
+ *     (01).配置代理
+ *     (02).Vue中常用的2个Ajax库
+ *     (03).插槽
+ * 五、Vuex 状态管理
+ *     (01).Vuex概念
+ *     (02).Vuex场景
+ *     (03).Vuex搭建环境
+ *     (04).Vuex工作原理图
+ *     (05).Vuex核心API
+ *     (06).Vuex基本使用
+ *     (07).Vuex getters()基本使用
+ *     (08).Vuex提供的四个Map方法的使用
+ *     (09).Vuex模板化+命名空间基本使用
+ * 六、VueRouter 路由管理
+ *     (01).vue-router的理解
+ *     (02).对SPA应用的理解
+ *     (03).什么是路由？
+ *     (04).路由的分类？【重点】
+ *     (05).路由的基本使用
+ *     (05).路由几个注意点：
+ *     (06).总结
+ *     (07).嵌套（多级）路由
+ *     (08).路由传参
+ *     (08).路由命名
+ *     (09).router-link标签的replace属性
+ *     (10).编程式路由导航
+ *     (11).缓存路由组件
+ *     (12).路由守卫
+ *     (13).路由的两种工作模式
+ * 七、Vue UI 组件库
+ *     (01).Mobile 端常用 UI 组件库
+ *     (02).PC 端常用 UI 组件库
+ *     (03).引入饿了么UI组件库
+ * 【官网Vue视频教程目录】
  * 一、基础
  *     (01).安装
  *     (02).介绍
- *     (03).vue 实例
+ *     (03).vue实例
  *     (04).模板语法
  *     (01).计算属性与侦听属性
  *     (02).Class与Style绑定
@@ -4723,14 +4942,67 @@
  *     (01).单文件组件
  *     (02).测试
  *     (03).TypeScript支持
+ *         01).发布为NPM包的官方声明文件
+ *         02).推荐配置
+ *         03).开发工具链
+ *             01).工程创建
+ *             02).编辑器支持
+ *         04).基本用法
+ *         05).基于类的Vue组件
+ *         06).增加类型以配合插件使用
+ *         07).标注返回值
+ *         08).标Prop
  *     (04).生产环境部署
+ *         01).开启生产环境模式
+ *             01).不使用构建工具
+ *             02).使用构建工具
+ *         02).模板预编译
+ *         03).提取组件的CSS样式
+ *         04).跟踪运行时错误
  * 六、规模化
  *     (01).路由
+ *         01).官方路由
+ *         02).从零开始简单的路由
+ *         03).整合第三方路由
  *     (02).状态管理
+ *         01).类 Flux 状态管理的官方实现
+ *             01).React 的开发者请参考以下信息
+ *         02).简单状态管理起步使用
  *     (03).服务端渲染
+ *         01).SSR 完全指南
+ *         02).Nuxt.js
+ *         03).Quasar Framework SSR + PWA
  *     (04).安全
+ *         01).报告安全漏洞
+ *         02).第一原则：永远不要使用不可信任的模板
+ *         03).Vue的安全措施
+ *             01).HTML内容
+ *             02).Attribute绑定
+ *         04).潜在危险
+ *             01).注入HTML
+ *             02).注入URL
+ *             03).注入CSS
+ *             04).注入JavaScript
+ *         05).最佳实践
+ *         06).后端协作
+ *         07).服务端渲染
  * 七、内在
  *     (01).深入响应式原理
+ *         01).如何追踪变化
+ *         02).检测变化的注意事项
+ *             01).对于对象
+ *             02).对于数组
+ *         03).声明响应式property
+ *         04).异步更新队列
+ * 八、迁移
+ *     (01).从Vue 1.x迁移
+ *     (02).从Vue Router 0.7.x迁移
+ *     (03).从Vue 0.6.x迁移到1.0
+ *     (04).迁移至Vue 2.7
+ * 九、更多
+ *     (01).对比其他框架
+ *     (02).加入Vue.js社区
+ *     (03).认识团队
  */
 
 

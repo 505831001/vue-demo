@@ -30,8 +30,11 @@ export default {
       if(this.opacity <= 0) this.opacity = 1
     },16)
   }, */
+  beforeDestroy() {
+    console.log('Home组件的News组件即将被销毁了呀！');
+  },
   destroyed() {
-    console.log('Home组件的News组件被销毁了呀！！！');
+    console.log('Home组件的News组件即将被销毁了呀！！！');
   },
   activated() {
     console.log('Home组件的News组件被激活了呀！！！');

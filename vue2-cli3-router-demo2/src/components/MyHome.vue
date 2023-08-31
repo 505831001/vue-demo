@@ -20,8 +20,15 @@
       <MyAside></MyAside>
       <!-- 右侧边栏： -->
       <div class="home-main-body">
-        <!-- 第07步：定义路由的占位符 -->
-        <router-view></router-view>
+        <!-- 缓存多个路由组件 -->
+        <!-- <keep-alive :include="['MyUsers','MyGoods']"> -->
+        <!-- 缓存一个路由组件 -->
+        <!-- <keep-alive :include="'MyGoods'"> -->
+        <!-- 缓存所有路由组件(默认) -->
+        <keep-alive>
+          <!-- 第07步：定义路由的占位符 -->
+          <router-view></router-view>
+        </keep-alive>
       </div>
     </div>
   </div>
@@ -33,9 +40,15 @@
 import MyHeader from './subcomponents/MyHeader.vue';
 // 左侧边栏组件
 import MyAside from './subcomponents/MyAside.vue';
+import MyGoods from "@/components/menus/MyGoods.vue";
 
 export default {
   name: 'MyHome',
+  computed: {
+    MyGoods() {
+      return MyGoods
+    }
+  },
   // 注册组件
   components: {
     MyHeader,

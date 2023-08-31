@@ -24,8 +24,11 @@ Vue.use(VueRouter);
 
 // 第03步：创建路由模块实例对象
 const router = new VueRouter({
+        // 配置路由模式（两种：hash，history）
         mode: 'history',
+        // 应用的基路径
         base: process.env.BASE_URL,
+        // 配置路由规则
         routes: [
             {
                 path: '/',

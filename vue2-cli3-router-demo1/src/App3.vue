@@ -12,11 +12,12 @@
           <!-- <a class="list-group-item" href="./home.html">Home</a> -->
 
           <!-- 第07步：定义路由的【链接】router-link -->
-          <router-link class="list-group-item" active-class="active" to="/about">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/about">关于我们</router-link>
           <router-link class="list-group-item" active-class="active" :to="`/movies/12306/andy?username=${user}&password=${pass}`">中国铁路</router-link>
           <router-link class="list-group-item" active-class="active" :to="{path:'/movies/10086/jack',query:{username:user,password:pass}}">中国移动</router-link>
           <router-link class="list-group-item" active-class="active" :to="{name:'movies',params:{mid:10000,title:'lucy'}}">中国电信</router-link>
-          <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
+          <router-link class="list-group-item" active-class="active" to="/home">公司主页</router-link>
+          <router-link class="list-group-item" active-class="active" to="/elemeui">饿了么库</router-link>
         </div>
       </div>
       <div class="col-xs-6">
