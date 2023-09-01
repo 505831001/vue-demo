@@ -38,7 +38,7 @@ exports.addArticle = (req, res) => {
     // 标题、内容、发布状态、所属分类的Id
     ...req.body,
     // 文章封面的存放路径
-    cover_img: path.join('/uploads', req.file.filename),
+    cover_img: path.join('/static', req.file.filename),
     // 文章的发布时间
     pub_date: new Date(),
     // 文章作者的Id

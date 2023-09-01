@@ -1,17 +1,23 @@
-// 导入 express
+// 第00步：下载第三方模块依赖包Express
+// # npm install express@4.18.2
+
+// 第01步：导入第三方模块依赖包Express
 const express = require('express');
+// 导入
 const joi = require('@hapi/joi');
 // 导入并配置 cors 中间件
 const cors = require('cors');
 
-// 创建服务器的实例对象
+// 第02步：创建服务器的实例对象
 const app = express();
 
 app.use(cors());
 // 配置解析表单数据的中间件，注意：这个中间件，只能解析 application/x-www-form-urlencoded 格式的表单数据
 app.use(express.urlencoded({ extended: false }));
-// 托管静态资源文件
-app.use('/uploads', express.static('./uploads'));
+
+// 第04步：托管静态资源文件
+app.use('/static', express.static('./static'));
+
 // 一定要在路由之前，封装 res.cc 函数
 app.use((req, res, next) => {
   // status 默认值为 1，表示失败的情况
@@ -54,7 +60,16 @@ app.use((err, req, res, next) => {
   res.cc(err);
 });
 
-// 启动服务器
+// 第05步：测试请求
+app.get('/test', function (request, response) {
+  response.send({
+    name: 'Okay',
+    age: 28
+  });
+});
+
+// 第03步：启动服务器（启动命令：node ./app.js）
+// 第06步：启动命令（node ./app.js）
 app.listen(3007, () => {
   console.log('api server running at http://127.0.0.1:3007');
 });

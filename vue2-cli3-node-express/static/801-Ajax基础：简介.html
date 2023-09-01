@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax基础：简介</title>
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+    <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <style>
+
+    </style>
+    <script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+    <script type="text/javascript" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript">
+        // 核心函数：$(function () {});
+        $(document).ready(function () {
+
+        });
+    </script>
+</head>
+
+<body>
+    <!-- JS 部分 -->
+
+    <!-- JS 作用 -->
+    <!-- 网页特效(监听用户的一些行为让网页作出对应的反馈) -->
+    <!-- 表单验证(针对表单数据的合法性进行判断) -->
+    <!-- 数据交互(获取后台的数据渲染到前端) -->
+    <!-- 服务端编程(node.js) -->
+    <!-- JS 组成 -->
+    <!-- ECMAScript: 规定了js基础语法核心知识。比如：变量、分支语句、循环语句、对象等等。 -->
+    <!-- Web APIs DOM: 操作文档。比如对页面元素进行移动、大小、添加删除等操作。 -->
+    <!-- Web APIs BOM: 操作浏览器。比如页面弹窗，检测窗口宽度、存储数据到浏览器等等。 -->
+    <!-- JS 用法 -->
+    <!-- 使用 内联的 JavaScript 函数。 -->
+    <!-- 使用 <head>或者<body>中的 JavaScript 函数。 -->
+    <!-- 使用 外部的 JavaScript 函数。 -->
+    <!-- JS 注释 -->
+    <!-- 使用 //    开头的单行注释。快捷键：Ctrl + /。 -->
+    <!-- 使用 /* */ 包裹的多行注释。快捷键：Shift + Ctrl + A。 -->
+    <!-- JS 结束符 -->
+    <!-- 使用 分号（;）为结束符。换行为默认结束符。 -->
+    <!-- JS 字面量 -->
+    <!-- 使用 3.14 为数字字面量。 -->
+    <!-- 使用 双引号"白马王子" 单引号'黑马攻城狮' 为字符串字面量。 -->
+    <!-- 使用 大括号对象 {} 中括号数组 [] 尖括号标签<> 等等字面量。 -->
+    <!-- JS 输入/输出 -->
+    <!-- 使用 window.prompt()   方法显示可提示用户输入的对话框。 -->
+    <!-- 使用 element.innerHTML 属性写入到 HTML 元素。 -->
+    <!-- 使用 window.alert()    方法弹出警告框。 -->
+    <!-- 使用 document.write()  方法将内容写到 HTML 文档中。 -->
+    <!-- 使用 console.log()     方法写入到浏览器的控制台。 -->
+    <!-- JS 变量 -->
+    <!-- 使用 var   关键字声明的变量。在函数外声明作用域是全局变量，在函数内声明作用域是局部变量。变量必须以字母开头，变量也能以（$）和（_）符号开头，变量名称对大小写敏感。 -->
+    <!-- 使用 let   关键字定义的限定范围内作用域的变量。只在 let 命令所在的代码块内有效。 -->
+    <!-- 使用 const 关键字来定义一个常量。一旦声明，常量的值就不能改变。 -->
+    <!-- JS 数据类型 -->
+    <!-- 使用 number    基础数据类型赋值的是数字类型。JS 中的正数、负数、小数等等统一称为数字类型。 -->
+    <!-- 使用 string    基础数据类型赋值的是字符串类型。通过单引号（''）、双引号（""）或反引号（``）包裹的数据都叫字符串类型。 -->
+    <!-- 使用 boolean   基础数据类型赋值的是布尔类型。布尔（逻辑）类型只能有两个值真（true）或假（false）。 -->
+    <!-- 使用 undefined 基础数据类型返回值的是未定义类型。只声明变量，不赋值的情况下，变量的默认值为 undefined 这个值表示变量不含有值。 -->
+    <!-- 使用 null      基础数据类型返回值的是空值类型。可以通过将变量的值设置为 null 来清空变量。 -->
+    <!-- 使用 object    引用数据类型返回的值是对象。对象由花括号（{}）分隔，对象属性以名称和值对的形式（Key:Value）来定义，属性之间由逗号（,）分隔。 -->
+    <!-- 使用 array     引用数据类型返回的值是数组。数组由中括号（[]）分隔，每个值之间由逗号（,）分隔。返回也是对象：object。 -->
+    <!-- 使用 function  引用数据类型返回的值是函数。函数就是包裹在花括号中的代码块，前面使用了关键词 function。 -->
+    <!-- JS 运算符 -->
+    <!-- 使用 + - * / %            符号来表示数学运算符（算术运算符），主要包括加、减、乘、除、取余（求模）。 -->
+    <!-- 使用 = += -= *= /= %=     符号来表示赋值运算符，对变量进行赋值的运算符。 -->
+    <!-- 使用 > < >= <= == === !== 符号来表示比较运算符，比较两个数据大小、是否相等。 -->
+    <!-- 使用 i++ ++i i-- --i      符号来表示一元运算符，能够使用一元运算符做自增（自减）运算。 -->
+    <!-- 使用 && ||                符号来表示逻辑运算符，逻辑运算符用来解决多重条件判断。 -->
+    <!-- JS 分支/循环 -->
+    <!-- 使用 if (condition) { }                                   语句只有当指定条件为 true 时，使用该语句来执行代码。 -->
+    <!-- 使用 if (condition) { } else { }                          语句当条件为 true 时执行代码，当条件为 false 时执行其他代码。 -->
+    <!-- 使用 if (condition) { } else if (condition) else {}       语句使用该语句来选择多个代码块之一来执行。 -->
+    <!-- 使用 switch (key) {case value: break; default: break;}    语句用于基于不同的条件来执行不同的动作。 -->
+    <!-- 使用 while (condition) { }                                语句只要指定条件为 true，循环就可以一直执行代码块。 -->
+    <!-- 使用 do { } while (condition);                            语句循环会在检查条件是否为真之前执行一次代码块，然后如果条件为真的话，就会重复这个循环。 -->
+    <!-- 使用 for (let i = 0; i < array.length; i++) { array[i]; } 语句循环代码块一定的次数。 -->
+    <!-- 使用 array.forEach(element => { });                       语句循环代码块一定的次数。 -->
+    <!-- 使用 for (const key in object) { object[key]; }           语句循环遍历对象的属性。 -->
+    <!-- 使用 for (const iterator of object) { }                   语句循环遍历对象的属性。 -->
+    <!-- JS 数组 -->
+    <!-- 使用 array = new Array();                                 语句创建数组，基于 new 关键字。数组是一种可以按顺序保存数据的数据类型。 -->
+    <!-- 使用 array = [];                                          语句创建数组，基于中括号 []。数组是一种可以按顺序保存数据的数据类型。 -->
+    <!-- JS 操作符 -->
+    <!-- 使用 typeof                                               操作符来检测变量的数据类型。 -->
+    <!-- 使用 typeof                                               操作符来检测 null 是一个只有一个值的特殊类型。表示一个空对象引用。会返回 object。 -->
+    <!-- 使用 typeof                                               操作检测一个没有设置值的变量。会返回 undefined。 -->
+    <!-- JS 类型转换 -->
+    <!-- 隐式转换：某些运算符被执行时，系统内部自动将数据类型进行转换，这种转换称为隐式转换。 -->
+    <!-- 显式转换：为了避免因隐式转换带来的问题，通常根逻辑需要对数据进行显示转换。 -->
+    <!-- 使用 Number(x)                                            方法将字符串转换成数字类型。 -->
+    <!-- 使用 parseInt(x)                                          方法将字符串转换成数字类型。 -->
+    <!-- 使用 parseFloat(x)                                        方法将字符串转换成数字类型。 -->
+    <!-- 使用 String(x)                                            方法将其他类型转换成字符串类型。 -->
+    <!-- 使用 x.toString()                                         方法将其他类型转换成字符串类型。 -->
+    <!-- JS 正则表达式 -->
+    <!-- 语法 /正则表达式主体/修饰符(可选)                           正则表达式（Regular Expression）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。 -->
+    <!-- 使用 s.search(/RegExp/i)                                  正则表达式搜索 RegExp 字符串，且不区分大小写。 -->
+    <!-- 使用 s.replace(/RegExp/i, "RegularExpression")            正则表达式且不区分大小写将字符串中的 RegExp 替换为 RegularExpression。 -->
+    <!-- 使用 i                                                    修饰符执行对大小写不敏感的匹配。 -->
+    <!-- 使用 g                                                    修饰符执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。 -->
+    <!-- 使用 m                                                    修饰符执行多行匹配。 -->
+    <!-- 使用 [abc]                                                表达式查找方括号之间的任何字符。 -->
+    <!-- 使用 [0-9]                                                表达式查找任何从 0 至 9 的数字。 -->
+    <!-- 使用 (x|y)                                                表达式查找任何以 | 分隔的选项。 -->
+    <!-- 使用 \d                                                   元字符查找数字。 -->
+    <!-- 使用 \s                                                   元字符查找空白字符。 -->
+    <!-- 使用 \b                                                   元字符匹配单词边界。 -->
+    <!-- 使用 \uxxxx                                               元字符查找以十六进制数 xxxx 规定的 Unicode 字符。 -->
+    <!-- 使用 n+                                                   量词匹配任何包含至少一个 n 的字符串。 -->
+    <!-- 使用 n*                                                   量词匹配任何包含零个或多个 n 的字符串。 -->
+    <!-- 使用 n?                                                   量词匹配任何包含零个或一个 n 的字符串。 -->
+    <!-- 使用 RegExp                                               对象是一个预定义了属性和方法的正则表达式对象。 -->
+    <!-- 使用 test()                                               方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。 -->
+    <!-- 使用 exec()                                               方法用于检索字符串中的正则表达式的匹配。该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。 -->
+    <!-- JS 异常 -->
+    <!-- 使用 try                                                  语句允许我们定义在执行时进行错误测试的代码块。 -->
+    <!-- 使用 catch                                                语句允许我们定义当 try 代码块发生错误时，所执行的代码块。 -->
+    <!-- 使用 finally                                              语句在 try 和 catch 语句之后，无论是否有触发异常，该语句都会执行。 -->
+    <!-- 使用 throw                                                语句创建自定义错误。或者叫做创建或者抛出异常（Exception）。 -->
+    <!-- JS 关键字 -->
+    <!-- 使用 break                                                关键字 -->
+    <!-- 使用 continue                                             关键字 -->
+    <!-- 使用 return                                               关键字 -->
+    <!-- 使用 typeof                                               关键字 -->
+    <!-- 使用 this                                                 关键字 -->
+    <!-- 使用 var                                                  关键字 -->
+    <!-- 使用 let                                                  关键字 -->
+    <!-- 使用 const                                                关键字 -->
+    <!-- 使用 void                                                 关键字 -->
+    <!-- JS 异步编程 -->
+    <!-- 同步 sync                                                 相对的概念。 -->
+    <!-- 异步 async                                                相对的概念。 -->
+    <!-- 使用 Promise                                              对象是一个 ECMAScript 6 提供的类，目的是更加优雅地书写复杂的异步任务。 -->
+    <!-- 使用 new Promise(function(resolve, reject){setTimeout(function(){}, 1000);})     异步函数是 ECMAScript 2017 (ECMA-262) 标准的规范，几乎被所有浏览器所支持，除了 Internet Explorer。 -->
+    <!-- JS 函数 -->
+    <!-- 使用 function functionname(parameters) { return parameters; }                    声明函数。函数声明后不会立即执行，会在我们需要的时候调用到。 -->
+    <!-- 使用 x = function (a, b) { return a * b; };                                      匿名函数（函数表达式）。函数存储在变量中，不需要函数名称，通常通过变量名来调用。 -->
+    <!-- 使用 new Function("a", "b", "return a * b");                                     构造函数。函数同样可以通过内置的 JavaScript 函数构造器 Function() 定义。 -->
+    <!-- 使用 (function () { var x = "callback"; })();                                    自调用函数（立即执行函数）。函数表达式可以"自调用"，自调用表达式会自动调用。如果表达式后面紧跟 () 则会自动调用。不能自调用声明的函数。 -->
+    <!-- 使用 (function () { var x = "callback"; }());                                    自调用函数（立即执行函数）。函数实际上是一个匿名自我调用的函数（没有函数名）。 -->
+    <!-- 使用 (parameters) => { return x * y; }                                           箭头函数。ES6 新增了箭头函数。箭头函数表达式的语法比普通函数表达式更简洁。 -->
+    <!-- 使用 function callback() { return a * b; } window.setInterval(callback(), 1000); 回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- 使用 window.addEventListener('click', function () { return a * b; });            回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- JS 闭包 -->
+    <!-- 使用 x = (function () {var i = 0; return function () {return i += 1;}})();       闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。 -->
+    <!-- 使用 x = (function () {var i = 0; return function () {return i += 1;}})();       x 变量可以作为一个函数使用。它 function () {return i += 1;} 可以访问函数上一层作用域的计数器。这个叫作 JavaScript 闭包。它使得函数拥有私有变量变成可能。 -->
+    <!-- JS 类 -->
+    <!-- 使用 class Parent { property: "value", method: function () { } }                 使用 class 关键字来创建一个类，类是用于创建对象的模板。类体在一对大括号 {} 中，在大括号 {} 中定义类成员的位置，如方法或构造函数。每个类中包含了一个特殊的方法 constructor()，它是类的构造函数。这种方法用于创建和初始化一个由 class 创建的对象。 -->
+    <!-- 使用 new Parent()                                                                使用 new 关键字来创建对象。创建对象时会自动调用构造函数方法 constructor()。 -->
+    <!-- 使用 class Children extends Parent { }                                           使用 extends 关键字继承类。这个已有的类称为基类（父类），新建的类称为派生类（子类）。 -->
+    <!-- 使用 static method() { }                                                         使用 static 关键字修改的方法是静态方法，又叫类方法，属于类的，但不属于对象。通过（类名.方法名）调用静态方法。静态方法不能在对象上调用，只能在类中调用。 -->
+    <!-- JS 对象 -->
+    <!-- 使用 Console 对象提供了浏览器控制台调试的接口。在不同浏览器上它的工作方式可能不一样，但通常都会提供一套共性的功能。 -->
+
+
+
+
+    <!-- ---------------------------------------- 华丽的分割线 ---------------------------------------- -->
+
+
+
+
+    <!-- DOM 部分 -->
+
+    <!-- DOM 获取元素 -->
+    <!-- 通过 document.getElementById()         方法通过 ID 找到 HTML 元素。 -->
+    <!-- 通过 document.getElementsByTagName()   方法通过 标签名 找到 HTML 元素。 -->
+    <!-- 通过 document.getElementsByClassName() 方法通过 类名 找到 HTML 元素。 -->
+    <!-- 通过 document.querySelector()          方法返回文档中与指定的选择器匹配的第一个元素 Element 节点。 -->
+    <!-- 通过 document.querySelectorAll()       方法返回包含文档中与指定的选择器匹配的所有元素 NodeList 节点的列表。 -->
+    <!-- DOM 修改元素内容 -->
+    <!-- 通过 document.write()                  方法可向文档写入文本内容，可以是 HTML 代码。 -->
+    <!-- 通过 element.innerText                 属性设置或者返回元素的内容。 -->
+    <!-- 通过 element.innerHTML                 属性设置或获取 HTML 语法表示的元素的后代。 -->
+    <!-- DOM 修改元素属性 -->
+    <!-- 通过 element.href                      属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.title                     属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.src                       属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.className                 属性设置或者返回元素新赋值属性。 -->
+    <!-- 通过 element.disabled                  属性规定应该启用或者禁用的 input 元素。 -->
+    <!-- 通过 element.checked                   属性规定在页面加载时应该被预先选定的 input 元素。只针对 type="checkbox" 或者 type="radio"。 -->
+    <!-- 通过 element.selected                  属性规定选项（在首次显示在列表中时）表现为选中状态。 -->
+    <!-- DOM 修改元素样式 -->
+    <!-- 通过 element.style.styleProperties     属性设置或者返回元素的样式属性。 -->
+    <!-- DOM 定时器 -->
+    <!-- 通过 window.setInterval(function, timeout)        方法按照指定的周期（毫秒）来无限循环调用，调用函数或计算表达式。 -->
+    <!-- 通过 window.clearInterval(timer)                  方法取消由定时器设置的定时任务。 -->
+    <!-- 通过 window.setTimeout(function, timeout)         方法在指定的毫秒数后仅此调用一次，调用函数或计算表达式。 -->
+    <!-- 通过 window.clearTimeout(timer)                   方法取消由定时器设置的定时任务。 -->
+    <!-- DOM 事件 -->
+    <!-- 使用 window.onclick = function() { }                                      传统on注册事件（L0）。同一个对象，后面注册的事件会覆盖前面注册（同一个事件）。 -->
+    <!-- 使用 window.addEventListener('event',  function () {})                    事件监听注册事件（L2）。后面注册的事件不会覆盖前面注册的事件（同一个事件）。 -->
+    <!-- 使用 window.addEventListener('load',   function () {})                    事件监听注册事件（L2）。加载事件。加载外部资源（如图片、CSS和JavaScript等）加载完毕时触发的事件。 -->
+    <!-- 使用 window.addEventListener('scroll', function () {})                    事件监听注册事件（L2）。滚动事件。页面进行滚动的时候触发的事件。监听某个元素的内部滚动直接给某个元素加即可。 -->
+    <!-- DOM 事件流 -->
+    <!-- 使用 window.addEventListener('event', function() {}, function callback()) 此方法若传入 false 代表冒泡阶段触发，默认就是 false。第三个参数传入 true 代表是捕获阶段触发（很少使用）。 -->
+    <!-- 使用 window.stopPropagation()                                             此方法可以阻断事件流动传播，不光在冒泡阶段有效，捕获阶段也有。当触发事件时，会经历两个阶段，分别是捕获阶段、冒泡阶段。 -->
+    <!-- DOM 事件委托 -->
+    <!-- 使用 window.target(Event.target)                                          此方法可以获得真正触发事件的元素。事件委托其实是利用事件冒泡的特点，给父元素添加事件，子元素（target）可以触发。 -->
+    <!-- DOM 函数 -->
+    <!-- 使用 function functionname(parameters) { return parameters; }             声明函数。 -->
+    <!-- 使用 function (a, b) {return a * b};                                      匿名函数。 -->
+    <!-- 使用 new Function("a", "b", "return a * b");                              构造函数。 -->
+    <!-- 使用 (function () { var x = "callback"; })();                             自调用函数（立即执行函数）。 -->
+    <!-- 使用 (function () { var x = "callback"; }());                             自调用函数（立即执行函数）。 -->
+    <!-- 使用 (parameters) => { return x * y; }                                    箭头函数。 -->
+    <!-- 使用 function callback() { return '回调函数'; } window.setInterval(callback(), 1000) 回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- 使用 window.addEventListener('click', function () { return '回调函数'; })            回调函数。函数当作参数传递给另外一个函数，这个函数就是回调函数。 -->
+    <!-- DOM 节点操作 -->
+    <!-- 使用 element.parentNode                    属性父节点查找。返回最近一级的父节点找不到返回为 null。 -->
+    <!-- 使用 element.childNodes                    属性获得所有子节点，包括文本节点（空格、换行）注释节点等。 -->
+    <!-- 使用 element.children                      属性仅获得所有元素节点。返回的还是一个伪数组。 -->
+    <!-- 使用 element.nextElementSibling            属性查找下一个兄弟节点。 -->
+    <!-- 使用 element.previousElementSibling        属性查找上一个兄弟节点。 -->
+    <!-- 使用 document.createElement('elementName') 属性新建一个新的网页元素，再添加到网页内，一般先创建节点，然后插入节点。 -->
+    <!-- 使用 element.appendChild('elementName')    属性要想在界面看到，还得插入到某个父元素中。插入到父元素的最后一个子元素。 -->
+    <!-- 使用 element.cloneNode(boolean)            属性会克隆出一个跟原标签一样的元素，括号内传入布尔值。若为true，则代表克隆时会包含后代节点一起克隆，若为false，则代表克隆时不包含后代节点，默认false。 -->
+    <!-- 使用 element.removeChild('elementName')    属性如不存在父子关系则删除不成功。 -->
+    <!-- DOM 节点滚动 -->
+    <!-- 使用 Element.scrollWidth                   返回类型为：Number，表示元素的滚动视图宽度。 -->
+    <!-- 使用 Element.scrollHeight                  返回类型为：Number，表示元素的滚动视图高度。 -->
+    <!-- 使用 Element.scrollLeft                    检测元素的内容左右和上下滚动的距离（被卷去的左侧scrollLeft），返回值不带单位。 -->
+    <!-- 使用 Element.scrollTop                     检测元素的内容左右和上下滚动的距离（被卷去的头部scrollTop），返回值不带单位。 -->
+    <!-- DOM 节点位置 -->
+    <!-- 使用 element.offsetWidth                   返回元素的宽度，包括边框（border）和内边距（padding），但不包含外边距（margin）。 -->
+    <!-- 使用 element.offsetHeight                  返回任何一个元素的高度包括边框（border）和内边距（padding），但不包含外边距（margin）。 -->
+    <!-- 使用 element.offsetLeft                    检测元素相对于父级元素的左右偏移量位置，返回值不带单位。 -->
+    <!-- 使用 element.offsetTop                     检测元素相对于父级元素的上下偏移量位置，返回值不带单位。 -->
+    <!-- DOM 节点大小 -->
+    <!-- 使用 Element.clientWidth                   检测元素的内容宽度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 使用 Element.clientHeight                  检测元素的内容高度（可见的区域大小（不包含滚动条和不包含超出的部分）），返回值不带单位。 -->
+    <!-- 使用 Element.clientLeft                    只读，返回 Number 表示该元素距离它左边界的宽度。 -->
+    <!-- 使用 Element.clientTop                     只读，返回 Number 表示该元素距离它上边界的高度。 -->
+    <!-- DOM 事件对象 -->
+    <!-- 使用 o.addEventListener('event', function () {}) 事件监听对象。 -->
+    <!-- 使用 MouseEvent.clientX                    鼠标指针在点击元素（DOM）中的 X 坐标。 -->
+    <!-- 使用 MouseEvent.clientY                    鼠标指针在点击元素（DOM）中的 Y 坐标。 -->
+    <!-- 使用 MouseEvent.offsetX                    鼠标指针相对于目标节点内边位置的 X 坐标。 -->
+    <!-- 使用 MouseEvent.offsetY                    鼠标指针相对于目标节点内边位置的 Y 坐标。 -->
+    <!-- 使用 MouseEvent.pageX                      鼠标指针相对于整个文档的 X 坐标。 -->
+    <!-- 使用 MouseEvent.pageY                      鼠标指针相对于整个文档的 Y 坐标。 -->
+    <!-- 使用 MouseEvent.screenX                    鼠标指针相对于全局（屏幕）的 X 坐标。 -->
+    <!-- 使用 MouseEvent.screenY                    鼠标指针相对于全局（屏幕）的 Y 坐标。 -->
+
+
+
+
+    <!-- ---------------------------------------- 华丽的分割线 ---------------------------------------- -->
+
+
+
+
+    <!-- JQ 部分 -->
+
+    <!-- 核心：$(function(){});                    页面加载事件。类似于window.load()页面加载事件。先ready()方法。 -->
+    <!-- 函数：$(document).ready(function(){});    页面加载事件。类似于window.load()页面加载事件。先ready()方法。 -->
+    <!-- 扩展：$(window).on('load', function(){}); 页面加载事件。类似于window.load()页面加载事件。后load()方法。 -->
+    <!-- 原生：window.load(function(){});          页面加载事件。类似于window.load()页面加载事件。后load()方法。 -->
+    <!-- 赋值：$("选择器").html('内容'); -->
+    <!-- 赋值：$("选择器").text('内容'); -->
+    <!-- 取值：$("选择器").html(); -->
+    <!-- 取值：$("选择器").text(); -->
+    <!-- 赋值：$("选择器").val('内容'); -->
+    <!-- 取值：$("选择器").val(); -->
+    <!-- 赋值：$("选择器").attr('属性名', '值'); -->
+    <!-- 取值：$("选择器").attr('属性名'); -->
+    <!-- 赋值：$("选择器").prop("checked", true);  设值（真True或者假False）。input标签checked属性是一个布尔属性。 -->
+    <!-- 赋值：$("选择器").prop("disabled", true); 设值（真True或者假False）。button标签disabled属性是一个布尔属性。 -->
+    <!-- 赋值：$("选择器").prop("selected", true); 设值（真True或者假False）。option元素selected属性是一个布尔属性。 -->
+    <!-- 取值：$("选择器").prop("checked");        取值（真True或者假False）。input标签checked属性是一个布尔属性。 -->
+    <!-- 取值：$("选择器").prop("disabled");       取值（真True或者假False）。button标签disabled属性是一个布尔属性。 -->
+    <!-- 取值：$("选择器").prop("selected");       取值（真True或者假False）。option元素selected属性是一个布尔属性。 -->
+    <!-- 删除：$("选择器").removeAttr('属性名'); -->
+    <!-- 查找：$("选择器").eq(n);              获取第N个元素。 -->
+    <!-- 查找：$("选择器").parent();           查询父级元素。 -->
+    <!-- 查找：$("选择器").children();         查找子级元素。 -->
+    <!-- 查找：$("选择器").siblings();         查找兄弟元素。 -->
+    <!-- 查找：$("选择器").find();             查找后代元素。 -->
+    <!-- 新增：$("选择器").append("element");  向每个匹配的元素内部追加内容。 -->
+    <!-- 新增：$("选择器").prepend("element"); 向每个匹配的元素内部前置内容。 -->
+    <!-- 删除：$("选择器").remove("element");  从DOM中删除所有匹配的元素。 -->
+    <!-- 删除：$("选择器").empty();            所有删除匹配的元素集合中所有的子节点。 -->
+    <!-- 样式：$("选择器").innerWidth();       获取第一个匹配元素内部区域宽度（包括补白、不包括边框）。 -->
+    <!-- 样式：$("选择器").innerHeight();      获取第一个匹配元素内部区域高度（包括补白、不包括边框）。 -->
+    <!-- 样式：$("选择器").outerWidth();       获取第一个匹配元素外部宽度（默认包括补白和边框）。 -->
+    <!-- 样式：$("选择器").outerHeight();      获取第一个匹配元素外部高度（默认包括补白和边框）。 -->
+    <!-- 样式：$("选择器").css();              添加单个样式属性。 -->
+    <!-- 样式：$("选择器").css({});            添加多个样式属性数组。 -->
+    <!-- 样式：$("选择器").addClass();         添加已经定义在Style中的样式。 -->
+    <!-- 样式：$("选择器").hasClass();         查找已经定义在Style中的样式。 -->
+    <!-- 样式：$("选择器").removeClass();      删除已经定义在Style中的样式。 -->
+    <!-- 样式：$("选择器").toggleClass();      有则删除，无则添加已经定义在Style中的样式。 -->
+    <!-- 样式：$("选择器").offset();           获取匹配元素在当前视口的相对偏移。 -->
+    <!-- 样式：$("选择器").position();         获取匹配元素相对父元素的偏移。 -->
+    <!-- 样式：$("选择器").scrollTop();        获取匹配元素相对滚动条顶部的偏移。 -->
+    <!-- 样式：$("选择器").scrollLeft();       获取匹配元素相对滚动条左侧的偏移。 -->
+    <!-- 样式：$("选择器").show(1000);         显示隐藏的匹配元素。修改样式opacity透明度属性。最后display:none; -->
+    <!-- 样式：$("选择器").hide(1000);         隐藏显示的元素。修改样式opacity透明度属性。最后display:none; -->
+    <!-- 样式：$("选择器").toggle(1000);       用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的click事件。修改样式opacity透明度属性。最后display:none; -->
+    <!-- 样式：$("选择器").fadeIn(1000);       通过不透明度的变化来实现所有匹配元素的淡入效果，并在动画完成后可选地触发一个回调函数。修改样式opacity透明度属性。最后display:none; -->
+    <!-- 样式：$("选择器").fadeOut(1000);      通过不透明度的变化来实现所有匹配元素的淡出效果，并在动画完成后可选地触发一个回调函数。修改样式opacity透明度属性。最后display:none; -->
+    <!-- 样式：$("选择器").fadeToggle(1000);   通过不透明度的变化来开关所有匹配元素的淡入和淡出效果，并在动画完成后可选地触发一个回调函数。修改样式opacity透明度属性。最后display:none; -->
+    <!-- 样式：$("选择器").slideDown(1000);    通过高度变化（向下增大）来动态地显示所有匹配的元素，在显示完成后可选地触发一个回调函数。 -->
+    <!-- 样式：$("选择器").slideUp(1000);      通过高度变化（向上减小）来动态地隐藏所有匹配的元素，在隐藏完成后可选地触发一个回调函数。 -->
+    <!-- 样式：$("选择器").slideToggle(1000);  通过高度变化来切换所有匹配元素的可见性，并在切换完成后可选地触发一个回调函数。 -->
+    <!-- 动画：$("选择器").基础动画方法(回调函数); -->
+    <!-- 动画：$("选择器").基础动画方法(持续时间, 回调函数); -->
+    <!-- 动画：$("选择器").animate(params,speed,easing,function); 用于创建自定义动画的函数。 -->
+    <!-- 动画：$("选择器").stop();                                停止所有在指定元素上正在运行的动画。 -->
+    <!-- 动画：$("选择器").delay(duration,queueName);             设置一个延时来推迟执行队列中之后的项目。 -->
+    <!-- 事件：$("选择器").click();                     点击事件。 -->
+    <!-- 事件：$("选择器").mouseenter();                鼠标移入事件。 -->
+    <!-- 事件：$("选择器").mouseleave();                鼠标移出事件。 -->
+    <!-- 事件：$("选择器").focus();                     获取鼠标焦点事件。 -->
+    <!-- 事件：$("选择器").blur();                      失去鼠标焦点事件。 -->
+    <!-- 事件：$("选择器").on('click', function(){});   事件委托。减少事件注册。解决动态增加后代元素的事件绑定问题。原理是事件冒泡。 -->
+    <!-- 事件：$("选择器").off('click', function(){});  移除事件。减少事件注册。解决动态增加后代元素的事件绑定问题。原理是事件冒泡。 -->
+    <!-- 事件：$("选择器").off();                       移除所有事件。 -->
+    <!-- 事件：$("选择器").one('click', function(){});  注册一次性事件。 -->
+    <!-- 事件：$("选择器").bind("click", function(){}); 为每个匹配元素的特定事件绑定事件处理函数。 -->
+    <!-- 事件：$("input").trigger("click"); -->
+    <!-- 事件：$("input").triggerHandler("click"); -->
+    <!-- 事件：$("p").unbind("click"); -->
+    <!-- 事件：$("p").unbind(); -->
+    <!-- 事件：$(window).scroll(function(){}); -->
+    <!-- 事件：event.preventDefault();  阻止默认事件行为的触发。 -->
+    <!-- 事件：event.stopPropagation(); 防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数。 -->
+
+
+
+
+    <!-- ---------------------------------------- 华丽的分割线 ---------------------------------------- -->
+
+
+
+
+    <!-- AJAX 部分 -->
+
+    <!-- 一、客户端与服务器 -->
+    <!-- 1.1 上网的目的 -->
+    <!-- 上网的本质目的：通过互联网的形式来获取和消费资源。 -->
+    <!-- 1.2 服务器 -->
+    <!-- 上网过程中，负责存放和对外提供资源的电脑，叫做服务器。 -->
+    <!-- 1.3 客户端 -->
+    <!-- 上网过程中，负责获取和消费资源的电脑，叫做客户端。 -->
+
+    <!-- 二、URL地址 -->
+    <!-- 2.1 URL概述 -->
+    <!-- URL（全称是UniformResourceLocator）中文叫统一资源定位符，用于标识互联网上每个资源的唯一存放位置。浏览器只有通过URL地址，才能正确定位资源的存放位置，从而成功访问到对应的资源。 -->
+    <!-- 常见的URL举例： -->
+    <!-- http://www.baidu.com/ -->
+    <!-- http://www.taobao.com/ -->
+    <!-- http://www.cnblogs.com/liulongbinblogs/p/11649393.html/ -->
+    <!-- 2.2 URL组成 -->
+    <!-- URL地址一般由三部组成： -->
+    <!-- (1).客户端与服务器之间的通信协议。 -->
+    <!-- (2).存有该资源的服务器名称。 -->
+    <!-- (3).资源在服务器上具体的存放位置。 -->
+    <!-- 语法：http://www.cnblogs.com/liuweiweiblogs/ajax/url.html -->
+    <!-- 语法：通信协议://服务器名称/资源路径一级目录/资源路径二级目录/具体的存放位置.html -->
+
+    <!-- 三、分析网页的打开过程 -->
+    <!-- 3.1 图解客户端与服务器的通信过程 -->
+    <!-- (1).客户端请求服务器 -->
+    <!-- (2).服务器处理这次请求 -->
+    <!-- (3).服务器响应客户端 -->
+    <!-- 客户端流程： -->
+    <!-- (1).打开浏览器。 -->
+    <!-- (2).输入要访问的网站地址。 -->
+    <!-- (3).回车，向服务器发起资源请求。 -->
+    <!-- 服务器流程： -->
+    <!-- (1).服务器接收到客户端发来的资源请求。 -->
+    <!-- (2).服务器在内部处理这次请求，找到相关的资源。 -->
+    <!-- (3).服务器把找到的资源，响应（发送）给客户端。 -->
+    <!-- 注意：客户端与服务器之间的通信过程，分为 请求 – 处理 – 响应 三个步骤。 -->
+    <!-- 注意：网页中的每一个资源，都是通过 请求 – 处理 – 响应 的方式从服务器获取回来的。 -->
+    <!-- 3.2 基于浏览器的开发者工具分析通信过程 -->
+    <!-- (1).打开 Chrome 浏览器。 -->
+    <!-- (2).Ctrl+Shift+I 打开 Chrome 的开发者工具。 -->
+    <!-- (3).切换到 Network 面板。 -->
+    <!-- (4).选中 Doc 页签。 -->
+    <!-- (5).刷新页面，分析客户端与服务器的通信过程。 -->
+
+    <!-- 四、服务器对外提供了哪些资源 -->
+    <!-- 4.1 例举网页中常见的资源 -->
+    <!-- (1).字体。 -->
+    <!-- (2).图片。 -->
+    <!-- (3).音频。 -->
+    <!-- (4).视频。 -->
+    <!-- 4.2 数据也是资源 -->
+    <!-- 网页中的数据，也是服务器对外提供的一种资源。例如股票数据、各行业排行榜等。 -->
+    <!-- 4.3 数据是网页的灵魂 -->
+    <!-- (1).HTML       是网页的骨架。 -->
+    <!-- (1).CSS        是网页的颜值。 -->
+    <!-- (1).Javascript 是网页的行为。 -->
+    <!-- (1).Data       数据则是网页的灵魂。 -->
+    <!-- 总结：骨架、颜值、行为皆为数据服务数据，在网页中无处不在。 -->
+    <!-- 4.4 网页中如何请求数据 -->
+    <!-- 数据，也是服务器对外提供的一种资源。只要是资源，必然要通过 请求、处理、响应的方式进行获取。 -->
+    <!-- 如果要在网页中请求服务器上的数据资源，则需要用到 XMLHttpRequest 对象。 -->
+    <!-- XMLHttpRequest（简称 xhr）是浏览器提供的 js 成员，通过它，可以请求服务器上的数据资源。 -->
+    <!-- 最简单的用法：var xhrObj = new XMLHttpRequest(); -->
+    <!-- 4.5 资源的请求方式 -->
+    <!-- 客户端请求服务器时，请求的方式有很多种，最常见的两种请求方式分别为 get 和 post 请求。 -->
+    <!-- (1).GET  请求通常用于获取服务端资源（向服务器要资源）。例如：根据 URL 地址，从服务器获取 HTML 文件、css 文件、js文件、图片文件、数据资源等。 -->
+    <!-- (2).POST 请求通常用于向服务器提交数据（往服务器发送资源）。例如：登录时向服务器提交的登录信息、注册时向服务器提交的注册信息、添加用户时向服务器提交的用户信息等各种数据提交操作。 -->
+
+    <!-- 五、了解Ajax -->
+    <!-- 5.1 Ajax概述 -->
+    <!-- Ajax 的全称是 Asynchronous Javascript And XML（异步 JavaScript 和 XML）。 -->
+    <!-- 通俗的理解：在网页中利用 XMLHttpRequest 对象和服务器进行数据交互的方式，就是Ajax。 -->
+    <!-- 5.2 Ajax场景 -->
+    <!-- 之前所学的技术，只能把网页做的更美观漂亮，或添加一些动画效果，但是，Ajax能让我们轻松实现网页与服务器之间的数据交互。 -->
+    <!-- 用户名检测：注册用户时，通过 ajax 的形式，动态检测用户名是否被占用。 -->
+    <!-- 搜索提示：当输入搜索关键字时，通过 ajax 的形式，动态加载搜索提示列表。 -->
+    <!-- 数据分页显示：当点击页码值的时候，通过 ajax 的形式，根据页码值动态刷新表格的数据。 -->
+    <!-- 数据的增删改查：数据的添加、删除、修改、查询操作，都需要通过 ajax 的形式，来实现数据的交互。 -->
+
+    <!-- 六、jQuery中的Ajax -->
+    <!-- 6.1 jQuery框架中的封装Ajax概述 -->
+    <!-- 浏览器中提供的 XMLHttpRequest 用法比较复杂，所以 jQuery 对 XMLHttpRequest 进行了封装，提供了一系列 Ajax 相关的函数，极大地降低了 Ajax 的使用难度。 -->
+    <!-- jQuery 中发起 Ajax 请求最常用的三个方法如下： -->
+    <!-- (1).$.get()  函数。 -->
+    <!-- (2).$.post() 函数。 -->
+    <!-- (3).$.ajax() 函数。 -->
+    <!-- 6.2 $.get() 函数的语法 -->
+    <!-- jQuery 中 $.get() 函数的功能单一，专门用来发起 get 请求，从而将服务器上的资源请求到客户端来进行使用。 -->
+    <!-- $.get() 函数的语法如下： -->
+    <!-- $.get(url, [data], [callback]); -->
+    <!-- 其中，三个参数各自代表的含义如下： -->
+    <!-- url      要请求的资源地址。 -->
+    <!-- data     请求资源期间要携带的参数。 -->
+    <!-- callback 请求成功时的回调函数。 -->
+    <!-- 6.3 $.get() 函数不带参数的请求 -->
+    <!-- 使用 $.get() 函数发起不带参数的请求时，直接提供请求的 URL 地址和请求成功之后的回调函数即可，示例代码如下： -->
+    <!-- $.get('http://localhost:8848/api/getById', function() {}); -->
+    <!-- 6.4 $.get() 函数带参数的请求 -->
+    <!-- 使用 $.get() 函数发起带参数的请求时，示例代码如下： -->
+    <!-- $.get('http://localhost:8848/api/getById', {username: "liuweiwei", password: "12345678"}, function(data) { console.log(data); }); -->
+    <!-- 6.5 $.post() 函数的语法 -->
+    <!-- jQuery 中 $.post() 函数的功能单一，专门用来发起 post 请求，从而向服务器提交数据。 -->
+    <!-- $.post() 函数的语法如下： -->
+    <!-- $.post(url, [data], [fallback]); -->
+    <!-- 其中，三个参数各自代表的含义如下： -->
+    <!-- url      提交数据的地址。 -->
+    <!-- data     要提交的数据。 -->
+    <!-- callback 数据提交成功时的回调函数。 -->
+    <!-- 6.6 $.post() 向服务器提交数据 -->
+    <!-- 使用 $post() 向服务器提交数据的示例代码如下： -->
+    <!-- $.post('http://localhost:3006/api/list', { username: 'liuweiwei', passowrd: '12345678'}, function(data) { console.log(data); }); -->
+    <!-- 6.7 $.ajax() 函数的语法 -->
+    <!-- 相比于 $.get() 和 $.post() 函数，jQuery 中提供的 $.ajax() 函数，是一个功能比较综合的函数，它允许我们对 Ajax 请求进行更详细的配置。 -->
+    <!-- $.ajax() 函数的基本语法如下： -->
+    <!-- $.ajax({
+        url: '',                                 // 规定发送请求的 URL。默认是当前页面。
+        async: true,                             // 布尔值，表示请求是否异步处理。默认是 true。
+        data: {},                                // 规定要发送到服务器的数据。
+        type: '',                                // 规定请求的类型（GET 或 POST）。
+        dataType: 'json',                        // 预期的服务器响应的数据类型。
+        cache: false,                            // 布尔值，表示浏览器是否缓存被请求页面。默认是 true。
+        success: function(result,status,xhr) { } // 请求成功之后的回调函数。
+        error: function() {xhr,status,error}     // 如果请求失败要运行的函数。
+    }); -->
+    <!-- 6.8 使用 $.ajax() 发送 GET 请求 -->
+    <!-- 使用 $.ajax() 发起 GET 请求时，只需要将 type 属性的值设置为 'GET' 即可： -->
+    <!-- $.ajax({
+        type: 'GET',                                         // 请求的方式。
+        url: 'http://www.liulongbin.top:3006/api/getbooks',  // 请求的 URL 地址。
+        data: { id: 1 },                                     // 这次请求要携带的数据。
+        success: function(data) {                            // 请求成功之后的回调函数。
+            console.log(data);
+        }
+    }); -->
+    <!-- 6.9 使用 $.ajax() 发送 POST 请求 -->
+    <!-- 使用 $.ajax() 发起 POST 请求时，只需要将 type 属性的值设置为 'POST' 即可： -->
+    <!-- $.ajax({
+        type: 'POST',                                       // 请求的方式。
+        url: 'http://www.liulongbin.top:3006/api/addbook',  // 请求的 URL 地址。
+        data: {                                             // 要提交给服务器的数据。
+           username: 'liuweiwei',
+           password: '12345678'
+         },
+        success: function(data) {                           // 请求成功之后的回调函数。
+            console.log(data)
+        }
+    }); -->
+
+    <!-- 七、接口 -->
+    <!-- 7.1 接口概述 -->
+    <!-- 使用 Ajax 请求数据时，被请求的 URL 地址，就叫做数据接口（简称接口）。同时，每个接口必须有请求方式。 -->
+    <!-- 例如： -->
+    <!-- http://www.liulongbin.top:3006/api/getById?id=10086  // 获取图书列表的接口（GET 请求）。 -->
+    <!-- http://www.liulongbin.top:3006/api/list              // 添加图书的接口（POST 请求）。 -->
+    <!-- 7.2 分析接口的请求过程 -->
+    <!-- 通过GET方式请求接口的过程： -->
+    <!-- 用户（交互，希望从服务器获取数据）网页（数据载体，Ajax）发起GET数据请求（服务器）处理请求，响应GET请求。 -->
+    <!-- 通过POST方式请求接口的过程： -->
+    <!-- 用户（交互，希望从服务器获取数据）网页（数据载体，Ajax）发起POST数据请求（服务器）处理请求，响应POST请求。 -->
+    <!-- 7.3 接口测试工具 -->
+    <!-- 为了验证接口能否被正常被访问，我们常常需要使用接口测试工具，来对数据接口进行检测。 -->
+    <!-- 好处：接口测试工具能让我们在不写任何代码的情况下，对接口进行调用和测试。 -->
+    <!-- 工具：PostMan -->
+    <!-- 官网：https://www.postman.com/downloads/ -->
+    <!-- 访问 PostMan 的官方下载网址 https://www.getpostman.com/downloads/，下载所需的安装程序后，直接安装即可。 -->
+    <!-- PostMan界面的组成部分，从上到下，从左到右，分别是： -->
+    <!-- (01).菜单栏。 -->
+    <!-- (02).工具栏。 -->
+    <!-- (03).左侧历史记录与集合面板。 -->
+    <!-- (04).请求页签。 -->
+    <!-- (05).请求地址区域。 -->
+    <!-- (06).请求参数区域。 -->
+    <!-- (07).响应结果区域。 -->
+    <!-- (08).状态栏。 -->
+    <!-- 7.4 使用Postman工具测试GET接口 -->
+    <!-- 步骤： -->
+    <!-- (01).选择请求的方式。 -->
+    <!-- (02).填写请求的URL地址。 -->
+    <!-- (03).填写请求的参数。 -->
+    <!-- (04).点击 Send 按钮发起 GET 请求。 -->
+    <!-- (05).查看服务器响应的结果。 -->
+    <!-- 7.5 使用Postman工具测试POST接口 -->
+    <!-- 步骤： -->
+    <!-- (01).选择请求的方式。 -->
+    <!-- (02).填写请求的URL地址。 -->
+    <!-- (03).选择 Body 面板并勾选数据格式。 -->
+    <!-- (04).填写要发送到服务器的数据。 -->
+    <!-- (05).点击 Send 按钮发起 POST 请求。 -->
+    <!-- (06).查看服务器响应的结果。 -->
+    <!-- 7.6 接口文档 -->
+    <!-- (01).接口文档，顾名思义就是接口的说明文档，它是我们调用接口的依据。好的接口文档包含了对接口URL，参数以及输出内容的说明，我们参照接口文档就能方便的知道接口的作用，以及接口如何进行调用。 -->
+    <!-- (02).接口文档的组成部分： -->
+    <!-- (03).接口文档可以包含很多信息，也可以按需进行精简，不过，一个合格的接口文档，应该包含以下6项内容，从而为接口的调用提供依据。 -->
+    <!-- (04).接口名称：用来标识各个接口的简单说明，如登录接口，获取图书列表接口等。 -->
+    <!-- (05).接口URL：接口的调用地址。 -->
+    <!-- (06).调用方式：接口的调用方式，如 GET 或 POST。 -->
+    <!-- (07).参数格式：接口需要传递的参数，每个参数必须包含参数名称、参数类型、是否必选、参数说明这4项内容。 -->
+    <!-- (08).响应格式：接口的返回值的详细描述，一般包含数据名称、数据类型、说明3项内容。 -->
+    <!-- (09).返回示例（可选）：通过对象的形式，例举服务器返回数据的结构。 -->
+
+    <!-- 八、案例：图书管理系统 -->
+    <!-- JavaScript 代码： -->
+    <!-- 
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">添加新图书</h3>
+        </div>
+        <div class="panel-body form-inline">
+            <div class="input-group">
+                <div class="input-group-addon">书名</div>
+                <input type="text" class="form-control" id="ipdBookname" placeholder="请输入书名">
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">作者</div>
+                <input type="text" class="form-control" id="ipdAuthor" placeholder="请输入作用名称">
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">出版社</div>
+                <input type="text" class="form-control" id="ipdPublisher" placeholder="请输入出版社名称">
+            </div>
+            <label for="btnAdd">
+                <button type="button" class="btn btn-primary" id="btnAdd">新增</button>
+            </label>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>序列</th>
+                <th>编号</th>
+                <th>书名</th>
+                <th>作用</th>
+                <th>出版社</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let data = [
+            { "id": "10086", "bookname": "《金瓶梅》", "author": "不知道", "publisher": "新华出版社" },
+            { "id": "10010", "bookname": "《水浒传》", "author": "不知道", "publisher": "新华出版社" },
+            { "id": "12306", "bookname": "《红楼梦》", "author": "不知道", "publisher": "新华出版社" },
+            { "id": "12580", "bookname": "《西游记》", "author": "不知道", "publisher": "新华出版社" }
+        ];
+        $(document).ready(function () {
+            console.log(data);
+            if (data == null || data === "") {
+                return false;
+            }
+            $.each(data, function (index, element) {
+                const $tr = $(
+                    "<tr>" +
+                        "<td>" + 
+                            "<input type='checkbox' value=''>" + 
+                        "</td>" +
+                        "<td>" + (index + 1) + "</td>" +
+                        "<td>" + element.id + "</td>" +
+                        "<td>" + element.bookname + "</td>" +
+                        "<td>" + element.author + "</td>" +
+                        "<td>" + element.publisher + "</td>" +
+                        "<td>" + 
+                            "<a href='#'>&nbsp;编辑&nbsp;</a>" + 
+                            "<a href='#'>&nbsp;删除&nbsp;</a>" + 
+                        "</td>" +
+                    "</tr>"
+                );
+                $("tbody").append($tr);
+            });
+        });
+    </script>
+    -->
+
+    <!-- 九、案例：聊天机器人系统 -->
+    <!-- <link rel="stylesheet" href="./css/wechat.css">
+    <div class="wrap">
+        <div class="header">
+            <h3>小思同学</h3>
+            <img src="img/person01.png" alt="icon" />
+        </div>
+        <div class="main">
+            <ul class="talk_list" style="top: 0px;" id="talk_list">
+                <li class="left_word">
+                    <img src="img/person01.png" /> <span>嗨，最近想我没有？</span>
+                </li>
+            </ul>
+            <div class="drag_bar" style="display: none;">
+                <div class="drager ui-draggable ui-draggable-handle" style="display: none; height: 412.628px;"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <img src="img/person02.png" alt="icon" />
+            <input type="text" placeholder="说的什么吧..." class="input_txt" id="ipt" />
+            <input type="button" value="发&nbsp;&nbsp;送" class="input_sub" id="btnSend" />
+        </div>
+    </div>
+    <audio src="" id="voice" autoplay style="display: none;"></audio>
+    <script src="./js/jquery.mousewheel.js"></script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <script>
+        $('#btnSend').on('click', function () {
+            console.log('发送内容是什么：' + $("#ipt").val().trim());
+            var text = $('#ipt').val().trim();
+            if (text.length <= 0) {
+                return $('#ipt').val('');
+            }
+            $('#talk_list').append('<li class="right_word"><img src="img/person02.png" /> <span>' + text + '</span></li>');
+            $('#ipt').val('');
+        });
+        // 键盘弹起事件（触发输入框弹起回车键，触发发送按钮点击事件）
+        $("#ipt").on('keyup', function (event) {
+            if (event.keyCode === 13) {
+                $("#btnSend").click();
+            }
+        });
+    </script> -->
+
+    <!-- 一、form 表单的基本使用 -->
+    <!-- 1.1 什么是表单 -->
+    <!-- 表单在网页中主要负责数据采集功能。HTML中的<form>标签，就是用于采集用户输入的信息，并通过<form>标签的提交操作，把采集到的信息提交到服务器端进行处理。 -->
+    <!-- 1.2 表单的组成部分 -->
+    <!-- (1).表单标签。 -->
+    <!-- (2).表单域。 -->
+    <!-- (3).表单按钮。 -->
+    <!-- 表单域：包含了文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等。 -->
+    <!-- 1.3 form 标签的属性 -->
+    <!-- form 标签用来采集数据，form 标签的属性则是用来规定如何把采集到的数据发送到服务器。 -->
+    <!-- (1).action  规定提交表单时，向何处发送表单数据。URL地址。 -->
+    <!-- (2).method  规定以何种方式把表单数据提交到action URL地址。 -->
+    <!-- (3).enctype 规定在发送表单数据之前如何对其进行编码。application/x-www-form-urlencoded、multipart/form-data、text/plain三种格式。 -->
+    <!-- (4).target  规定在何处打开action URL地址。 -->
+    <!-- 1.4 form 标签 【action 属性】概述 -->
+    <!-- action 属性用来规定当提交表单时，向何处发送表单数据。 -->
+    <!-- action 属性的值应该是后端提供的一个 URL 地址，这个 URL 地址专门负责接收表单提交过来的数据。 -->
+    <!-- 当 <form> 表单在未指定 action 属性值的情况下，action 的默认值为当前页面的 URL 地址。 -->
+    <!-- 注意：当提交表单后，页面会立即跳转到 action 属性指定的 URL 地址。 -->
+    <!-- 1.5 form 标签 【method 属性】概述 -->
+    <!-- method 属性用来规定以何种方式把表单数据提交到 action URL。 -->
+    <!-- 它的可选值有两个，分别是 get 和 post。 -->
+    <!-- 默认情况下，method 的值为 get，表示通过URL地址的形式，把表单数据提交到 action URL。 -->
+    <!-- 注意：GET  方式适合用来提交少量的、简单的数据。 -->
+    <!-- 注意：POST 方式适合用来提交大量的、复杂的、或包含文件上传的数据。 -->
+    <!-- 在实际开发中，<form> 表单的 post 提交方式用的最多，很少用 get。例如登录、注册、添加数据等表单操作，都需要使用 post 方式来提交表单。 -->
+    <!-- 1.6 form 标签 【enctype 属性】概述 -->
+    <!-- enctype 属性用来规定在发送表单数据之前如何对数据进行编码。 -->
+    <!-- 它的可选值有三个，默认情况下，enctype 的值为 application/x-www-form-urlencoded，表示在发送前编码所有的字符。 -->
+    <!-- (1).application/x-www-form-urlencoded 在发送前编码所有字符。默认。 -->
+    <!-- (2).multipart/form-data               不对字符编码。在使用包含文件上传控件的表单时，必须使用该值。 -->
+    <!-- (3).text/plain                        空格转换为加号，但不对特殊符号编码。 -->
+    <!-- 注意：在涉及到文件上传的操作时，必须将 enctype 的值设置为 multipart/form-data。 -->
+    <!-- 注意：如果表单的提交不涉及到文件上传操作，则直接将 enctype 的值设置为 application/x-www-form-urlencoded 即可。 -->
+    <!-- 1.7 form 标签 【target 属性】概述 -->
+    <!-- target 属性用来规定在何处打开 action URL。 -->
+    <!-- 它的可选值有5个，默认情况下，target 的值是 _self，表示在相同的框架中打开 action URL。 -->
+    <!-- 它有五个值：_blank，_self，_parent，_top，framename。 -->
+    <!-- 1.8 什么是表单的同步提交 -->
+    <!-- 通过点击 submit 按钮，触发表单提交的操作，从而使页面跳转到 action URL 的行为，叫做表单的同步提交。 -->
+    <!-- 1.9 表单同步提交的缺点 -->
+    <!-- <form>表单同步提交后，整个页面会发生跳转，跳转到 action URL 所指向的地址，用户体验很差。 -->
+    <!-- <form>表单同步提交后，页面之前的状态和数据会丢失。 -->
+    <!-- 思考：如何解决上述两个问题？ -->
+    <!-- 思考：如何解决表单同步提交的缺点？ -->
+    <!-- 如果使用表单提交数据，则会导致以下两个问题： -->
+    <!-- 页面会发生跳转？ -->
+    <!-- 页面之前的状态和数据会丢失？ -->
+    <!-- 解决方案：表单只负责采集数据，Ajax 负责将数据提交到服务器。 -->
+
+    <!-- 二、通过Ajax提交表单数据 -->
+    <!-- 2.1 监听表单提交事件 -->
+    <!-- 在 jQuery 中，可以使用如下两种方式，监听到表单的提交事件： -->
+    <!-- $("form").submit(function(e) {
+        alert('监听到了表单的提交事件');
+    }); -->
+    <!-- $("form").on('submit', function(e) {
+        alert('监听到了表单的提交事件');
+    }); -->
+    <!-- 2.2 阻止表单默认提交行为 -->
+    <!-- 当监听到表单的提交事件以后，可以调用事件对象的 event.preventDefault() 函数，来阻止表单的提交和页面的跳转，示例代码如下： -->
+    <!-- $("form").submit(function(e) {
+        // 阻止表单的提交和页面的跳转
+        e.preventDefault();
+        // 或者
+        return false;
+    }); -->
+    <!-- $("form").on('submit', function(e) {
+        // 阻止表单的提交和页面的跳转
+        e.preventDefault();
+        // 或者
+        return false;
+    }); -->
+    <!-- 2.3 快速获取表单中的数据 -->
+    <!-- 为了简化表单中数据的获取操作，jQuery 提供了 serialize() 函数，其语法格式如下： -->
+    <!-- $("form").serialize(); -->
+    <!-- serialize() 函数的好处：可以一次性获取到表单中的所有的数据。 -->
+    <!-- <form>
+        <input type="text"     name="username" />
+        <input type="password" name="password" />
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        $("form").on('submit', function (event) {
+            console.log($(this).serialize());
+            return false;
+        });
+        $("form").submit(function (event) {
+            console.log($(this).serialize());
+            return false;
+        });
+    </script> -->
+    <!-- 注意：在使用 serialize() 函数快速获取表单数据时，必须为每个表单元素添加 name 属性。否则会获取不到输入框的值。 -->
+
+    <!-- 三、案例：评论列表 -->
+    <!-- 3.1 渲染UI结构 -->
+    <!-- 3.2 获取评论列表 -->
+    <!-- 3.3 发表评论 -->
+    <!-- <style>
+        body {
+            padding: 15px;
+        }
+        #comment-people {
+            background-color: #f0ad4e;
+        }
+        #comment-time {
+            background-color: #5bc0de;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/template-web.js"></script>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">发表评论</h3>
+        </div>
+        <div class="panel-body">
+            <div>评论人：</div>
+            <input name="username" id="username" type="text" class="form-control" />
+            <div>评论内容：</div>
+            <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+            <div>&nbsp;</div>
+            <button type="button" class="btn btn-primary" id="send">发表评论</button>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="badge" id="comment-people">username 1</span>
+            <span class="badge" id="comment-time">time 1</span>
+            content 1
+        </li>
+    </ul>
+    <div id="container">
+        <span>{{name}}</span>
+        <span>{{age}}</span>
+    </div>
+    <script type="text/html" id="tpl-user">
+        <span>{{name}}</span>
+        <span>{{age}}</span>
+    </script>
+    <script>
+        let data = [
+            { "time": "2023-05-15 08:00:00", "username": "刘德华", "content": "他说这疫情什么时候能结束呀？" },
+            { "time": "2023-05-15 08:00:00", "username": "林志玲", "content": "你问我？我问谁？" },
+            { "time": "2023-05-15 08:00:00", "username": "张学友", "content": "吵什么吵呀？傻逼吧！" },
+            { "time": "2023-05-15 08:00:00", "username": "蔡依林", "content": "嗨起来！AV8D！动次打次！" }
+        ];
+        function getCommentList() {
+            var ul = [];
+            $.each(data, function (i, item) {
+                var li = 
+                '<li class="list-group-item"><span class="badge" style="background-color: #F0AD4E;">评论时间：' + item.time + 
+                    '</span><span class="badge" style="background-color: #5BC0DE;">评论人：' + item.username + 
+                    '</span>' + item.content + 
+                '</li>';
+                ul.push(li);
+            });
+            $(".list-group").empty().append(ul.join(''));
+        }
+        $(document).ready(function () {
+            getCommentList();
+        });
+        $("#send").on('click', function (event) {
+            var li = 
+                '<li class="list-group-item"><span class="badge" style="background-color: #F0AD4E;">评论时间：' + "2013-05-15 12:00:00" + 
+                    '</span><span class="badge" style="background-color: #5BC0DE;">评论人：' + $("#username").val() + 
+                    '</span>' + $("#content").val() + 
+                '</li>';
+            $(".list-group").last().prepend(li);
+        });
+        var temp = {name:"liuweiwei", age:28};
+        var htmlStr = template("tpl-user", temp);
+        console.log(htmlStr);
+    </script> -->
+
+    <!-- 四、模板引擎概述 -->
+    <!-- 4.1 渲染UI结构时遇到的问题 -->
+    <!-- 上述代码是通过字符串拼接的形式，来渲染UI结构。 -->
+    <!-- 如果UI结构比较复杂，则拼接字符串的时候需要格外注意引号之前的嵌套。且一旦需求发生变化，修改起来也非常麻烦。 -->
+    <!-- 4.2 什么是模板引擎 -->
+    <!-- 模板引擎，顾名思义，它可以根据程序员指定的模板结构和数据，自动生成一个完整的HTML页面。 -->
+    <!-- 4.3 模板引擎的好处 -->
+    <!-- 减少了字符串的拼接操作。 -->
+    <!-- 使代码结构更清晰。 -->
+    <!-- 使代码更易于阅读与维护。 -->
+
+    <!-- 五、art-template模板引擎 -->
+    <!-- 5.1 art-template 简介 -->
+    <!-- art-template 是一个简约、超快的模板引擎。中文官网首页为 http://aui.github.io/art-template/zh-cn/index.html -->
+    <!-- 5.2 art-template 安装 -->
+    <!-- 在浏览器中访问 http://aui.github.io/art-template/zh-cn/docs/installation.html 页面，找到下载链接后，鼠标右键，选择“链接另存为”，将 art-template 下载到本地，然后，通过 <script> 标签加载到网页上进行使用。 -->
+    <!-- 5.3 art-template 模板引擎的基本使用 -->
+    <!-- 1. 使用传统方式渲染UI结构 -->
+    <!-- 2. art-template 的使用步骤 -->
+    <!-- 导入 art-template -->
+    <!-- 定义数据 -->
+    <!-- 定义模板 -->
+    <!-- 调用 template 函数 -->
+    <!-- 渲染HTML结构 -->
+    <!-- 5.4 art-template标准语法 -->
+    <!-- 什么是标准语法？ -->
+    <!-- art-template 提供了 {{ }} 这种语法格式，在 {{ }} 内可以进行变量输出，或循环数组等操作，这种 {{ }} 语法在 art-template 中被称为标准语法。 -->
+    <!-- 标准语法：输出？ -->
+    <!-- {{value}} -->
+    <!-- {{obj.key}} -->
+    <!-- {{obj['key']}} -->
+    <!-- {{a ? b : c}} -->
+    <!-- {{a || b}} -->
+    <!-- {{a + b}} -->
+    <!-- 在 {{ }} 语法中，可以进行变量的输出、对象属性的输出、三元表达式输出、逻辑或输出、加减乘除等表达式输出。 -->
+    <!-- 标准语法：原文输出？ -->
+    <!-- {{@ value }} -->
+    <!-- 如果要输出的 value 值中，包含了 HTML 标签结构，则需要使用原文输出语法，才能保证 HTML 标签被正常渲染。 -->
+    <!-- 标准语法：条件输出？ -->
+    <!-- 如果要实现条件输出，则可以在 {{ }} 中使用 if … else if … /if 的方式，进行按需输出。 -->
+    <!-- {{if value}} 按需输出的内容 {{/if}} -->
+    <!-- {{if v1}} 按需输出的内容 {{else if v2}} 按需输出的内容 {{/if}} -->
+    <!-- 标准语法：循环输出？ -->
+    <!-- 如果要实现循环输出，则可以在 {{ }} 内，通过 each 语法循环数组，当前循环的索引使用 $index 进行访问，当前的循环项使用 $value 进行访问。 -->
+    <!-- {{each arr}}
+        {{$index}} {{$value}}
+    {{/each}} -->
+    <!-- 标准语法：过滤器？ -->
+    <!-- 过滤器的本质，就是一个 function 处理函数。 -->
+    <!-- {{value | filterName}} -->
+    <!-- 过滤器语法类似管道操作符，它的上一个输出作为下一个输入。 -->
+    <!-- 定义过滤器的基本语法如下： -->
+    <!-- template.defaults.imports.filterName = function(value){/*return处理的结果*/} -->
+    <!-- <div>注册时间：{{regTime | dateFormat}}</div> -->
+    <!-- 定义一个格式化时间的过滤器 dateFormat 如下： -->
+    <!-- template.defaults.imports.dateFormat = function(date) {
+        var y = date.getFullYear()
+        var m = date.getMonth() + 1
+        var d = date.getDate()
+        return y + '-' + m + '-' + d // 注意：过滤器最后一定要 return 一个值。
+    } -->
+
+    <!-- 六、模板引擎的实现原理 -->
+    <!-- 6.1 正则与字符串操作 -->
+    <!-- exec() 函数用于检索字符串中的正则表达式的匹配。 -->
+    <!-- 如果字符串中有匹配的值，则返回匹配值，否则返回 null。 -->
+    <!-- RegExpObject.exec(string); -->
+    <!-- 分组： -->
+    <!-- 正则表达式中使用括号 () 包起来的内容表示一个分组，可以通过分组来提取自己想要的内容，示例代码如下： -->
+    <!-- pattern.exec(strint); -->
+    <!-- 字符串替换函数： -->
+    <!-- replace() 函数用于在字符串中用一些字符替换另一些字符，语法格式如下： -->
+    <!-- 6.2 实现简易的模引擎 -->
+    <!-- 实现步骤： -->
+    <!-- (1).定义模板结构。 -->
+    <!-- (2).预调用模板引擎。 -->
+    <!-- (3).封装 template 函数。 -->
+    <!-- (4).导入并使用自定义的模板引擎。 -->
+    <!-- 定义模板结构： -->
+    <!-- 
+    <script type="text/html" id="tpl-user">
+        <div>姓名：{{name}}</div>
+        <div>年龄：{{age}}</div>
+        <div>性别：{{gender}}</div>
+        <div>住址：{{address}}</div>
+    </script>
+    -->
+    <!-- 预调用模板引擎： -->
+    <!-- 
+    <script>
+    // 定义数据
+        var data = {name:'zs',age:28,gender:'男',address:'北京顺义马坡'};
+        // 调用模板函数
+        var htmlStr = template('tpl-user',data);
+        // 渲染HTML结构
+        document.getElementById('user-box').innerHTML=htmlStr;
+    </script>
+    -->
+    <!-- 封装templage()函数： -->
+    <!-- 
+    <script>
+        function template(id, data) {
+            var str = document.getElementById(id).innerHTML;
+            var pattern = /{{\s*([a-zA-Z]+)\s*}}/;
+            var pattResult = null;
+            while ((pattResult = pattern.exec(str))) {
+                str = str.replace(pattResult[0], data[pattResult[1]]);
+            }
+            return str;
+        }
+    </script>
+    -->
+    <!-- 导入并且使用自定义的模板引擎： -->
+    <!-- <script src="./js/template-web.js"></script> -->
+
+    <!-- 一、XMLHttpRequest基本使用 -->
+    <!-- 1.1 概述 XMLhttpRequest -->
+    <!-- XMLHttpRequest 简称xhr是浏览器提供的 Javascript 对象，通过它可以请求服务器上的数据资源。之前所学的 jQuery 中的 Ajax 函数，就是基于 xhr 对象封装出来的。 -->
+    <!-- 思考：能否直接使用xhr对象发起Ajax请求？ -->
+    <!-- 1.2 使用 XMLHtmlRequest 发起 GET 请求 -->
+    <!-- 步骤： -->
+    <!-- (1).创建 xhr 对象。 -->
+    <!-- (2).调用 xhr.open() 函数。 -->
+    <!-- (3).调用 xhr.send() 函数。 -->
+    <!-- (4).监听 xhr.onreadystatechange 事件。 -->
+    <!-- 代码： -->
+    <!-- <script>
+        //1. 创建 XHR 对象
+        var xhr = new XMLHttpRequest();
+        // 2. 调用 open 函数，指定 请求方式 与 URL地址
+        xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks');
+        // 3. 调用 send 函数，发起 Ajax 请求
+        xhr.send();
+        // 4. 监听 onreadystatechange 事件
+        xhr.onreadystatechange = function () {
+            // 4.1 监听 xhr 对象的请求状态 readyState ；与服务器响应的状态 status
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 4.2 打印服务器响应回来的数据
+                console.log(xhr.responseText);
+            }
+        };
+    </script> -->
+    <!-- 1.3 了解 XMLHttpRequest 对象的 readyState 属性 -->
+    <!-- XMLHttpRequest 对象的 readyState 属性，用来表示当前 Ajax 请求所处的状态。每个 Ajax 请求必然处于以下状态中的一个： -->
+    <!-- 值：0，状态：UNSET，描述：XMLHttpRequest对象已经被创建，但尚未调用open()方法。 -->
+    <!-- 值：1，状态：OPEND，描述：open()方法已经被调用。 -->
+    <!-- 值：2，状态：HEADERS_RECEIVED，描述：send()方法已经被调用，响应头也已经被接收。 -->
+    <!-- 值：3，状态：LOADING，描述：数据接收中，此时response属性中已经包含部分数据。 -->
+    <!-- 值：4，状态：DONE，描述：Ajax请求完成，这意味着数据传输已经彻底完成或者失败。 -->
+    <!-- 1.4 使用 XMLHttpRequest 发起带参数的 GET 请求 -->
+    <!-- 使用 xhr 对象发起带参数的 GET 请求时，只需在调用 xhr.open 期间，为 URL 地址指定参数即可： -->
+    <!-- xhr.open('GET', 'http://localhost:8080/api/getbooks?id=1'); -->
+    <!-- 这种在 URL 地址后面拼接的参数，叫做查询字符串。 -->
+    <!-- 1.5 查询字符串 -->
+    <!-- 定义：查询字符串（URL 参数）是指在 URL 的末尾加上用于向服务器发送信息的字符串（变量）。 -->
+    <!-- 格式：将英文的 ? 放在URL 的末尾，然后再加上 参数＝值 ，想加上多个参数的话，使用 & 符号进行分隔。以这个形式，可以将想要发送给服务器的数据添加到 URL 中。 -->
+    <!-- // 不带参数的 URL 地址 -->
+    <!-- http://localhost:8080/api/getbooks -->
+    <!-- // 带一个参数的 URL 地址 -->
+    <!-- http://localhost:8080/api/getbooks?id=1 -->
+    <!-- // 带两个参数的 URL 地址 -->
+    <!-- http://localhost:8080/api/getbooks?id=1&bookname="西游记" -->
+    <!-- 无论使用 $.ajax()，还是使用 $.get()，又或者直接使用 xhr 对象发起 GET 请求，当需要携带参数的时候，本质上，都是直接将参数以查询字符串的形式，追加到 URL 地址的后面，发送到服务器的。 -->
+    <!-- $.get('url', {name: 'zs', age: 20}, function() {}); -->
+    <!-- // 等价于 -->
+    <!-- $.get('url?name=zs&age=20', function() {}); -->
+    <!-- $.ajax({ method: 'GET', url: 'url', data: {name: 'zs', age: 20}, success: function() {} }); -->
+    <!-- // 等价于 -->
+    <!-- $.ajax({ method: 'GET', url: 'url?name=zs&age=20', success: function() {} }); -->
+    <!-- 1.6 URL编码与解码 -->
+    <!-- URL 地址中只允许出现英文相关的字母、标点符号、数字，因此，在 URL 地址中不允许出现中文字符。 -->
+    <!-- 如果 URL 中需要包含中文这样的字符，则必须对中文字符进行编码（转义）。 -->
+    <!-- URL 编码的原则：使用安全的字符（没有特殊用途或者特殊意义的可打印字符）去表示那些不安全的字符。 -->
+    <!-- URL 编码原则的通俗理解：使用英文字符去表示非英文字符。 -->
+    <!-- 如何对URL进行编码与解码： -->
+    <!-- 浏览器提供了 URL 编码与解码的 API，分别是： -->
+    <!-- encodeURI() 编码的函数。 -->
+    <!-- decodeURI() 解码的函数。 -->
+    <!-- 注意事项： -->
+    <!-- 由于浏览器会自动对 URL 地址进行编码操作，因此，大多数情况下，程序员不需要关心 URL 地址的编码与解码操作。 -->
+    <!-- 更多关于 URL 编码的知识，请参考如下博客：https://blog.csdn.net/Lxd_0111/article/details/78028889/ -->
+    <!-- 1.7 使用 XMLHttpRequest 对象发起 POST 请求 -->
+    <!-- 步骤： -->
+    <!-- (1).创建 xhr 对象。 -->
+    <!-- (2).调用 xhr.open() 函数。 -->
+    <!-- (3).设置 Content-Type 属性（固定写法）。 -->
+    <!-- (4).调用 xhr.send() 函数，同时指定要发送的数据。 -->
+    <!-- (5).监听 xhr.onreadystatechange 事件。 -->
+    <!-- 代码： -->
+    <!-- <script>
+        // 1. 创建 xhr 对象
+        var xhr = new XMLHttpRequest();
+        // 2. 调用 open()
+        xhr.open('POST', 'http://www.liulongbin.top:3006/api/addbook');
+        // 3. 设置 Content-Type 属性（固定写法）
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // 4. 调用 send()，同时将数据以查询字符串的形式，提交给服务器
+        xhr.send('bookname=水浒传&author=施耐庵&publisher=天津图书出版社');
+        // 5. 监听 onreadystatechange 事件
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+    </script> -->
+
+    <!-- 二、数据交换格式 -->
+    <!-- 2.1 什么是数据交换格式 -->
+    <!-- 数据交换格式，就是服务器端与客户端之间进行数据传输与交换的格式。 -->
+    <!-- 前端领域，经常提及的两种数据交换格式分别是 XML 和 JSON。其中 XML 用的非常少，所以，我们重点要学习的数据交换格式就是 JSON。 -->
+    <!-- 2.2 XML 概述 -->
+    <!-- XML 的英文全称是 EXtensible Markup Language，即可扩展标记语言。因此，XML 和 HTML 类似，也是一种标记语言。 -->
+    <!-- XML 与 HTML 的区别： -->
+    <!-- XML 和 HTML 虽然都是标记语言，但是，它们两者之间没有任何的关系。 -->
+    <!-- (1).HTML 被设计用来描述网页上的内容，是网页内容的载体。 -->
+    <!-- (2).XML  被设计用来传输和存储数据，是数据的载体。 -->
+    <!-- XML 缺点： -->
+    <!-- XML 格式臃肿，和数据无关的代码多，体积大，传输效率低。 -->
+    <!-- 在 Javascript 中解析 XML 比较麻烦。 -->
+    <!-- 2.3 JSON -->
+    <!-- 概念：JSON 的英文全称是 JavaScript Object Notation，即“JavaScript 对象表示法”。简单来讲，JSON 就是 Javascript 对象和数组的字符串表示法，它使用文本表示一个 JS 对象或数组的信息，因此，JSON 的本质是字符串。 -->
+    <!-- 作用：JSON 是一种轻量级的文本数据交换格式，在作用上类似于 XML，专门用于存储和传输数据，但是 JSON 比 XML 更小、更快、更易解析。 -->
+    <!-- 现状：JSON 是在 2001 年开始被推广和使用的数据格式，到现今为止，JSON 已经成为了主流的数据交换格式。 -->
+    <!-- JSON 两种结构： -->
+    <!-- JSON 就是用字符串来表示 Javascript 的对象和数组。所以，JSON 中包含对象和数组两种结构，通过这两种结构的相互嵌套，可以表示各种复杂的数据结构。 -->
+    <!-- (1).对象结构：对象结构在 JSON 中表示为 { } 括起来的内容。数据结构为 { key: value, key: value, … } 的键值对结构。其中，key 必须是使用英文的双引号包裹的字符串，value 的数据类型可以是数字、字符串、布尔值、null、数组、对象 6 种类型。 -->
+    <!-- (2).数组结构：数组结构在 JSON 中表示为 [ ] 括起来的内容。数据结构为 [ "java", "javascript", 30, true … ] 。数组中数据的类型可以是数字、字符串、布尔值、null、数组、对象 6 种类型。 -->
+    <!-- JSON 注意事项： -->
+    <!-- (1).属性名必须使用双引号包裹。 -->
+    <!-- (2).字符串类型的值必须使用双引号包裹。 -->
+    <!-- (3).JSON 中不允许使用单引号表示字符串。 -->
+    <!-- (4).JSON 中不能写注释。 -->
+    <!-- (5).JSON 的最外层必须是对象或数组格式。 -->
+    <!-- (6).不能使用 undefined 或函数作为 JSON 的值。 -->
+    <!-- (7).JSON 的作用：在计算机与网络之间存储和传输数据。 -->
+    <!-- (8).JSON 的本质：用字符串来表示 Javascript 对象数据或数组数据。 -->
+    <!-- JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。例如： -->
+    <!-- // 这是一个对象 -->
+    <!-- var obje = {a:'Hello', b:'World'}; -->
+    <!-- // 这是一个 JSON 字符串，本质是一个字符串 -->
+    <!-- var json = '{"a":"Hello", "b":"World"}'; -->
+    <!-- JSON 字符串与 JS 对象互转： -->
+    <!-- 要实现从 JSON 字符串转换为 JS 对象，使用 JSON.parse() 方法： -->
+    <!-- // 结果是：{a: 'Hello', b: 'World'} -->
+    <!-- var object = JSON.parse('{"a":"Hello", "b":"World"}'); -->
+    <!-- 要实现从 JS 对象转换为 JSON 字符串，使用 JSON.stringify() 方法： -->
+    <!-- // 结果是：'{"a": "Hello", "b": "World"}' -->
+    <!-- var json = JSON.stringify({a:'Hello', b:'World'}); -->
+    <!-- 序列化和反序列化： -->
+    <!-- 把数据对象转换为字符串的过程，叫做序列化，例如：调用 JSON.stringify() 函数的操作，叫做 JSON 序列化。 -->
+    <!-- 把字符串转换为数据对象的过程，叫做反序列化，例如：调用 JSON.parse() 函数的操作，叫做 JSON 反序列化。 -->
+
+    <!-- 三、封装自己的Ajax函数 -->
+
+    <!-- 四、XMLHttpRquest Level-2 新特性 -->
+    <!-- 4.1 认识 XMLHttpRequest Level-2 -->
+    <!-- 旧版的缺点： -->
+    <!-- 只支持文本数据的传输，无法用来读取和上传文件。 -->
+    <!-- 传送和接收数据时，没有进度信息，只能提示有没有完成。 -->
+    <!-- 新版新功能： -->
+    <!-- (1).可以设置 HTTP 请求的时限。 -->
+    <!-- (2).可以使用 FormData 对象管理表单数据。 -->
+    <!-- (3).可以上传文件。 -->
+    <!-- (4).可以获得数据传输的进度信息。 -->
+    <!-- 4.2 设置HTTP请求时限 -->
+    <!-- 有时，Ajax 操作很耗时，而且无法预知要花多少时间。如果网速很慢，用户可能要等很久。新版本的 XMLHttpRequest 对象，增加了 timeout 属性，可以设置 HTTP 请求的时限： -->
+    <!-- <script>
+        xhr.timeout = 3000;
+    </script> -->
+    <!-- 上面的语句，将最长等待时间设为 3000 毫秒。过了这个时限，就自动停止HTTP请求。与之配套的还有一个 timeout 事件，用来指定回调函数： -->
+    <!-- <script>
+        xhr.ontimeout = function (event) {
+            alert('请求超时');
+        }
+    </script> -->
+    <!-- 4.3 FormData对象管理表单数据 -->
+    <!-- Ajax 操作往往用来提交表单数据。为了方便表单处理，HTML5 新增了一个 FormData 对象，可以模拟表单操作： -->
+    <!-- <script>
+        // 1. 新建 FormData 对象
+        var formData = new FormData();
+        // 2. 为 FormData 添加表单项
+        formData.append('uname', 'zs');
+        formData.append('upwd', '123456');
+        // 3. 创建 XHR 对象
+        var xhr = new XMLHttpRequest();
+        // 4. 指定请求类型与URL地址
+        xhr.open('POST', 'http://www.liulongbin.top:3006/api/formdata');
+        // 5. 直接提交 FormData 对象，这与提交网页表单的效果，完全一样
+        xhr.send(formData);
+    </script> -->
+    <!-- FormData 对象也可以用来获取网页表单的值，示例代码如下： -->
+    <!-- <script>
+        // 获取表单元素
+        var form = document.querySelector('#form');
+        // 监听表单元素的 submit 事件
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // 根据 form 表单创建 FormData 对象，会自动将表单数据填充到 FormData 对象中
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://www.liulongbin.top:3006/api/formdata');
+            xhr.send(formData);
+            xhr.onreadystatechange = function () {};
+        });
+    </script> -->
+    <!-- 4.4 文件上传 -->
+    <!-- 新版 XMLHttpRequest 对象，不仅可以发送文本信息，还可以上传文件。 -->
+    <!-- 实现步骤： -->
+    <!-- (1).定义 UI 结构。 -->
+    <!-- (2).验证是否选择了文件。 -->
+    <!-- (3).向 FormData 中追加文件。 -->
+    <!-- (4).使用 xhr 发起上传文件的请求。 -->
+    <!-- (5).监听 onreadystatechange 事件。 -->
+    <!-- 定义UI结构： -->
+    <!-- <input type="file" id="file"/>
+    <button id="btnUpload">上传文件</button><br/>
+    <img src="" alt="" id="image" width="800"/> -->
+    <!-- 验证是否选择了文件： -->
+    <!-- <script>
+        // 1. 获取上传文件的按钮
+        var btnUpload = document.querySelector("#btnUpload");
+        // 2. 为按钮添加 click 事件监听
+        btnUpload.addEventListener('click', function () {
+            // 3. 获取到选择的文件列表
+            var files = document.querySelector("#file").files;
+            if (files.length <= 0) {
+                return alert('请选择要上传的文件');
+            }
+        })
+    </script> -->
+    <!-- 向FormData追加文件： -->
+    <!-- <script>
+        // 1. 创建 FormData 对象
+        var formData = new FormData();
+        // 2. 向 FormData 中追加文件
+        formData.append('avatar', files[0]);
+    </script> -->
+    <!-- 使用XHR发起上传文件的请求： -->
+    <!-- <script>
+        var btnUpload = document.querySelector("#btnUpload");
+        btnUpload.addEventListener('click', function () {
+            var files = document.querySelector("#file").files;
+            if (files.length <= 0) {
+                return alert(`请选择需要上传的文件`);
+            }
+            var formData = new FormData();
+            formData.append('avatar', files[0]);
+            // 1. 创建 xhr 对象
+            var xhr = new XMLHttpRequest();
+            // 2. 调用 open 函数，指定请求类型与URL地址。其中，请求类型必须为 POST
+            xhr.open('POST', 'http://localhost:808/api/upload/avatar');
+            // 3. 发起请求
+            xhr.send(formData);
+        });
+    </script> -->
+    <!-- 监听OnReadyStateChange事件： -->
+    <!-- <script>
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                // 上传文件成功
+                if (data.status === 200) {
+                    // 将服务器返回的图片地址，设置为 <img> 标签的 src 属性
+                    document.querySelector('#img').src = 'http://www.liulongbin.top:3006' + data.url;
+                } else { // 上传文件失败
+                    console.log(data.message);
+                }
+            }
+        }
+    </script> -->
+    <!-- 显示文件上传进度： -->
+    <!-- 新版本的 XMLHttpRequest 对象中，可以通过监听 xhr.upload.onprogress 事件，来获取到文件的上传进度。语法格式如下： -->
+    <!-- <script>
+        // 创建 XHR 对象
+        var xhr = new XMLHttpRequest();
+        // 监听 xhr.upload 的 onprogress 事件
+        xhr.upload.onprogress = function (e) {
+            // e.lengthComputable 是一个布尔值，表示当前上传的资源是否具有可计算的长度
+            if (e.lengthComputable) {
+                // e.loaded 已传输的字节
+                // e.total  需传输的总字节
+                var percentComplete = Math.ceil((e.loaded / e.total) * 100);
+            }
+        };
+    </script> -->
+    <!-- 需要导入的库： -->
+    <!-- <link rel="stylesheet" href="./lib/css/bootstrap.css" /> -->
+    <!-- <script src="./js/jquery.js"></script> -->
+    <!-- 基于 BootStrap 渲染进度度： -->
+    <!-- 进度条 -->
+    <!-- <div class="progress" style="width: 500px; margin: 10px 0;">
+        <div class="progress-bar progress-bar-info progress-bar-striped active" id="percent" style="width: 0%">
+            0%
+        </div>
+    </div> -->
+    <!-- 监听上传进度的事件： -->
+    <!-- <script>
+        xhr.upload.onprogress = function (e) {
+            if (e.lengthComputable) {
+                // 1. 计算出当前上传进度的百分比
+                var percentComplete = Math.ceil((e.loaded / e.total) * 100);
+                $('#percent')
+                    // 2. 设置进度条的宽度
+                    .attr('style', 'width:' + percentComplete + '%');
+                    // 3. 显示当前的上传进度百分比
+                    .html(percentComplete + '%');
+            }
+        }
+    </script> -->
+    <!-- 监听上传完成的事件： -->
+    <!-- <script>
+        xhr.upload.onload = function () {
+            $('#percent')
+                // 移除上传中的类样式
+                .removeClass()
+                // 添加上传完成的类样式
+                .addClass('progress-bar progress-bar-success');
+        };
+    </script> -->
+
+    <!-- 五、jQuery高级用法 -->
+    <!-- 5.1 jQuery 实现文件上传 -->
+    <!-- 定义UI结构： -->
+    <!-- <script src="./js/jquery.js"></script> -->
+    <!-- <input type="file" id="file"/> -->
+    <!-- <button type="button" id="btnUpload">上传</button> -->
+    <!-- 验证是否选择了文件： -->
+    <!-- <script>
+        $("#btnUpload").on('click', function () {
+            // 1. 将 jQuery 对象转化为 DOM 对象，并获取选中的文件列表
+            var files = $("#file")[0].files;
+            // 2. 判断是否选择了文件
+            if (files.length <= 0) {
+                return alert('请选择图片后再上传');
+            }
+        });
+    </script> -->
+    <!-- 向FormData中追加文件： -->
+    <!-- <script>
+        // 向 FormData 中追加文件
+        var fileData = new FormData();
+        fileData.append('avatar', files[0]);
+    </script> -->
+    <!-- 使用JQuery框架发送Ajax请求上传文件： -->
+    <!-- <script src="./js/jquery.js"></script>
+    <input type="file" id="file" />
+    <button type="button" id="btnUpload">上传</button>
+    <script>
+        $("#btnUpload").on('click', function () {
+            var files = $("#file")[0].files;
+            if (files.length <= 0) {
+                return alert('请选择图片后再上传');
+            }
+            var fileData = new FormData();
+            fileData.append('avatar', files[0]);
+            $.ajax({
+                method: 'POST',
+                url: '/api/upload/avatar',
+                data: fileData,
+                // 不修改 Content-Type 属性，使用 FormData 默认的 Content-Type 值
+                contentType: false,
+                // 不对 FormData 中的数据进行 url 编码，而是将 FormData 数据原样发送到服务器
+                processData: false,
+                success: function (data) {
+                    console.log('上传文件数据：' + data);
+                }
+            });
+        });
+    </script> -->
+    <!-- 5.2 JQuery实现Loading效果 -->
+    <!-- (1).ajaxStart(callback); -->
+    <!-- Ajax 请求开始时，执行 ajaxStart 函数。可以在 ajaxStart 的 callback 中显示 loading 效果，示例代码如下： -->
+    <!-- <script>
+        // 自 jQuery 版本 1.8 起，该方法只能被附加到文档
+        $(document).ajaxStart(function () {
+            $('#loading').show();
+        });
+    </script> -->
+    <!-- 注意： $(document).ajaxStart() 函数会监听当前文档内所有的 Ajax 请求。 -->
+    <!-- (2).ajaxStop(callback) -->
+    <!-- Ajax 请求结束时，执行 ajaxStop 函数。可以在 ajaxStop 的 callback 中隐藏 loading 效果，示例代码如下： -->
+    <!-- <script>
+        // 自 jQuery 版本 1.8 起，该方法只能被附加到文档
+        $(document).ajaxStop(function () {
+            $('#loading').hide();
+        });
+    </script> -->
+
+    <!-- 六、axios库 -->
+    <!-- 6.1 axios 概述 -->
+    <!-- Axios 是专注于网络数据请求的库。谐音：艾克西奥斯。 -->
+    <!-- 相比于原生的 XMLHttpRequest 对象，axios 简单易用。 -->
+    <!-- 相比于 jQuery，axios 更加轻量化，只专注于网络数据请求。 -->
+    <!-- 6.2 axios 发起 GET 请求 -->
+    <!-- axios.get('url', { params: { /*参数*/ } }).then(callback); -->
+    <!-- <script>
+        // 请求的 URL 地址
+        var url = 'http://www.liulongbin.top:3006/api/get';
+        // 请求的参数对象
+        var pardaams = { name: 'zs', age: 20 };
+        // 调用 axios.get() 发起 GET 请求
+        axios.get(url, { params: params }).then(function (res) {
+            // res.data 是服务器返回的数据
+            var result = res.data;
+            console.log(res);
+        });
+    </script> -->
+    <!-- 6.3 axios 发送 POST 请求 -->
+    <!-- axios.post('url', { /*参数*/ }).then(callback); -->
+    <!-- <script>
+        // 请求的 URL 地址
+        var url = 'http://www.liulongbin.top:3006/api/post';
+        // 要提交到服务器的数据
+        var params = { location: '北京', address: '顺义' };
+        // 调用 axios.post() 发起 POST 请求
+        axios.post(url, params).then(function (res) {
+            // res.data 是服务器返回的数据
+            var result = res.data;
+            console.log(result);
+        });
+    </script> -->
+    <!-- 6.4 axios 直接发送请求 -->
+    <!-- axios 也提供了类似于 jQuery 中 $.ajax() 的函数，语法如下： -->
+    <!-- <script>
+        axios({
+            method: '请求类型',
+            url: '请求的URL地址',
+            data: { /* POST数据 */ },
+            params: { /* GET参数 */ }
+        }).then(callback);
+    </script> -->
+    <!-- <script>
+        axios({
+            method: 'GET',
+            url: 'http://www.liulongbin.top:3006/api/get',
+            params: {
+                name: 'zs',
+                age: 20
+            }
+        }).then(function (res) {
+            console.log(res.data);
+        });
+    </script> -->
+    <!-- <script>
+        axios({
+            method: 'POST',
+            url: 'http://www.liulongbin.top:3006/api/post',
+            data: {
+                bookname: '程序员的自我修养',
+                price: 666
+            }
+        }).then(function (res) {
+            console.log(res.data);
+        });
+    </script> -->
+
+    <!-- 一、了解同源策略与跨域 -->
+    <!-- 1.1 什么是同源 -->
+    <!-- 如果两个页面的协议，域名和端口都相同，则两个页面具有相同的源。 -->
+    <!-- 例如，下表给出了相对于 http://www.test.com/index.html 页面的同源检测： -->
+    <!-- 协议相同：http / https -->
+    <!-- 域名相同：www.localhost.com -->
+    <!-- 端口相同：8080 -->
+    <!-- 同源策略（英文全称：Same origin policy）是浏览器提供的一个安全功能。 -->
+    <!-- MDN 官方给定的概念：同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。 -->
+    <!-- 通俗的理解：浏览器规定，A 网站的 JavaScript，不允许和非同源的网站 C 之间，进行资源的交互，例如： -->
+    <!-- (1).无法读取非同源网页的 Cookie、LocalStorage 和 IndexedDB。 -->
+    <!-- (2).无法接触非同源网页的 DOM。 -->
+    <!-- (3).无法向非同源地址发送 Ajax 请求。 -->
+    <!-- 1.2 什么是跨域 -->
+    <!-- 同源指的是两个 URL 的协议、域名、端口一致，反之，则是跨域。 -->
+    <!-- 出现跨域的根本原因：浏览器的同源策略不允许非同源的 URL 之间进行资源的交互。 -->
+    <!-- 网页：http://localhost:8080/index.html -->
+    <!-- 接口：http://localhost:8088/userlist -->
+    <!-- 注意：浏览器允许发起跨域请求，但是，跨域请求回来的数据，会被浏览器拦截，无法被页面获取到。 -->
+    <!-- 如何实现跨域数据请求？ -->
+    <!-- 现如今，实现跨域数据请求，最主要的两种解决方案，分别是 JSONP 和 CORS。 -->
+    <!-- (1).JSONP：出现的早，兼容性好（兼容低版本IE）。是前端程序员为了解决跨域问题，被迫想出来的一种临时解决方案。缺点是只支持 GET 请求，不支持 POST 请求。 -->
+    <!-- (2).CORS ：出现的较晚，它是 W3C 标准，属于跨域 Ajax 请求的根本解决方案。支持 GET 和 POST 请求。缺点是不兼容某些低版本的浏览器。 -->
+
+    <!-- 二、JSONP -->
+    <!-- 2.1 JSONP 概率 -->
+    <!-- JSONP (JSON with Padding) 是 JSON 的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。 -->
+    <!-- 2.2 JSONP 实现原理 -->
+    <!-- 由于浏览器同源策略的限制，网页中无法通过 Ajax 请求非同源的接口数据。 -->
+    <!-- 但是 <script> 标签不受浏览器同源策略的影响，可以通过 src 属性，请求非同源的 js 脚本。 -->
+    <!-- 因此，JSONP 的实现原理，就是通过 <script> 标签的 src 属性，请求跨域的数据接口，并通过函数调用的形式，接收跨域接口响应回来的数据。 -->
+    <!-- 2.3 简单实现JSONP -->
+    <!-- 定义一个回调函数： -->
+    <!-- <script>
+        function success(data) {
+            console.log('获取到了data数据');
+            console.log(data);
+        }
+    </script> -->
+    <!-- 通过 <script> 标签，请求接口数据： -->
+    <!-- <script src="http://ajax.frontend.itheima.net:3006/api/jsonp?callback=success&name=zs&age=20"></script> -->
+    <!-- 2.4 JSONP 缺点 -->
+    <!-- 由于 JSONP 是通过 <script> 标签的 src 属性，来实现跨域数据获取的，所以，JSONP 只支持 GET 数据请求，不支持 POST 请求。 -->
+    <!-- 注意：JSONP 和 Ajax 之间没有任何关系，不能把 JSONP 请求数据的方式叫做 Ajax，因为 JSONP 没有用到 XMLHttpRequest 这个对象。 -->
+    <!-- 2.5 JQuery框架中的JSONP： -->
+    <!-- jQuery 提供的 $.ajax() 函数，除了可以发起真正的 Ajax 数据请求之外，还能够发起 JSONP 数据请求，例如： -->
+    <!-- 默认情况下，使用 jQuery 发起 JSONP 请求，会自动携带一个 callback=jQueryxxx 的参数，jQueryxxx 是随机生成的一个回调函数名称。 -->
+    <!-- 2.6 自定义参数及回调名称 -->
+    <!-- 在使用 jQuery 发起 JSONP 请求时，如果想要自定义 JSONP 的参数以及回调函数名称，可以通过如下两个参数来指定： -->
+    <!-- <button type="button" onclick="getBooks()">点击事件</button>
+    <script>
+        function getBooks() {
+            $.ajax({
+                url: 'http://localhost:8848/book/select',
+                async: true,
+                data: {},
+                type: "GET",
+                dataType: 'jsonp',
+                // 发送到服务端的参数名称，默认值为 callback
+                // jsonp: 'callback',
+                // 自定义的回调函数名称，默认值为 jQueryxxx 格式
+                // jsonpCallback: 'abc',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function name() {
+                    console.log(500);
+                }
+            });
+        }
+    </script> -->
+    <!-- 2.7 jQuery中JSONP实现过程 -->
+    <!-- jQuery 中的 JSONP，也是通过 <script> 标签的 src 属性实现跨域数据访问的，只不过，jQuery 采用的是动态创建和移除 <script> 标签的方式，来发起 JSONP 数据请求。 -->
+    <!-- 在发起 JSONP 请求的时候吧，动态向 <header> 中 append 一个 <script> 标签； -->
+    <!-- 在发起 JSONP 请求成功以后，动态从 <header> 中移除刚才 append 进去的 <script> 标签； -->
+
+    <!-- 三、案例：淘宝搜索 -->
+    <!-- 为了获取到用户每次按下键盘输入的内容，需要监听输入框的 keyup 事件，示例代码如下： -->
+    <!-- <script>
+        // 监听文本框的 keyup 事件
+        $('#ipt').on('keyup', function () {
+            // 获取用户输入的内容
+            var keywords = $(this).val().trim();
+            // 判断用户输入的内容是否为空
+            if (keywords.length <= 0) {
+                return false;
+            }
+            // TODO：获取搜索建议列表
+        })
+    </script> -->
+    <!-- 将获取搜索建议列表的代码，封装到 getSuggestList 函数中，示例代码如下： -->
+    <!-- <script>
+        function getSuggestList(kw) {
+            $.ajax({
+                // 指定请求的 URL 地址，其中，q 是用户输入的关键字
+                url: 'https://suggest.taobao.com/sug?q=' + kw,
+                // 指定要发起的是 JSONP 请求
+                dataType: 'jsonp',
+                // 成功的回调函数
+                success: function (res) { 
+                    console.log(res);
+                }
+            });
+        }
+    </script> -->
+    <!-- 定义搜索列表： -->
+    <!-- <div class="box">
+        <div class="tabs"></div>
+        <div class="search-box"></div>
+        <div id="suggest-list"></div>
+    </div> -->
+    <!-- 定义模板结构： -->
+    <!-- <script type="text/html" id="tpl-suggestList">
+        {{each result}}
+        <div class="suggest-item">{{$value[0]}}</div>
+        {{/each}}
+    </script> -->
+    <!-- 定义渲染模板结构的函数： -->
+    <!-- <script>
+        // 渲染建议列表
+        function renderSuggestList(res) {
+            // 如果没有需要渲染的数据，则直接 return
+            if (res.result.length <= 0) {
+                return $('#suggest-list').empty().hide();
+            }
+            // 渲染模板结构
+            var htmlStr = template('tpl-suggestList', res);
+            $('#suggest-list').html(htmlStr).show();
+        }
+    </script> -->
+    <!-- 搜索关键词为空时隐藏搜索建议列表： -->
+    <!-- <script>
+        $('#ipt').on('keyup', function () {
+            // 获取用户输入的内容
+            var keywords = $(this).val().trim();
+            // 判断用户输入的内容是否为空
+            if (keywords.length <= 0) {
+                // 如果关键词为空，则清空后隐藏搜索建议列表
+                return $('#suggest-list').empty().hide();
+            }
+            getSuggestList(keywords);
+        });
+    </script> -->
+
+    <!-- 四、防抖与节流 -->
+    <!-- 4.1 什么是防抖 -->
+    <!-- 防抖策略（debounce）是当事件被触发后，延迟 n 秒后再执行回调，如果在这 n 秒内事件又被触发，则重新计时。 -->
+    <!-- 4.2 防抖的应用场景 -->
+    <!-- 用户在输入框中连续输入一串字符时，可以通过防抖策略，只在输入完后，才执行查询的请求，这样可以有效减少请求次数，节约请求资源； -->
+    <!-- 实现输入框的防抖： -->
+    <!-- <script>
+        $(document).ready(function () {
+            // 1. 防抖动的 timer
+            var timer = null;
+            // 定义缓存对象
+            var cacheObj = {};
+            // 2. 定义防抖的函数
+            function debounceSearch(keywords) {
+                timer = setTimeout(function () {
+                    // 发起 JSONP 请求
+                    getSuggestList(keywords);
+                }, 500);
+            }
+            // 3. 在触发 keyup 事件时，立即清空 timer
+            $('#search').on('keyup', function () {
+                clearTimeout(timer);
+                const keywords = $(this).val().trim();
+                if (keywords.length <= 0) {
+                    return alert(`请输入需要搜索的内容`);
+                }
+                debounceSearch(keywords);
+            });
+        });
+    </script> -->
+    <!-- 定义全局缓存对象： -->
+    <!-- <script>
+        // 缓存对象
+        var cacheObj = {};
+    </script> -->
+    <!-- 将搜索结果保存到缓存对象中： -->
+    <!-- <script>
+        // 渲染建议列表
+        function renderSuggestList(res) {
+            // 将搜索的结果，添加到缓存对象中
+            var k = $('#ipt').val().trim();
+            cacheObj[k] = res;
+        }
+    </script> -->
+    <!-- 优先从缓存中获取搜索建议： -->
+    <!-- <script>
+        // 监听文本框的 keyup 事件
+        $('#ipt').on('keyup', function () {
+            // 优先从缓存中获取搜索建议
+            if (cacheObj[keywords]) {
+                return renderSuggestList(cacheObj[keywords]);
+            }
+            // 获取搜索建议列表
+            debounceSearch(keywords);
+        });
+    </script> -->
+    <!-- 4.1 什么是节流 -->
+    <!-- 节流策略（throttle），顾名思义，可以减少一段时间内事件的触发频率。 -->
+    <!-- 4.2 节流的应用场景 -->
+    <!-- 鼠标连续不断地触发某事件（如点击），只在单位时间内只触发一次； -->
+    <!-- 懒加载时要监听计算滚动条的位置，但不必每次滑动都触发，可以降低计算的频率，而不必去浪费 CPU 资源； -->
+    <!-- 节流案例：鼠标跟随效果？ -->
+    <!-- <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #angel {
+            position: absolute;
+        }
+    </style>
+    <img src="./images/angel.gif" alt="" id="angel" />
+    <script>
+        // 未使用节流阀效果
+        // $(function () {
+        //     // 获取图片元素
+        //     var angel = $('#angel');
+        //     // 监听文档的 mousemove 事件
+        //     $(document).on('mousemove', function (event) {
+        //         $(angel).css('left', event.pageX + 'px').css('top', event.pageY + 'px');
+        //     });
+        // });
+        // 使用节流阀效果
+        $(function () {
+            var angel = $('#angel');
+             // 1.预定义一个 timer 节流阀
+            var timer = null;
+            $(document).on('mousemove', function (e) {
+                // 3.判断节流阀是否为空，如果不为空，则证明距离上次执行间隔不足16毫秒
+                if (timer) { 
+                    return false;
+                }
+                timer = setTimeout(function () {
+                    $(angel).css('left', e.pageX + 'px').css('top', e.pageY + 'px');
+                    // 2.当设置了鼠标跟随效果后，清空 timer 节流阀，方便下次开启延时器
+                    timer = null;
+                }, 16);
+            });
+        });
+    </script> -->
+    <!-- 节流阀的概述？ -->
+    <!-- 高铁卫生间是否被占用，由红绿灯控制，红灯表示被占用，绿灯表示可使用。 -->
+    <!-- 假设每个人上卫生间都需要花费5分钟，则五分钟之内，被占用的卫生间无法被其他人使用。 -->
+    <!-- 上一个人使用完毕后，需要将红灯重置为绿灯，表示下一个人可以使用卫生间。 -->
+    <!-- 下一个人在上卫生间之前，需要先判断控制灯是否为绿色，来知晓能否上卫生间。 -->
+    <!-- 节流阀为空，表示可以执行下次操作；不为空，表示不能执行下次操作。 -->
+    <!-- 当前操作执行完，必须将节流阀重置为空，表示可以执行下次操作了。 -->
+    <!-- 每次执行操作前，必须先判断节流阀是否为空。 -->
+    <!-- 总结： -->
+    <!-- 防抖：如果事件被频繁触发，防抖能保证只有最有一次触发生效，前面 N 多次的触发都会被忽略。 -->
+    <!-- 节流：如果事件被频繁触发，节流能够减少事件触发的频率，因此，节流是有选择性地执行一部分事件。 -->
+
+    <!-- 一、HTTP 协议 -->
+    <!-- 1.1 什么是通信 -->
+    <!-- 通信，就是信息的传递和交换。 -->
+    <!-- 通信三要素： -->
+    <!-- 通信的主体 -->
+    <!-- 通信的内容 -->
+    <!-- 通信的方式 -->
+    <!-- 案例：张三要把自己考上传智专修学院的好消息写信告诉自己的好朋友李四。 -->
+    <!-- 其中： -->
+    <!-- 通信的主体是张三和李四； -->
+    <!-- 通信的内容是考上传智专修学院； -->
+    <!-- 通信的方式是写信； -->
+    <!-- 其中： -->
+    <!-- 通信的主体是服务器和客户端浏览器； -->
+    <!-- 通信的内容是传智专修学院的简介； -->
+    <!-- 通信的方式是响应； -->
+    <!-- 1.2 什么是通信协议 -->
+    <!-- 通信协议（Communication Protocol）是指通信的双方完成通信所必须遵守的规则和约定。 -->
+    <!-- 通俗的理解：通信双方采用约定好的格式来发送和接收消息，这种事先约定好的通信格式，就叫做通信协议。 -->
+    <!-- 互联网中的通信协议： -->
+    <!-- 客户端与服务器之间要实现网页内容的传输，则通信的双方必须遵守网页内容的传输协议。 -->
+    <!-- 网页内容又叫做超文本，因此网页内容的传输协议又叫做超文本传输协议（HyperText Transfer Protocol） ，简称 HTTP 协议。 -->
+    <!-- 1.3 HTTP -->
+    <!-- HTTP 协议即超文本传送协议 (HyperText Transfer Protocol) ，它规定了客户端与服务器之间进行网页内容传输时，所必须遵守的传输格式。 -->
+    <!-- 例如： -->
+    <!-- (1).客户端要以HTTP协议要求的格式把数据提交到服务器。 -->
+    <!-- (2).服务器要以HTTP协议要求的格式把内容响应给客户端。 -->
+    <!-- HTTP 协议的交互模型: -->
+    <!-- HTTP 协议采用了 请求/响应 的交互模型。 -->
+
+    <!-- 二、HTTP 请求 -->
+    <!-- 2.1 什么是HTTP请求消息 -->
+    <!-- 由于 HTTP 协议属于客户端浏览器和服务器之间的通信协议。因此，客户端发起的请求叫做 HTTP 请求，客户端发送到服务器的消息，叫做 HTTP 请求消息。 -->
+    <!-- 注意：HTTP 请求消息又叫做 HTTP 请求报文。 -->
+    <!-- HTTP 请求消息的组成分部： -->
+    <!-- HTTP 请求消息由请求行（request line）、请求头部（ header ） 、空行 和 请求体 4 个部分组成。 -->
+    <!-- 1.请求行 -->
+    <!-- 请求行由请求方式、URL 和 HTTP 协议版本 3 个部分组成，他们之间使用空格隔开。 -->
+    <!-- 2.请求头部 -->
+    <!-- 请求头部用来描述客户端的基本信息，从而把客户端相关的信息告知服务器。比如：User-Agent 用来说明当前是什么类型的浏览器；Content-Type 用来描述发送到服务器的数据格式；Accept 用来描述客户端能够接收什么类型的返回内容；Accept-Language 用来描述客户端期望接收哪种人类语言的文本内容。 -->
+    <!-- 请求头部由多行 键/值对 组成，每行的键和值之间用英文的冒号分隔。 -->
+    <!-- 3.空行 -->
+    <!-- 最后一个请求头字段的后面是一个空行，通知服务器请求头部至此结束。 -->
+    <!-- 请求消息中的空行，用来分隔请求头部与请求体。 -->
+    <!-- 4.请求体 -->
+    <!-- 请求体中存放的，是要通过 POST 方式提交到服务器的数据。 -->
+
+    <!-- 三、HTTP 响应 -->
+    <!-- 2.2 什么是HTTP响应消息 -->
+    <!-- 响应消息就是服务器响应给客户端的消息内容，也叫作响应报文。 -->
+    <!-- HTTP 响应消息的组成部分： -->
+    <!-- HTTP响应消息由状态行、响应头部、空行 和 响应体 4 个部分组成，如下图所示： -->
+    <!-- 1.状态行 -->
+    <!-- 状态行由 HTTP 协议版本、状态码和状态码的描述文本 3 个部分组成，他们之间使用空格隔开。 -->
+    <!-- 2.响应头部 -->
+    <!-- 响应头部用来描述服务器的基本信息。响应头部由多行 键/值对 组成，每行的键和值之间用英文的冒号分隔。 -->
+    <!-- 3.空行 -->
+    <!-- 在最后一个响应头部字段结束之后，会紧跟一个空行，用来通知客户端响应头部至此结束。 -->
+    <!-- 响应消息中的空行，用来分隔响应头部与响应体。 -->
+    <!-- 4.响应体 -->
+    <!-- 响应体中存放的，是服务器响应给客户端的资源内容。 -->
+
+    <!-- 四、HTTP 请求方法 -->
+    <!-- 4.1 什么是HTTP请求方法 -->
+    <!-- HTTP 请求方法，属于 HTTP 协议中的一部分，请求方法的作用是：用来表明要对服务器上的资源执行的操作。最常用的请求方法是 GET 和 POST。 -->
+    <!-- GET     (查询)发送请求来获得服务器上的资源，请求体中不会包含请求数据，请求数据放在协议头中。 -->
+    <!-- POST    (新增)向服务器提交资源（例如提交表单或上传文件）。数据被包含在请求体中提交给服务器。 -->
+    <!-- PUT     (修改)向服务器提交资源，并使用提交的新资源，替换掉服务器对应的旧资源。 -->
+    <!-- DELETE  (删除)请求服务器删除指定的资源。 -->
+    <!-- HEAD    HEAD 方法请求一个与 GET 请求的响应相同的响应，但没有响应体。 -->
+    <!-- OPTIONS 获取http服务器支持的http请求方法，允许客户端查看服务器的性能，比如ajax跨域时的预检等。 -->
+    <!-- CONNECT 建立一个到由目标资源标识的服务器的隧道。 -->
+    <!-- TRACE   沿着到目标资源的路径执行一个消息环回测试，主要用于测试或诊断。 -->
+    <!-- PATCH   是对 PUT 方法的补充，用来对已知资源进行局部更新 。 -->
+
+    <!-- 五、HTTP 响应状态码 -->
+    <!-- 5.1 什么是HTTP响应状态码 -->
+    <!-- HTTP 响应状态码（HTTP Status Code），也属于 HTTP 协议的一部分，用来标识响应的状态。 -->
+    <!-- 响应状态码会随着响应消息一起被发送至客户端浏览器，浏览器根据服务器返回的响应状态码，就能知道这次 HTTP 请求的结果是成功还是失败了。 -->
+    <!-- HTTP 状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字用来对状态码进行细分。 -->
+    <!-- HTTP 状态码共分为 5 种类型： -->
+    <!-- 1xx 信息，服务器收到请求，需要请求者继续执行操作（实际开发中很少遇到 1** 类型的状态码） -->
+    <!-- 2xx 成功，操作被成功接收并处理 -->
+    <!-- 3xx 重定向，需要进一步的操作以完成请求 -->
+    <!-- 4xx 客户端错误，请求包含语法错误或无法完成请求 -->
+    <!-- 5xx 服务器错误，服务器在处理请求的过程中发生了错误 -->
+    <!-- 完整的 HTTP 响应状态码，可以参考 MDN 官方文档 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status -->
+
+</body>
+
+</html>

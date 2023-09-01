@@ -45,7 +45,11 @@ const router = new VueRouter({
         {
             name: 'about',
             path: '/about',
-            component: About
+            component: About,
+            meta: {
+              isAuth: true,
+              title: '关于我们'
+            }
         },
         {
             name: 'home',
@@ -56,10 +60,15 @@ const router = new VueRouter({
                     path: '/',
                     redirect: 'news'
                 },
+                // 子级路由前面不需要加斜杠（/）哈！底层遍历的时候会自动加上哈！！！
                 {
                     name: 'news',
                     path: 'news',
-                    component: News
+                    component: News,
+                    meta: {
+                      isAuth: true,
+                      title: '新联联播'
+                    }
                 },
                 // {
                 //     name: 'news',
@@ -104,9 +113,17 @@ const router = new VueRouter({
                                     a: 12306,
                                     b: '中国铁路'
                                 }
+                            },
+                            meta: {
+                              isAuth: true,
+                              title: '详细信息'
                             }
                         }
-                    ]
+                    ],
+                    meta: {
+                      isAuth: true,
+                      title: '消息中心'
+                    }
                 }
             ]
         },
@@ -114,7 +131,11 @@ const router = new VueRouter({
             name: 'movies',
             path: '/movies/:mid/:title',
             component: Movies,
-            props: true
+            props: true,
+            meta: {
+              isAuth: true,
+              title: '影视专区'
+            }
         },
         // 第08步：配置路由规则，开启 props 传递参数，从而获取动态参数（/:mid）的值。
         // {
@@ -167,7 +188,11 @@ const router = new VueRouter({
         {
             name: 'elemeui',
             path: '/elemeui',
-            component: ElementUIView
+            component: ElementUIView,
+            meta: {
+              isAuth: true,
+              title: '饿了么库'
+            }
         }
     ]
 });
@@ -181,8 +206,6 @@ router.beforeEach(function (to, from, next) {
     // 当前用户拥有后台主页的访问权限，直接放行：next()
     // 当前用户没有后台主页的访问权限，强制其跳转到登录页面：next('/login')
     // 当前用户没有后台主页的访问权限，不允许跳转到后台主页：next(false)
-    console.log('去哪里呀：', to.name);
-    console.log('从哪来呀：', from.name);
     if (to.path === '/main') {
         const token = localStorage.getItem('token');
         console.log(token);
@@ -199,9 +222,10 @@ router.beforeEach(function (to, from, next) {
 // 第03步：全局后置守卫（全局后置监听器）
 // 第03步：全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
 router.afterEach(function (to, from) {
-    console.log('去哪里呀：', to.name);
-    console.log('从哪来呀：', from.name);
-    document.title = to.meta.title || '如果没有标题就用我吧';
+    console.log('After Each: ', to.name, from.name);
+    console.log('After Each: ', to.path, from.path);
+    console.log('After Each: ', to.fullPath, from.fullPath);
+    document.title = to.meta.title || '如果Meta没有标题就用我吧';
 });
 
 // 第04步：向外共享路由的实例对象

@@ -11,7 +11,7 @@ const multer = require('multer');
 const path = require('path');
 
 // 创建 multer 的实例
-const uploads = multer({ dest: path.join(__dirname, '../uploads') });
+const uploads = multer({ dest: path.join(__dirname, '../static') });
 // 导入验证数据的中间件
 const expressJoi = require('@escook/express-joi');
 // 导入需要的验证规则对象
